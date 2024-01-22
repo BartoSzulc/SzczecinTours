@@ -1251,34 +1251,44 @@
           "slug": "rose-950"
         },
         {
-          "color": "#95c11f",
+          "color": "rgba(15, 20, 37, 0.20)",
+          "name": "ColorObramowanie",
+          "slug": "colorobramowanie"
+        },
+        {
+          "color": "#080808",
           "name": "Color1",
           "slug": "color1"
         },
         {
-          "color": "#1f294c",
+          "color": "#900407",
           "name": "Color2",
           "slug": "color2"
         },
         {
-          "color": "#0296d8",
+          "color": "#f91c0a",
           "name": "Color3",
           "slug": "color3"
         },
         {
-          "color": "#f7f7f7",
+          "color": "#edd918",
           "name": "Color4",
           "slug": "color4"
         },
         {
-          "color": "#ffffff",
+          "color": "#fff",
           "name": "Color5",
           "slug": "color5"
         },
         {
-          "color": "#0f1425",
+          "color": "#6b6b6b",
           "name": "Color6",
           "slug": "color6"
+        },
+        {
+          "color": "#f0f0f0",
+          "name": "Color7",
+          "slug": "color7"
         }
       ]
     },
@@ -1304,8 +1314,8 @@
       "customFontSize": false,
       "fontFamilies": [
         {
-          "fontFamily": "Poppins,Helvetica,Arial,sans-serif",
-          "name": "Poppins",
+          "fontFamily": "Montserrat,Helvetica,Arial,sans-serif",
+          "name": "Montserrat",
           "slug": "primary"
         }
       ],
@@ -1352,42 +1362,32 @@
         },
         {
           "name": "5xl",
-          "size": "clamp(1.125rem, 0.3vw + 1rem, 1.25rem);",
+          "size": "3rem",
           "slug": "5xl"
         },
         {
           "name": "6xl",
-          "size": "clamp(1.375rem, 1vw + 1rem, 1.625rem);",
+          "size": "3.75rem",
           "slug": "6xl"
         },
         {
           "name": "7xl",
-          "size": "clamp(1.625rem, 1.5vw + 1rem, 2.125rem);",
+          "size": "4.5rem",
           "slug": "7xl"
         },
         {
           "name": "8xl",
-          "size": "clamp(2.25rem, 3vw + 1rem, 3rem);",
+          "size": "6rem",
           "slug": "8xl"
         },
         {
           "name": "9xl",
-          "size": "clamp(2.625rem, 3vw + 1rem, 3.625rem);",
+          "size": "8rem",
           "slug": "9xl"
         },
         {
-          "name": "smallest",
-          "size": 12,
-          "slug": "smallest"
-        },
-        {
-          "name": "caption",
-          "size": 14,
-          "slug": "caption"
-        },
-        {
           "name": "menu",
-          "size": 18,
+          "size": 15,
           "slug": "menu"
         },
         {
@@ -1397,13 +1397,38 @@
         },
         {
           "name": "button",
-          "size": 16,
+          "size": 13,
           "slug": "button"
         },
         {
-          "name": "badge",
-          "size": "clamp(1.375rem, 1vw + 1rem, 1.625rem);",
-          "slug": "badge"
+          "name": "h6",
+          "size": "clamp(1.125rem, 1vw + 1rem, 1.125rem);",
+          "slug": "h6"
+        },
+        {
+          "name": "h5",
+          "size": "clamp(1.125rem, 1vw + 0.5rem, 1.375rem);",
+          "slug": "h5"
+        },
+        {
+          "name": "h4",
+          "size": "clamp(1.375rem, 1vw + 1rem, 1.5rem);",
+          "slug": "h4"
+        },
+        {
+          "name": "h3",
+          "size": "clamp(1.5rem, 2vw + 0.75rem, 2.125rem);",
+          "slug": "h3"
+        },
+        {
+          "name": "h2",
+          "size": "clamp(2.125rem, 2vw + 1rem, 2.5rem);",
+          "slug": "h2"
+        },
+        {
+          "name": "h1",
+          "size": "clamp(2.5rem, 3vw + 1rem, 3.5rem);",
+          "slug": "h1"
         }
       ]
     }

@@ -15,16 +15,18 @@ use function Roots\bundle;
  */
 add_action('wp_enqueue_scripts', function () {
     bundle('app')->enqueue();
+    
 }, 100);
+// Woo script
 
 /**
  * Register the theme assets with the block editor.
  *
  * @return void
  */
-add_action('enqueue_block_editor_assets', function () {
-    bundle('editor')->enqueue();
-}, 100);
+// add_action('enqueue_block_editor_assets', function () {
+//     bundle('editor')->enqueue();
+// }, 100);
 
 /**
  * Register the initial theme setup.
@@ -58,6 +60,7 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'sage'),
+        'footer_navigation' => __('Footer Navigation', 'sage'),
     ]);
 
     /**
@@ -102,6 +105,7 @@ add_action('after_setup_theme', function () {
         'script',
         'style',
     ]);
+    add_image_size('full', false);
 
     /**
      * Enable selective refresh for widgets in customizer.

@@ -1,0 +1,40 @@
+name: 🚀 Deploy CI theme on Production Server
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  web-deploy:
+    name: 🎉 Build Project and Send to FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: 🔨 Use Node.js 16
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: "16"
+
+      - name: 🚧 Build Project
+        run: |
+          yarn
+          npm run build
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          password: ${{ secrets.PROD_PASS }}
+          server-dir: ${{ secrets.PROD_PATH }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.idea/**
+            **/.budfiles/**
+            **/.idea/**

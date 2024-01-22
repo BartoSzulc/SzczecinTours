@@ -1,0 +1,67 @@
+.btn {
+    
+    @apply text-button uppercase max-sm:tracking-[0.5px];;
+    @apply flex h-half lg:h-60 box-border;
+    @apply min-w-[200px] lg:min-w-[250px] inline-flex items-center justify-center;
+    @apply transition-all duration-500 ease-in-out relative;
+    clip-path: polygon(0% 0%, calc(100% - 50px) 0%, 100% 100%, 50px 100%);
+    span {
+        @apply relative z-10 px-[66px] pointer-events-none text-center;
+    }
+    &--primary {
+       
+        @apply bg-color4;
+       
+        &:after {
+            content: "";
+            background: linear-gradient(270deg, #900407 0%, #EDD918 100%);
+            @apply absolute top-0 left-0 w-full h-full opacity-0;
+            @apply transition-all duration-500 ease-in-out z-0;
+        }
+        &:hover {
+            @apply text-white;
+            &:after {
+                @apply opacity-100;
+            }
+        }
+    }
+    &--secondary {
+        @apply bg-color2;
+        @apply text-white;
+
+        &:after {
+            content: "";
+            background: linear-gradient(270deg,#EDD918  0%, #900407 100%);
+            @apply absolute top-0 left-0 w-full h-full opacity-0;
+            @apply transition-all duration-500 ease-in-out z-0;
+        }
+        &:hover {
+            &:after {
+                @apply opacity-100;
+            }
+        }
+    }
+
+   
+}
+.button-swiper {
+    @apply h-60 w-[115px];
+    @apply bg-no-repeat bg-cover bg-center flex items-center justify-center;
+    background-image: url("data:image/svg+xml,%3Csvg width='115' height='60' viewBox='0 0 115 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50.7229 58L4.25826 2H64.2771L110.742 58H50.7229Z' fill='%23F0F0F0' stroke='%23EDD918' stroke-width='4'/%3E%3C/svg%3E%0A");
+    @apply cursor-pointer;
+    @apply relative;
+    svg {
+        @apply relative z-10;
+    }
+    &:after {
+        background-image: url("data:image/svg+xml,%3Csvg width='115' height='60' viewBox='0 0 115 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50.7229 58L4.25826 2H64.2771L110.742 58H50.7229Z' fill='%23EDD918' stroke='%23EDD918' stroke-width='4'/%3E%3C/svg%3E%0A");
+        content: "";
+        @apply absolute top-0 left-0 w-full h-full opacity-0;
+        @apply transition-all duration-500 ease-in-out z-0;
+    }
+    &:hover {
+        &:after {
+            @apply opacity-100;
+        }
+    }
+}

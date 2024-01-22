@@ -14,7 +14,7 @@ module.exports = {
   content: ["./index.php", "./app/**/*.php", "./resources/**/*.{php,vue,js}"],
   theme: {
     screens: {
-      'xs': '360px',
+      'xs': '375px',
       ...defaultTheme.screens,
       '2xl': '1366px',
       '3xl': '1440px',
@@ -22,7 +22,7 @@ module.exports = {
       '5xl': '1920px',
     },
     fontFamily: {
-      primary: ['Poppins', 'Helvetica', 'Arial', 'sans-serif'],
+      primary: ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
     },
     letterSpacing: {
       tightest: '1px',
@@ -39,8 +39,9 @@ module.exports = {
         'bg-xs': '10px',
       },
       boxShadow: {
-        'cien-1': '20px 20px 40px 0px rgba(56, 52, 54, 0.40)',
-        'cien-1-mobile': '10px 10px 20px 0px rgba(56, 52, 54, 0.4)'
+        'cien-1': '-20px 30px 40px 0px rgba(114, 114, 114, 0.20)',
+        'cien-2': '10px 10px 10px 0px rgba(40, 50, 80, 0.20);',
+       
       },
       dropShadow: {
         'cien-1': '20px 20px 40px 0px rgba(56, 52, 54, 0.40)',
@@ -50,68 +51,75 @@ module.exports = {
       
       current: "currentColor",
       transparent: "transparent",
-      color1: '#95C11F',
-      color2: '#1F294C',
-      color3: '#0296D8',
-      color4: '#F7F7F7',
-      color5: "#FFFFFF",
-      color6: "#0F1425",
+      colorObramowanie: 'rgba(15, 20, 37, 0.20)',
+      color1: '#080808',
+      color2: '#900407',
+      color3: '#F91C0A',
+      color4: '#EDD918',
+      color5: "#FFF",
+      color6: "#6B6B6B",
+      color7: '#F0F0F0',
 
     },
     spacing: {
       'half': '50px',
+      'half-mobile': '25px',
       'full': '100px',
       '30': '30px',
       '60': '60px',
     },
     fontSize: {
-      'smallest': [12, {
-        lineHeight: 1.67,
-      }],
-      'caption':[14, {
-        lineHeight: 1.214,
-        letterSpacing: '0.05em',
-      }],
-      'menu' : [18, {
-        lineHeight: 1.44,
+      // 'smallest': [12, {
+      //   lineHeight: 1.67,
+      // }],
+      // 'caption':[14, {
+      //   lineHeight: 1.214,
+      //   letterSpacing: '0.05em',
+      // }],
+      'menu' : [15, {
+        lineHeight: 1.60,
+        letterSpacing: '0.75px',
+        fontWeight: 700,
        
       }],
       'base': [15, 1.73],
-      'desc': [18, 1.67],
-      'button': [16, 1.875],
-      // 44/26 = 1.6923076923076923
-      'badge': ['clamp(1.375rem, 1vw + 1rem, 1.625rem);', {
-        lineHeight: 1.70,
-        letterSpacing: '10.4px',
-        fontWeight: 300,
+      'desc': [18, {
+        lineHeight: 1.67,
+        fontWeight: 500,
       }],
+      'button': [13, {
+        lineHeight: '20px',
+        letterSpacing: '1.3px',
+        fontWeight: 700,
+
+      }],
+
       // https://modern-fluid-typography.vercel.app/
       // where u can get fluid typography
-
-      //h5 - 20px - to 18px - rwd
-      // 30/20 = 1.5
-      '5xl': ['clamp(1.125rem, 0.3vw + 1rem, 1.25rem);', {
-        lineHeight: 1.5,
+      'h6': ['clamp(1.125rem, 1vw + 1rem, 1.125rem);', {
+        lineHeight: 1.44,
+        fontWeight: 600,
       }],
-      //h4 = 26px - to 22px - rwd
-      // 36/26 = 1.3846153846153846
-      '6xl': ['clamp(1.375rem, 1vw + 1rem, 1.625rem);', {
-        lineHeight: 1.38,
+      'h5': ['clamp(1.125rem, 1vw + 0.5rem, 1.375rem);', {
+        lineHeight: 1.36,
+        fontWeight: 600,
       }],
-      //h3 - 34px - to 26px - rwd
-      // 42/34 = 1.2352941176470589
-      '7xl': ['clamp(1.625rem, 1.5vw + 1rem, 2.125rem);', {
+      'h4': ['clamp(1.375rem, 1vw + 1rem, 1.5rem);', {
+        lineHeight: 1.42,
+        fontWeight: 700,
+      }],
+      'h3': ['clamp(1.5rem, 2vw + 0.75rem, 2.125rem);', {
         lineHeight: 1.29,
+        fontWeight: 700,
       }],
-      //h2 - 48px - to 36px - rwd
-      // 58/48 = 1.2083333333333333
-      '8xl': ['clamp(2.25rem, 3vw + 1rem, 3rem);', {
+
+      'h2': ['clamp(2.125rem, 2vw + 1rem, 2.5rem);', {
         lineHeight: 1.20,
+        fontWeight: 700,
       }],
-      //h1 - 58px to 42px - rwd
-      // 64/58 = 1.103448275862069
-      '9xl': ['clamp(2.625rem, 3vw + 1rem, 3.625rem);', {
-        lineHeight: 1.10,
+      'h1': ['clamp(2.5rem, 3vw + 1rem, 3.5rem);', {
+        lineHeight: 1.14,
+        fontWeight: 700,
       }],
   },
     },

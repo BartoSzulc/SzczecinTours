@@ -1,35 +1,33 @@
-// @import "../../node_modules/swiper/swiper-bundle.css";
-// @import "../../node_modules/glightbox/dist/css/glightbox.css";
+@import "../../node_modules/swiper/swiper-bundle.css";
+@import "../../node_modules/glightbox/dist/css/glightbox.css";
 
 // - Vendor
 @import 'vendor/frameworks';
 
 
 // // - Abstracts 
-// @import 'abstracts/aos';
+@import 'abstracts/aos';
 // @import 'abstracts/animations';
-// @import 'abstracts/fonts';
+@import 'abstracts/fonts';
 
 
 // // - Components
-// @import 'components/buttons';
-// @import 'components/menu';
-// @import 'components/form';
-// @import 'components/swiper';
+@import 'components/buttons';
+@import 'components/menu';
+@import 'components/form';
+@import 'components/swiper';
 
 // // - Pages 
-// @import 'pages/home';
+@import 'pages/home';
+@import 'pages/single-produkty';
+@import 'pages/contact';
 // @import 'pages/about';
 // @import 'pages/offer';
 // @import 'pages/single-domek';
 // @import 'pages/gallery';
 
-
-
-
-
 body {
-    @apply font-primary text-black md:text-desc text-base bg-purple-500;
+    @apply font-primary text-color1 text-base;
 }
 // h1, h2, h3, h4, h5, h6, .heading {
 //     @apply font-primary;
@@ -250,3 +248,53 @@ body {
 //     }
     
 // }
+
+.underline-custom {
+    a {
+    position: relative;
+      &::before {
+        content:"";
+        transition: transform 1s cubic-bezier(.28,.75,.22,.95);
+        transform: scale(0,1);
+        transform-origin: right center;
+        @apply w-full top-[calc(100%-4px)] left-0 absolute border-b border-color1;
+      }
+      &:hover::before{
+        transform: scale(1,1);
+        transform-origin: left center;
+      }
+     
+    }
+    &__primary {
+      a {
+        position: relative;
+        &::before {
+          content:"";
+          transition: transform 1s cubic-bezier(.28,.75,.22,.95);
+          transform: scale(0,1);
+          transform-origin: right center;
+          @apply w-full top-[calc(100%-2px)] left-0 absolute border-b border-color2;
+        }
+        &:hover::before{
+          transform: scale(1,1);
+          transform-origin: left center;
+        }
+      }
+    }
+    &--active {
+      a {
+        position: relative;
+          &::before {
+            content:"";
+            transition: transform 1s cubic-bezier(.28,.75,.22,.95);
+            transform: scale(1,1);
+            transform-origin: right center;
+            @apply w-full top-[calc(100%-2px)] left-0 absolute border-b border-color1;
+          }
+          &:hover::before{
+            @apply border-color2;
+          }
+         
+        }
+    }
+  }
