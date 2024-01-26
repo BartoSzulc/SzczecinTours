@@ -94,7 +94,9 @@
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
-    ]
+    ],
+    "copy-db": "rsync -av /mnt/c/Users/Bartel/localsites/szczecintoursplanner/app/sql/local.sql ./"
+
   },
   "extra": {
     "acorn": {

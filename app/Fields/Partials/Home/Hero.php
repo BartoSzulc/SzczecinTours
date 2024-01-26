@@ -21,10 +21,6 @@ class Hero extends Partial
         $hero
             ->addRepeater('hero', ['label' => 'Hero/slajder', 'button_label' => 'Dodaj slajd'])
                 ->addWysiwyg('title', ['label' => 'Tytuł'])
-                ->addWysiwyg('content', ['label' => 'Treść'])
-                    ->addRepeater('buttons', ['label' => 'Przyciski', 'button_label' => 'Dodaj przycisk'])
-                        ->addFields($this->get(Buttons::class))
-                    ->endRepeater()
                 ->addImage('image', ['label' => 'Zdjęcie'])
             ->endRepeater();
 

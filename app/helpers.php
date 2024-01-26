@@ -60,18 +60,18 @@ function placehold_img($size = '150x150', $format = 'png', $text_color = '#fff',
     return $url;
 }
 
-function register_custom_post_type_realizacje() {  
+function register_custom_post_type_wycieczki() {  
     $labels = array(
-        'name' => 'Realizacje',
-        'singular_name' => 'Realizacja',
-        'add_new' => 'Dodaj nową realizacje',
-        'add_new_item' => 'Dodaj nową realizacje',
-        'edit_item' => 'Edytuj realizacje',
-        'new_item' => 'Nowa realizacja',
-        'view_item' => 'Zobacz realizacje',
-        'search_items' => 'Szukaj realizacji',
-        'not_found' => 'Nie znaleziono realizacji',
-        'not_found_in_trash' => 'Nie znaleziono realizacji w koszu'
+        'name' => 'Wycieczkownik',
+        'singular_name' => 'Wycieczka',
+        'add_new' => 'Dodaj nową wycieczkę',
+        'add_new_item' => 'Dodaj nową wycieczkę',
+        'edit_item' => 'Edytuj wycieczkę',
+        'new_item' => 'Nowa wycieczka',
+        'view_item' => 'Zobacz wycieczkę',
+        'search_items' => 'Szukaj wycieczek',
+        'not_found' => 'Nie znaleziono wycieczek',
+        'not_found_in_trash' => 'Nie znaleziono wycieczek w koszu'
     );
 
     $args = array(
@@ -79,42 +79,15 @@ function register_custom_post_type_realizacje() {
         'public' => true,
         'has_archive' => true,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
-        'menu_icon' => 'dashicons-format-gallery',
-
+        'menu_icon' => 'dashicons-location-alt',
     );
 
-    register_post_type('realizacje', $args);
-}
-add_action('init', __NAMESPACE__ . '\\register_custom_post_type_realizacje');
+    register_post_type('wycieczki', $args);
 
-function register_custom_post_type_produkty() {  
-    $labels = array(
-        'name' => 'Produkty',
-        'singular_name' => 'Produkt',
-        'add_new' => 'Dodaj nowy produkt',
-        'add_new_item' => 'Dodaj nowy produkt',
-        'edit_item' => 'Edytuj produkt',
-        'new_item' => 'Nowy produkt',
-        'view_item' => 'Zobacz produkt',
-        'search_items' => 'Szukaj produktów',
-        'not_found' => 'Nie znaleziono produktów',
-        'not_found_in_trash' => 'Nie znaleziono produktów w koszu'
-    );
-
-    $args = array(
-        'labels' => $labels,
-        'public' => true,
-        'has_archive' => true,
-        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
-        'menu_icon' => 'dashicons-products',
-    );
-
-    register_post_type('produkty', $args);
-
-    // Dodaj taksonomię dla niestandardowego typu wpisu produkty
+    // Dodaj taksonomię dla niestandardowego typu wpisu wycieczki
     $taxonomy_labels = array(
-        'name' => 'Kategorie produktów',
-        'singular_name' => 'Kategoria produktu',
+        'name' => 'Kategorie wycieczek',
+        'singular_name' => 'Kategoria wycieczki',
         'search_items' => 'Szukaj kategorii',
         'all_items' => 'Wszystkie kategorie',
         'parent_item' => 'Kategoria nadrzędna',
@@ -132,12 +105,35 @@ function register_custom_post_type_produkty() {
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'oferta'),
     );
 
-    register_taxonomy('kategoria_produktu', 'produkty', $taxonomy_args);
+    register_taxonomy('kategoria_wycieczki', 'wycieczki', $taxonomy_args);
+
+    $taxonomy_labels_miejsce = array(
+        'name' => 'Miejsca wycieczek',
+        'singular_name' => 'Miejsce wycieczki',
+        'search_items' => 'Szukaj miejsc',
+        'all_items' => 'Wszystkie miejsca',
+        'parent_item' => 'Miejsce nadrzędne',
+        'parent_item_colon' => 'Miejsce nadrzędne:',
+        'edit_item' => 'Edytuj miejsce',
+        'update_item' => 'Zaktualizuj miejsce',
+        'add_new_item' => 'Dodaj nowe miejsce',
+        'new_item_name' => 'Nowa nazwa miejsca',
+        'menu_name' => 'Miejsca',
+    );
+
+    $taxonomy_args_miejsce = array(
+        'hierarchical' => true,
+        'labels' => $taxonomy_labels_miejsce,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+    );
+
+    register_taxonomy('miejsce_wycieczki', 'wycieczki', $taxonomy_args_miejsce);
 }
-add_action('init', 'register_custom_post_type_produkty');
+add_action('init', 'register_custom_post_type_wycieczki');
 
 
 function cc_mime_types($mimes) {
@@ -146,13 +142,76 @@ function cc_mime_types($mimes) {
   }
 add_filter('upload_mimes', 'cc_mime_types');
 
-pll_register_string('Brikol', 'Sprawdź cenę i zamów');
-pll_register_string('Brikol', 'zł');
-pll_register_string('Brikol', 'Cena:');
-pll_register_string('Brikol', 'Zapytaj o produkt');
-pll_register_string('Brikol', 'Zobacz więcej');
-pll_register_string('Brikol', 'Wszelkie prawa zastrzeżone © 2024');
-pll_register_string('Brikol', 'Realizacja:');
-pll_register_string('Brikol', 'Strona nie istnieje');
-pll_register_string('Brikol', 'Powrót');
-pll_register_string('Brikol', 'Zapytaj o produkt / złóż zamówienie:');
+
+function filter_posts() {
+    $today = date('Ymd'); // Get today's date
+    $args = array(
+        'post_type' => 'wycieczki',
+        'meta_query' => array(
+            array(
+                'key' => 'tour_date',
+                'value' => $today,
+                'compare' => '>=',
+                'type' => 'DATE'
+            )
+        )
+    );
+
+    if (!empty($_POST['selected_date'])) {
+        $selected_date = DateTime::createFromFormat('d.m.Y', $_POST['selected_date'])->format('Y-m-d');
+        $args['meta_query'] = array(
+            array(
+                'key' => 'tour_date',
+                'value' => $selected_date,
+                'compare' => '=',
+                'type' => 'DATE'
+            )
+        );
+    }
+
+    $args['tax_query'] = array();
+
+    if (!empty($_POST['kategoria_wycieczki'])) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'kategoria_wycieczki',
+            'field'    => 'slug',
+            'terms'    => $_POST['kategoria_wycieczki'],
+            'operator' => 'AND',
+        );
+    }
+
+    if (!empty($_POST['miejsce_wycieczki'])) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'miejsce_wycieczki',
+            'field'    => 'slug',
+            'terms'    => $_POST['miejsce_wycieczki'],
+            'operator' => 'AND',
+        );
+    }
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo view('partials/post/content')->render();
+        }
+    } else {
+        echo view('partials/post/not-found')->render();
+    }
+
+    wp_die();
+}
+add_action('wp_ajax_filter_posts', __NAMESPACE__ . '\\filter_posts');
+add_action('wp_ajax_nopriv_filter_posts', __NAMESPACE__ . '\\filter_posts');
+
+// pll_register_string('Brikol', 'Sprawdź cenę i zamów');
+// pll_register_string('Brikol', 'zł');
+// pll_register_string('Brikol', 'Cena:');
+// pll_register_string('Brikol', 'Zapytaj o produkt');
+// pll_register_string('Brikol', 'Zobacz więcej');
+// pll_register_string('Brikol', 'Wszelkie prawa zastrzeżone © 2024');
+// pll_register_string('Brikol', 'Realizacja:');
+// pll_register_string('Brikol', 'Strona nie istnieje');
+// pll_register_string('Brikol', 'Powrót');
+// pll_register_string('Brikol', 'Zapytaj o produkt / złóż zamówienie:');

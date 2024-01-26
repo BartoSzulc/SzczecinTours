@@ -1,5 +1,6 @@
 @import "../../node_modules/swiper/swiper-bundle.css";
 @import "../../node_modules/glightbox/dist/css/glightbox.css";
+@import 'air-datepicker/air-datepicker.css';
 
 // - Vendor
 @import 'vendor/frameworks';
@@ -14,21 +15,22 @@
 // // - Components
 @import 'components/buttons';
 @import 'components/menu';
-@import 'components/form';
+@import 'components/spinner';
+// @import 'components/form';
 @import 'components/swiper';
 
 // // - Pages 
 @import 'pages/home';
-@import 'pages/single-produkty';
-@import 'pages/contact';
-// @import 'pages/about';
-// @import 'pages/offer';
-// @import 'pages/single-domek';
-// @import 'pages/gallery';
+// @import 'pages/single-produkty';
+// @import 'pages/contact';
+
 
 body {
-    @apply font-primary text-color1 text-base;
+    @apply font-primary text-color6 text-base bg-color4;
 }
+
+
+
 // h1, h2, h3, h4, h5, h6, .heading {
 //     @apply font-primary;
 // }
@@ -297,4 +299,4 @@ body {
          
         }
     }
-  }
+  } 

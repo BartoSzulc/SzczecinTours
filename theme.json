@@ -1256,22 +1256,22 @@
           "slug": "colorobramowanie"
         },
         {
-          "color": "#080808",
+          "color": "#95c11f",
           "name": "Color1",
           "slug": "color1"
         },
         {
-          "color": "#900407",
+          "color": "#1f294c",
           "name": "Color2",
           "slug": "color2"
         },
         {
-          "color": "#f91c0a",
+          "color": "#0296d8",
           "name": "Color3",
           "slug": "color3"
         },
         {
-          "color": "#edd918",
+          "color": "#f7f7f7",
           "name": "Color4",
           "slug": "color4"
         },
@@ -1281,14 +1281,9 @@
           "slug": "color5"
         },
         {
-          "color": "#6b6b6b",
+          "color": "#0f1425",
           "name": "Color6",
           "slug": "color6"
-        },
-        {
-          "color": "#f0f0f0",
-          "name": "Color7",
-          "slug": "color7"
         }
       ]
     },
@@ -1314,8 +1309,8 @@
       "customFontSize": false,
       "fontFamilies": [
         {
-          "fontFamily": "Montserrat,Helvetica,Arial,sans-serif",
-          "name": "Montserrat",
+          "fontFamily": "Poppins,Helvetica,Arial,sans-serif",
+          "name": "Poppins",
           "slug": "primary"
         }
       ],

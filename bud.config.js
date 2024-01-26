@@ -23,7 +23,7 @@ export default async (app) => {
    *
    * @see {@link https://bud.js.org/reference/bud.setPublicPath}
    */
-  app.setPublicPath('/wp-content/themes/Brikol/public/');
+  app.setPublicPath('/wp-content/themes/SzczecinToursPlanner/public/');
 
   /**
    * Development server settings
@@ -33,8 +33,8 @@ export default async (app) => {
    * @see {@link https://bud.js.org/reference/bud.watch}
    */
   app
-    .setUrl('http://192.168.0.16:3000')
-    .setProxyUrl('http://brikol.local')
+    .setUrl('http://localhost:3000')
+    .setProxyUrl('http://szczecintoursplanner.local/')
     .watch(['resources/views', 'app']);
 
   /**

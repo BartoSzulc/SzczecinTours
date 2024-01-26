@@ -10,7 +10,17 @@
 | don't have to worry about manually loading any of our classes later on.
 |
 */
+if (!function_exists('pll__')) {
+    function pll__($s) {
+        return $s;
+    }
+}
 
+if (!function_exists('pll_register_string')) {
+    function pll_register_string($group, $string) {
+        // do nothing
+    }
+}
 if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
@@ -54,7 +64,7 @@ if (! function_exists('\Roots\bootloader')) {
 |
 */
 
-collect(['setup', 'filters'])
+collect(['setup', 'filters', 'helpers', 'admin', 'config'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(

@@ -5,6 +5,6 @@
 .budfiles
 npm-debug.log
 yarn-error.log
-auth.json
+# auth.json
 composer.lock
 package-lock.json

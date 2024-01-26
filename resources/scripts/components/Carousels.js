@@ -21,13 +21,13 @@ export default class Carousels extends Component {
                     simulateTouch: false,
                     slidesPerView: 1,
                     effect: "fade",
-                    speed: 2500,
+                    speed: 3000,
                     loop: true,
                     fadeEffect: {
                         crossFade: true
                     },
                     autoplay: {
-                        delay: 2000,
+                        delay: 4000,
                         disableOnInteraction: false,
                     },
                     pagination: {

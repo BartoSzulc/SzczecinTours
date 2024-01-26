@@ -22,22 +22,13 @@ module.exports = {
       '5xl': '1920px',
     },
     fontFamily: {
-      primary: ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
+      primary: ['Poppins', 'Helvetica', 'Arial', 'sans-serif'],
     },
     letterSpacing: {
       tightest: '1px',
       wide: '10.4px',
     },
     extend: {
-      borderRadius: {
-        'hero': '480px',
-        'bg': '300px',
-        'bg-xl': '200px',
-        'bg-lg': '100px',
-        'bg-md': '50px',
-        'bg-sm': '25px',
-        'bg-xs': '10px',
-      },
       boxShadow: {
         'cien-1': '-20px 30px 40px 0px rgba(114, 114, 114, 0.20)',
         'cien-2': '10px 10px 10px 0px rgba(40, 50, 80, 0.20);',
@@ -52,13 +43,13 @@ module.exports = {
       current: "currentColor",
       transparent: "transparent",
       colorObramowanie: 'rgba(15, 20, 37, 0.20)',
-      color1: '#080808',
-      color2: '#900407',
-      color3: '#F91C0A',
-      color4: '#EDD918',
+      color1: '#95C11F',
+      color2: '#1F294C',
+      color3: '#0296D8',
+      color4: '#F7F7F7',
       color5: "#FFF",
-      color6: "#6B6B6B",
-      color7: '#F0F0F0',
+      color6: "#0F1425",
+      // color7: '#F0F0F0',
 
     },
     spacing: {
@@ -98,7 +89,7 @@ module.exports = {
       // where u can get fluid typography
       'h6': ['clamp(1.125rem, 1vw + 1rem, 1.125rem);', {
         lineHeight: 1.44,
-        fontWeight: 600,
+        fontWeight: 700,
       }],
       'h5': ['clamp(1.125rem, 1vw + 0.5rem, 1.375rem);', {
         lineHeight: 1.36,
@@ -106,16 +97,16 @@ module.exports = {
       }],
       'h4': ['clamp(1.375rem, 1vw + 1rem, 1.5rem);', {
         lineHeight: 1.42,
-        fontWeight: 700,
+        fontWeight: 600,
       }],
       'h3': ['clamp(1.5rem, 2vw + 0.75rem, 2.125rem);', {
         lineHeight: 1.29,
-        fontWeight: 700,
+        fontWeight: 600,
       }],
 
       'h2': ['clamp(2.125rem, 2vw + 1rem, 2.5rem);', {
         lineHeight: 1.20,
-        fontWeight: 700,
+        fontWeight: 600,
       }],
       'h1': ['clamp(2.5rem, 3vw + 1rem, 3.5rem);', {
         lineHeight: 1.14,
