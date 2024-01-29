@@ -36,7 +36,14 @@ const main = async (err) => {
   // handle hmr errors
   console.error(err);
   }
-
+  const getCheckedValues = (selector) => {
+    let values = $(selector).map((_, radio) => $(radio).val()).get();
+    if (values.includes('all')) {
+        values = $(selector.replace(':checked', '')).map((_, radio) => $(radio).val()).get();
+    }
+    console.log(`Checked values for ${selector}:`, values);
+    return values;
+};
 
 const filterPosts = () => {
     const formattedDate = $('#selectedDate').text();
