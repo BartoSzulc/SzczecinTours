@@ -26,25 +26,48 @@
     
     <section class="home__travels">
         <div class="container">
+            <div class="w-full text-center py-30 lg:py-60 text-color6 text-h2">
+                <h2>Lista wycieczek</h2>
+            </div>
             <div class="flex items-center bg-white py-5 px-30 rounded-md">
-                <div class="flex border-custom items-center filter-button">
+                <div class="flex  items-center filter-button">
                     <a id="selectToday" class="pr-30">Dzisiaj</a>
                 </div>
                 <div class="flex border-custom items-center filter-button">
                     <a id="selectTomorrow" class="px-30">Jutro</a>
                 </div>
-                <div class="wrap datepicker-show flex w-fit relative cursor-pointer">
+                <div class="wrap border-custom datepicker-show flex w-fit relative cursor-pointer">
                     <input class="absolute opacity-0 w-full h-full flex cursor-pointer" id="minMaxExample" >
-                    <div class="flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 px-30">
                         @svg('images.kalendarz-big') 
                         <span id="selectedDate" class="flex items-center gap-2.5">Wybierz datę</span>
                     </div>
                 </div>
+                <div class="pl-30 flex justify-center gap-30">
+                    @foreach($miejsce_wycieczki_terms as $term)
+                        <div class="relative miejsce-radio">
+                            <input type="radio" id="{{ $term->slug }}" name="miejsce_wycieczki" class="hidden-radio miejsce_wycieczki-radio" value="{{ $term->slug }}">
+                            <label for="{{ $term->slug }}" class="">{{ $term->name }}</label>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-            
-            <div class="w-full text-center py-30 lg:py-60 text-color6 text-h2">
-                <h2>Lista wycieczek</h2>
+            <div class="flex justify-between py-10 category-picker">
+                <div class="text-h4 font-bold text-color2">
+                    <p>Wybór kategorii</p>
+                </div>
+                <div class="relative kategoria-radio">
+                    <input type="radio" id="all" name="kategoria_wycieczki" class="hidden-radio kategoria_wycieczki-radio" value="all">
+                    <label for="all" class="font-button">All</label>
+                </div>
+                @foreach($kategoria_wycieczki_terms as $term)
+                <div class="relative kategoria-radio">
+                    <input type="radio" id="{{ $term->slug }}" name="kategoria_wycieczki" class="hidden-radio kategoria_wycieczki-radio" value="{{ $term->slug }}">
+                    <label for="{{ $term->slug }}" class="font-button">{{ $term->name }}</label>
+                </div>
+                @endforeach
             </div>
+     
             <div id="posts" class="grid grid-cols-4 gap-5" data-aos="fade-up">
                 @if($query->have_posts())
                     @while($query->have_posts()) @php $query->the_post() @endphp
@@ -55,25 +78,6 @@
             </div>
         </div>
     </section>
-    <section class="taxonomy-buttons">
-        <div class="container">
-            <div class="flex justify-center gap-4">
-                @foreach($kategoria_wycieczki_terms as $term)
-                    <div>
-                        <input type="checkbox" id="{{ $term->slug }}" class="hidden-checkbox kategoria_wycieczki-checkbox" value="{{ $term->slug }}">
-                        <label for="{{ $term->slug }}" class="btn btn-primary">{{ $term->name }}</label>
-                    </div>
-                @endforeach
-            </div>
-            <div class="flex justify-center gap-4">
-                @foreach($miejsce_wycieczki_terms as $term)
-                    <div>
-                        <input type="checkbox" id="{{ $term->slug }}" class="hidden-checkbox miejsce_wycieczki-checkbox" value="{{ $term->slug }}">
-                        <label for="{{ $term->slug }}" class="btn btn-primary">{{ $term->name }}</label>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+
 @endsection
             

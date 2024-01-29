@@ -171,7 +171,7 @@ function filter_posts() {
 
     $args['tax_query'] = array();
 
-    if (!empty($_POST['kategoria_wycieczki'])) {
+    if (!empty($_POST['kategoria_wycieczki']) && $_POST['kategoria_wycieczki'] !== 'all') {
         $args['tax_query'][] = array(
             'taxonomy' => 'kategoria_wycieczki',
             'field'    => 'slug',

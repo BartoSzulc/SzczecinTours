@@ -2,10 +2,10 @@
 $thumbnail_id = get_post_thumbnail_id()
 @endphp
 
-<div class="post bg-white flex flex-col h-full rounded-lg" data-aos="fade-up">
+<div class="post bg-white flex flex-col h-full rounded-lg " data-aos="fade-up">
     <div class="post-image">
         @if ( has_post_thumbnail() ) 
-        {!! wp_get_attachment_image($thumbnail_id, 'full', false, array('class' => 'object-cover object-center mx-auto h-[260px] aspect-[385/260] ', 'loading' => 'lazy')); !!}
+        {!! wp_get_attachment_image($thumbnail_id, 'full', false, array('class' => 'object-cover object-center mx-auto h-[260px] aspect-[385/260] rounded-t-lg', 'loading' => 'lazy')); !!}
         @endif
     </div>
     <div class="flex flex-col p-5">

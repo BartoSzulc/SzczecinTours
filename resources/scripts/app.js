@@ -37,17 +37,13 @@ const main = async (err) => {
   console.error(err);
   }
 
-const getCheckedValues = (selector) => {
-    const values = $(selector).map((_, checkbox) => $(checkbox).val()).get();
-    console.log(`Checked values for ${selector}:`, values);
-    return values;
-};
+
 const filterPosts = () => {
     const formattedDate = $('#selectedDate').text();
     console.log('Selected date:', formattedDate);
 
-    const kategoria_wycieczki = getCheckedValues('.kategoria_wycieczki-checkbox:checked');
-    const miejsce_wycieczki = getCheckedValues('.miejsce_wycieczki-checkbox:checked');
+    const kategoria_wycieczki = getCheckedValues('.kategoria_wycieczki-radio:checked');
+    const miejsce_wycieczki = getCheckedValues('.miejsce_wycieczki-radio:checked');
     $('body').append('<div class="spinner-main"><div class="spinner"></div></div>');
 
 
@@ -117,8 +113,8 @@ $('#selectTomorrow').click(function() {
   tomorrow.setDate(tomorrow.getDate() + 1);
   dp.selectDate(tomorrow);
 });
-$('.hidden-checkbox').change(() => {
-    console.log('Checkbox changed');
+$('.hidden-radio').change(() => {
+    console.log('radio changed');
     filterPosts();
 });
   
