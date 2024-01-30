@@ -6400,7 +6400,7 @@ raw-body@2.5.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-dom@18.2.0:
+react-dom@^18.2.0, react-dom@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -6969,6 +6969,14 @@ slice-ansi@^6.0.0:
   dependencies:
     ansi-styles "^6.2.1"
     is-fullwidth-code-point "^4.0.0"
+
+slim-select@^2.8.1:
+  version "2.8.1"
+  resolved "https://registry.npmjs.org/slim-select/-/slim-select-2.8.1.tgz"
+  integrity sha512-/wi+4dau48edrPZ/ggD+R8qD6FbCLGv5zvrYh4rqp1RNEIbkb1pRYJbljLjvr7/QqBvX3Hjbnvdnw9FPzJ8o5Q==
+  dependencies:
+    react "^18.2.0"
+    react-dom "^18.2.0"
 
 source-list-map@^2.0.1:
   version "2.0.1"

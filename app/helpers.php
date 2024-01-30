@@ -147,6 +147,7 @@ function filter_posts() {
     $today = date('Ymd'); // Get today's date
     $args = array(
         'post_type' => 'wycieczki',
+        'lang' => 'all',
         'meta_query' => array(
             array(
                 'key' => 'tour_date',
@@ -170,13 +171,18 @@ function filter_posts() {
     }
 
     $args['tax_query'] = array();
-
-    if (!empty($_POST['kategoria_wycieczki']) && $_POST['kategoria_wycieczki'] !== 'all') {
+    if (!empty($_POST['kategoria_wycieczki'])) {
+        error_log(print_r($_POST['kategoria_wycieczki'], true)); // Debug line
+    
+        // If $_POST['kategoria_wycieczki'][0] is already an array, assign it directly
+        $term_ids = $_POST['kategoria_wycieczki'][0];
+        error_log(print_r($term_ids, true)); // Debug line
+    
         $args['tax_query'][] = array(
             'taxonomy' => 'kategoria_wycieczki',
-            'field'    => 'slug',
-            'terms'    => $_POST['kategoria_wycieczki'],
-            'operator' => 'AND',
+            'field'    => 'term_id',
+            'terms'    => $term_ids,
+            'operator' => 'IN',
         );
     }
 
@@ -185,7 +191,7 @@ function filter_posts() {
             'taxonomy' => 'miejsce_wycieczki',
             'field'    => 'slug',
             'terms'    => $_POST['miejsce_wycieczki'],
-            'operator' => 'AND',
+            'operator' => 'in',
         );
     }
 

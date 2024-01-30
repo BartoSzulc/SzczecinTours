@@ -1,6 +1,6 @@
 @import "../../node_modules/swiper/swiper-bundle.css";
 @import "../../node_modules/glightbox/dist/css/glightbox.css";
-@import 'air-datepicker/air-datepicker.css';
+@import '../../node_modules/slim-select/src/slim-select/slimselect.scss';
 
 // - Vendor
 @import 'vendor/frameworks';
@@ -8,6 +8,7 @@
 
 // // - Abstracts 
 @import 'abstracts/aos';
+@import 'abstracts/airdatepicker';
 // @import 'abstracts/animations';
 @import 'abstracts/fonts';
 
@@ -23,7 +24,6 @@
 @import 'pages/home';
 // @import 'pages/single-produkty';
 // @import 'pages/contact';
-
 
 body {
     @apply font-primary text-color2 text-base bg-color4;

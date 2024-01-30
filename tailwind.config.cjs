@@ -78,9 +78,9 @@ module.exports = {
         lineHeight: 1.67,
         fontWeight: 500,
       }],
-      'button': [13, {
+      'button': [12, {
         lineHeight: '20px',
-        letterSpacing: '1.3px',
+        letterSpacing: '2.4px',
         fontWeight: 700,
 
       }],

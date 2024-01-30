@@ -24,6 +24,8 @@ class Product extends Field
             'return_format' => 'd.m.Y',])
             ->addTimePicker('tour_time', ['label' => 'Godzina wycieczki', 'display_format' => 'G:i',
             'return_format' => 'G:i',])
+            ->addText('tour_price', ['label' => 'Cena wycieczki'])
+            
 
             ;
         return $product->build();
