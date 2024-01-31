@@ -12,54 +12,55 @@ export default class Search extends Component {
   
     init() {
         const getCheckedValues = (selector) => {
-            let values = $(selector).map((_, radio) => $(radio).val()).get();
-            if (values.includes('all')) {
-                values = $(selector.replace(':checked', '')).map((_, radio) => $(radio).val()).get();
-            }
-            console.log(`Checked values for ${selector}:`, values);
-            return values;
+          const values = $(selector).map((_, radio) => $(radio).val()).get();
+          return values.includes('all') ? $(selector.replace(':checked', '')).map((_, radio) => $(radio).val()).get() : values;
         };
         
         const filterPosts = () => {
           const formattedDate = $('#selectedDate').text();
-          console.log('Selected date:', formattedDate);
-        
           let kategoria_wycieczki = getCheckedValues('.kategoria_wycieczki-radio:checked');
           const miejsce_wycieczki = getCheckedValues('.miejsce_wycieczki-radio:checked');
-          $('body').append('<div class="spinner-main"><div class="spinner"></div></div>');
-        
+          const language = $('#language-select').val(); 
+          const sorting = $('#sorting-select').val();
+          console.log(sorting);
           if (kategoria_wycieczki.includes('all')) {
               kategoria_wycieczki = [];
           }
         
           const data = {
               action: 'filter_posts',
-              kategoria_wycieczki,
-              miejsce_wycieczki
+              kategoria_wycieczki, 
+              miejsce_wycieczki,
+              sorting
           };
+          if (language && language !== 'all') {
+            data.language = language;
+          }
         
           if (formattedDate && formattedDate !== "Wybierz datę") {
               data.selected_date = formattedDate;
           }
         
-          console.log('Sending AJAX request with data:', data);
+          if (!$('.spinner-main').length) {
+            $('body').append('<div class="spinner-main"><div class="spinner"></div></div>');
+          }
         
           $.ajax({
-              url: '/wp-admin/admin-ajax.php',
+              url: '/wp-admin/admin-ajax.php', // Consider using wp_localize_script to pass the admin URL
               type: 'POST',
               data
           }).done((response) => {
-              // console.log('Received AJAX response:', response);
               $('.spinner-main').remove();
               $('#posts').html(response);
               AOS.init();
               AOS.refresh();
             }).fail((jqXHR, textStatus, errorThrown) => {
               $('.spinner-main').remove();
-              // console.error('AJAX request failed:', textStatus, errorThrown);
+              alert('An error occurred while filtering posts. Please try again.'); // Added user-friendly error message
           });
-          
         };
+        $('#language-select').change(filterPosts);
+        $('#sorting-select').change(filterPosts);
         let initialDateText = $('#selectedDate').text(); // Store the initial text
         let dp = new AirDatepicker('#minMaxExample', {
           minDate: new Date().setHours(0, 0, 0, 0), // prevent selection of dates before today

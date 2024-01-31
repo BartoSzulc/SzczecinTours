@@ -12,7 +12,7 @@ foreach ($languages as $language) {
 @endphp
 <div class="flex gap-5">
     <select id="language-select" class="select-custom">
-        <option data-placeholder="true">- język wycieczki -</option>
+        <option data-placeholder="true" value="all">- język wycieczki -</option>
         @foreach($languageData as $language)
             <option data-html="<div class='select-custom__inside'><img src='{{ $language['custom_flag_url'] }}'/><p>{{ $language['name'] }}</p></div>" value="{{ $language['slug'] }}">
                 {{ $language['name'] }}
@@ -21,7 +21,7 @@ foreach ($languages as $language) {
     </select>
     <select id="sorting-select" class="select-custom">
         <option data-placeholder="true">- sortuj wg -</option>
-        <option value="dateup">Data wydarzenia</option>
-        <option value="asc">Alfabetycznie</option>
+        <option value="DATE">Data wydarzenia</option>
+        <option value="ASC">Alfabetycznie</option>
     </select>
 </div>

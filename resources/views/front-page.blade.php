@@ -43,7 +43,7 @@
                 @include('partials.search.category-picker')
             </div>
      
-            <div id="posts" class="grid grid-cols-4 gap-5" data-aos="fade-up">
+            <div id="posts" class="grid grid-cols-4 gap-5 mb-60" data-aos="fade-up">
                 @if($query->have_posts())
                     @while($query->have_posts()) @php $query->the_post() @endphp
                         @include('partials.post.content')
@@ -53,6 +53,6 @@
             </div>
         </div>
     </section>
-
+    
 @endsection
             

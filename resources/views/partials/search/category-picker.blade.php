@@ -15,8 +15,12 @@
         $term_translations = pll_get_term_translations($term->term_id);
         $term_ids = array_values($term_translations);
     @endphp
+    @if($categoryImage)
     <img src="{{ $categoryImage['url'] }}" alt="{{ $term->name }}">
+    @endif
     <input type="radio" id="{{ $term->slug }}" name="kategoria_wycieczki" class="hidden-radio kategoria_wycieczki-radio" value="{{ implode(',', $term_ids) }}">
     <label for="{{ $term->slug }}" class="text-button cursor-pointer">{{ $term->name }}</label>
 </div>
 @endforeach
+
+

@@ -95,6 +95,7 @@
         @apply flex items-center justify-center gap-2.5;
         img {
             @apply w-30 h-30 object-cover object-center rounded-full;
+            @apply border border-colorObramowanie;
         }
     }
 }
@@ -119,3 +120,4 @@
     }
 
 }
+
