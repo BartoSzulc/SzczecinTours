@@ -10,7 +10,7 @@ foreach ($languages as $language) {
     ];
 }
 @endphp
-<div class="flex gap-5">
+<div class="flex gap-5 items-center">
     <select id="language-select" class="select-custom">
         <option data-placeholder="true" value="all">- język wycieczki -</option>
         @foreach($languageData as $language)
@@ -24,4 +24,13 @@ foreach ($languages as $language) {
         <option value="DATE">Data wydarzenia</option>
         <option value="ASC">Alfabetycznie</option>
     </select>
+    <div class="change-view flex items-center gap-[15px]">
+        <div class="view grid-view active">
+            @svg('images/kafelki.svg')
+        </div>
+        <div class="view list-view">
+            @svg('images/lista.svg')
+        </div>
+    </div>
+    
 </div>
