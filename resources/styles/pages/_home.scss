@@ -138,6 +138,7 @@
             }
         }
         &.active {
+            @apply pointer-events-none;
             svg {
                 path {
                   
@@ -149,3 +150,28 @@
     }
 
 }
+
+.ss-deselect {
+    flex: 0 9 auto;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    position: relative;
+    pointer-events: all;
+   
+    svg {
+      
+        @apply bg-color6 rounded-full w-4 h-4 p-1 #{!important};
+        path {
+            
+            fill: none;
+            stroke: #fff !important;
+            stroke-width: 10 !important;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+}
+

@@ -23,7 +23,7 @@ const main = async (err) => {
   // handle hmr errors
   console.error(err);
   }
-
+ 
   new SlimSelect({
     select: '#language-select',
     settings: {

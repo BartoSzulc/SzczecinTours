@@ -1,27 +1,9 @@
 @extends('layouts.app')
+
 @php
-    $today = date('Ymd');
-    $args = array(
-        'lang' => 'all',
-        'post_type' => 'wycieczki',
-        'meta_key' => 'tour_date',
-        'orderby' => 'meta_value_num',
-        'order' => 'ASC',
-        'meta_query' => array(
-            array(
-                'key' => 'tour_date',
-                'compare' => '>=',
-                'value' => $today,
-                'type' => 'DATE',
-            )
-        )
-    );
-    $query = new WP_Query($args);
     $kategoria_wycieczki_terms = get_terms('kategoria_wycieczki', array('hide_empty' => false));
     $miejsce_wycieczki_terms = get_terms('miejsce_wycieczki', array('hide_empty' => false));
-
 @endphp
-{{-- @dump($args) --}}
 @section('content')
 
     @include('sections.home.hero')
@@ -43,14 +25,62 @@
                 @include('partials.search.category-picker')
             </div>
      
-            <div id="posts" class="grid grid-cols-4 gap-5 mb-60" data-aos="fade-up">
-                @if($query->have_posts())
-                    @while($query->have_posts()) @php $query->the_post() @endphp
-                        @include('partials.post.content')
-                    @endwhile
-                    @php wp_reset_postdata() @endphp
-                @endif
+            @include('partials.loop-posts')
+        </div>
+    </section>
+    <section class="home__seo">
+        <div class="container">
+            <div class="w-full text-center my-30 lg:my-60 text-color6 text-h2">
+                <h2>Sekcja pod SEO / Nagłówek / Dlaczego warto?</h2>
             </div>
+            <div class="grid grid-cols-2 gap-5">
+                <div class="col-span-1 border border-colorObramowanie p-5 lg:p-10 rounded-lg">
+                    <div class="flex flex-col gap-5">
+                        <div class="text-h5 font-semibold text-color6">
+                            <h3>Lorem ipsum dolor sit amet consectetur.
+                            Cras pharetra nec nec nisl facilisis morbi aliquet.</h3>
+                        </div>
+                        <div class="text-desc font-normal text-color6">
+                            <p>Et nulla venenatis senectus hac scelerisque elit vitae nibh vitae. Auctor et blandit vestibulum et in eget ullamcorper libero ante. Porttitor ornare quam hendrerit gravida ipsum. Vel eu commodo posuere cursus molestie libero. Amet ut risus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-1 border border-colorObramowanie p-5 lg:p-10 rounded-lg">
+                    <div class="flex flex-col gap-5">
+                        <div class="text-h5 font-semibold text-color6">
+                            <h3>Lorem ipsum dolor sit amet consectetur.
+                            Cras pharetra nec nec nisl facilisis morbi aliquet.</h3>
+                        </div>
+                        <div class="text-desc font-normal text-color6">
+                            <p>Et nulla venenatis senectus hac scelerisque elit vitae nibh vitae. Auctor et blandit vestibulum et in eget ullamcorper libero ante. Porttitor ornare quam hendrerit gravida ipsum. Vel eu commodo posuere cursus molestie libero. Amet ut risus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-5 my-30 lg:my-60">
+                <div class="col-span-1 flex gap-10 items-center justify-start">
+                    @svg('images.check')
+                    <div class="text-h5 text-color2">
+                        <p>Z nami zwiedzisz więcej<br/>
+                        i dowiesz się więcej</p>
+                    </div>
+                </div>
+                <div class="col-span-1 flex gap-10 items-center justify-start">
+                    @svg('images.check')
+                    <div class="text-h5 text-color2">
+                        <p>Z nami zwiedzisz więcej</br>
+                        i dowiesz się więcej</p>
+                    </div>
+                </div>
+                <div class="col-span-1 flex gap-10 items-center justify-start">
+                    @svg('images.check')
+                    <div class="text-h5 text-color2">
+                        <p>Z nami zwiedzisz więcej</br>
+                        i dowiesz się więcej</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
     

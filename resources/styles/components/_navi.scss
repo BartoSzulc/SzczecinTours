@@ -1,0 +1,26 @@
+.posts-navigation {
+    @apply flex justify-center items-center;
+    .pagination {
+        @apply flex items-center justify-center gap-5;
+        .page-item {
+            &:not(.next):not(.prev)
+            {
+                a {
+                    @apply w-60 h-60 flex items-center justify-center;
+                    @apply transition-all duration-500 ease-in-out;
+                    @apply border border-colorObramowanie rounded-lg;
+                    @apply text-sm leading-[30px] font-medium cursor-pointer;
+                    &:hover {
+                        @apply text-white bg-color3;
+                    }
+                }
+                &.active {
+                    a {
+                        @apply text-white bg-color3 pointer-events-none;
+                    }
+                }
+            }
+        }
+
+    }
+}

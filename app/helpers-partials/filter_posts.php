@@ -2,8 +2,11 @@
 function filter_posts() {
  
     $today = date('Ymd'); // Get today's date
+    $paged = isset($_POST['paged']) && is_numeric($_POST['paged']) ? $_POST['paged'] : 1;
     $args = array(
         'post_type' => 'wycieczki',
+        'paged' => $paged,
+        'posts_per_page' => 10,
         'lang' => array('pl', 'en', 'de'),
         'meta_key' => 'tour_date',
         'orderby' => 'meta_value_num',
@@ -21,7 +24,7 @@ function filter_posts() {
     if (!empty($_POST['selected_date'])) {
         $selected_date = DateTime::createFromFormat('d.m.Y', $_POST['selected_date'])->format('Y-m-d');
         $args['meta_query'][] = array(
-            'relation' => 'AND', // You can use 'OR' if needed
+            'relation' => 'AND',
             array(
                 'key' => 'tour_date',
                 'value' => $selected_date,
@@ -32,9 +35,9 @@ function filter_posts() {
     }
     
     if (!empty($_POST['kategoria_wycieczki'])) {
-        // Split the string into an array of integers, using all commas as separators
+  
         $kategoria_wycieczki_array = array_map('intval', explode(',', $_POST['kategoria_wycieczki'][0]));
-        echo '<pre>' . var_export($kategoria_wycieczki_array, true) . '</pre>';
+        //echo '<pre>' . var_export($kategoria_wycieczki_array, true) . '</pre>';
 
         $args['tax_query'][] = array(
             'taxonomy' => 'kategoria_wycieczki',
@@ -69,14 +72,7 @@ function filter_posts() {
         } 
     }
     
-    $args['meta_query'] = array(
-        array(
-            'key' => 'tour_date',
-            'value' => $today,
-            'compare' => '>=',
-            'type' => 'DATE'
-        )
-    );
+   
 
     $query = new WP_Query($args);
 
@@ -87,6 +83,9 @@ function filter_posts() {
             $query->the_post();
             echo view('partials/post/content')->render();
         }
+        if ($query->max_num_pages > 1):
+            page_navi($query, 10);
+        endif;
     } else {
         echo view('partials/post/not-found')->render();
     }

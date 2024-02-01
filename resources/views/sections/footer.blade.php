@@ -4,9 +4,9 @@
     $class1 = 'bg-color7';
 @endphp
 
-<footer class="footer relative overflow-hidden bg-color5 border-t border-colorObramowanie py-60">
+<footer class="footer relative overflow-hidden bg-color5 border-t border-colorObramowanie ">
 
-    <div class="container relative z-10">
+    <div class="container relative z-10 py-60">
         <div class="grid grid-cols-4">
             <div class="col-span-1">
                 <div class="flex flex-col">
@@ -28,10 +28,21 @@
             {!! wp_nav_menu(['theme_location' => 'footer_navigation', 'menu_class' => 'flex-col lg:flex-row nav uppercase text-white justify-center text-menu flex items-center xl:space-x-60 lg:space-x-30 lg:space-y-0 space-y-5', 'echo' => false]) !!}
           </nav>
         @endif  
-        
-
+    </div>
+    <div class="container">
+        <div class="grid grid-cols-12 gap-5  border-t border-colorObramowanie py-30">
+            <div class="3xl:col-span-5 3xl:col-start-3 lg:col-span-6 flex items-center">
+                <div class="text-desc text-color6 text-right font-normal">
+                    <p>Strona internetowa powstała w ramach projektu Szczecin Tours Planner dofinansowanego ze środków UE.</p>
+                </div>
+            </div>
+            <div class="3xl:col-span-3 lg:col-span-6 flex items-center">
+                <img src="{{ asset('images/int6a.png')}}" alt="">
+            </div>
+        </div>
     </div>
 </footer>
+
 <aside class="absolute -translate-y-full mobile-menu flex flex-col p-5  after:content-[''] after:absolute after:bg-color2 after:w-full after:h-1 after:top-0 after:left-0">
     <div class="js-button flex items-center justify-end mb-5">
         <svg class="sm:w-12" width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">

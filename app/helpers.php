@@ -69,6 +69,7 @@ add_filter('upload_mimes', 'cc_mime_types');
 
 require('helpers-partials/cpt-wycieczkownik.php');
 require('helpers-partials/filter_posts.php');
+require('helpers-partials/page_navi.php');
 
 // pll_register_string('Brikol', 'Sprawdź cenę i zamów');
 // pll_register_string('Brikol', 'zł');

@@ -6,7 +6,7 @@
 </div>
 <div class="wrap border-custom datepicker-show flex w-fit relative cursor-pointer">
     <input class="absolute opacity-0 w-full h-full flex cursor-pointer" id="minMaxExample" >
-    <div class="flex items-center gap-2.5 px-30">
+    <div class="input-wrapper flex items-center gap-2.5 px-30">
         @svg('images.kalendarz-big') 
         <span id="selectedDate" class="flex items-center gap-2.5">Wybierz datę</span>
     </div>
