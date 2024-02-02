@@ -71,4 +71,3 @@ function page_navi($query, $posts_per_page = 8, $before = '', $after = '') {
     }
     echo '</ul></nav>' . $after . "";
 }
- ?>

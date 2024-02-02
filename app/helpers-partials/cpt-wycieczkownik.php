@@ -74,4 +74,3 @@ function register_custom_post_type_wycieczki() {
     register_taxonomy('miejsce_wycieczki', 'wycieczki', $taxonomy_args_miejsce);
 }
 add_action('init', 'register_custom_post_type_wycieczki');
-?>

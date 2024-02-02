@@ -95,4 +95,3 @@ function filter_posts() {
 
 add_action('wp_ajax_filter_posts', __NAMESPACE__ . '\\filter_posts');
 add_action('wp_ajax_nopriv_filter_posts', __NAMESPACE__ . '\\filter_posts');
-?>
