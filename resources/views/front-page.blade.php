@@ -31,7 +31,7 @@
     <section class="home__seo">
         <div class="container">
             <div class="w-full text-center my-30 lg:my-60 text-color6 text-h2">
-                <h2>Sekcja pod SEO / Nagłówek / Dlaczego warto?</h2>
+                <h2>Sekcja pod SEO / Nagłówek / Dlaczego warto??</h2>
             </div>
             <div class="grid grid-cols-2 gap-5">
                 <div class="col-span-1 border border-colorObramowanie p-5 lg:p-10 rounded-lg">
