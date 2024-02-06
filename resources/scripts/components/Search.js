@@ -154,22 +154,31 @@ export default class Search extends Component {
     let lastChecked = null;
 
     // Event handler for 'kategoria_wycieczki'
-    $('.hidden-radio.kategoria_wycieczki-radio').click(function () {
+    $('.kategoria-radio').click(function (event) {
+      // Prevent triggering the div's click event when the radio button is clicked
+      if (event.target.type !== 'radio') {
+          $(this).find('.hidden-radio.kategoria_wycieczki-radio').click();
+      }
+    });
+    $('.hidden-radio.kategoria_wycieczki-radio').click(function (event) {
+      // Stop the click event from bubbling up to the div
+      event.stopPropagation();
+  
+      // Your existing code...
       if ($(this).is(lastChecked)) {
-        $(this).prop('checked', false);
-        $('#all').prop('checked', true); // Check the 'all' radio button
-        lastChecked = null;
+          $(this).prop('checked', false);
+          $('#all').prop('checked', true); // Check the 'all' radio button
+          lastChecked = null;
       } else {
-        lastChecked = $(this);
-        if ($(this).val() === 'all') {
-          $('.hidden-radio.kategoria_wycieczki-radio').not(this).prop('checked', false);
-        } else {
-          $('#all').prop('checked', false);
-        }
+          lastChecked = $(this);
+          if ($(this).val() === 'all') {
+              $('.hidden-radio.kategoria_wycieczki-radio').not(this).prop('checked', false);
+          } else {
+              $('#all').prop('checked', false);
+          }
       }
       filterPosts();
     });
-
     // Event handler for 'miejsce_wycieczki'
     $('.hidden-radio.miejsce_wycieczki-radio').click(function () {
       if ($(this).is(lastChecked)) {

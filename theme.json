@@ -1289,6 +1289,11 @@
           "color": "#8f94a5",
           "name": "Color7",
           "slug": "color7"
+        },
+        {
+          "color": "#fff832",
+          "name": "ColorContrast",
+          "slug": "colorcontrast"
         }
       ]
     },
@@ -1332,7 +1337,7 @@
         },
         {
           "name": "base",
-          "size": 15,
+          "size": "0.9375rem",
           "slug": "base"
         },
         {
@@ -1387,17 +1392,17 @@
         },
         {
           "name": "menu",
-          "size": 15,
+          "size": "0.9375rem",
           "slug": "menu"
         },
         {
           "name": "desc",
-          "size": 18,
+          "size": "1.125rem",
           "slug": "desc"
         },
         {
           "name": "button",
-          "size": 12,
+          "size": "0.75rem",
           "slug": "button"
         },
         {

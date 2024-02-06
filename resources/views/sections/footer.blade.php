@@ -3,7 +3,7 @@
     $class1 = 'bg-color7';
 @endphp
 
-<footer class="footer relative overflow-hidden bg-color5 border-t border-colorObramowanie ">
+<footer class="footer relative overflow-hidden bg-color5 border-t border-colorObramowanie transition-all duration-500 ease-in-out dark:bg-black">
 
     <div class="container relative z-10 py-60">
         <div class="grid grid-cols-4">
@@ -17,7 +17,7 @@
                         <p>Copyright © 2023 UM Szczecin</p>
                     </div>
                     <div class="text-base leading-[3.2]">
-                        <p>{{ pll__('Realizacja:') }}<a class="text-color6 transition-colors duration-500 hover:text-color4" target="_blank" href="http://gregormedia.com.pl/"> gregormedia.com.pl</a></p>
+                        <p>{{ pll__('Realizacja:') }}<a class="text-color6 transition-colors duration-500 hover:text-color4 dark:text-colorContrast dark:hover:text-colorContrast" target="_blank" href="http://gregormedia.com.pl/"> gregormedia.com.pl</a></p>
                     </div>
                 </div>
             </div>

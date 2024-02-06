@@ -3,7 +3,7 @@ nav {
         li {
             @apply transition-all duration-500;
             &:hover {
-                @apply text-color3;
+                @apply text-color3 dark:text-colorContrast;
             }
         }
     }
@@ -15,6 +15,7 @@ nav {
         @apply left-1/2 -translate-x-1/2 -translate-y-4 lg:mt-[22px] mt-4;
         @apply shadow-cien-2 bg-white min-w-[300px];
         @apply transition-all duration-500 ease-in-out invisible;
+        
         @apply space-y-4 lg:space-y-5 xl:space-y-30;
         &:before {
             @apply w-full h-1 bg-color2 block lg:mb-30 mb-5;
@@ -54,3 +55,4 @@ nav {
         @apply translate-y-0 opacity-100;
     }
 }
+

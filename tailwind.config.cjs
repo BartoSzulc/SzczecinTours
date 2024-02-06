@@ -12,6 +12,7 @@ let toRem = (px, base = 16) => {
 
 module.exports = {
   content: ["./index.php", "./app/**/*.php", "./resources/**/*.{php,vue,js}"],
+  darkMode: 'class',
   theme: {
     screens: {
       'xs': '375px',
@@ -35,8 +36,7 @@ module.exports = {
        
       },
       dropShadow: {
-        'cien-1': '20px 20px 40px 0px rgba(56, 52, 54, 0.40)',
-        'cien-2': '30px 30px 60px rgba(56, 52, 54, 0.20)',
+        'cien-1': '10px 10px 10px 0px rgba(255, 248, 50, 0.2);',
       },
     colors: {
       
@@ -50,6 +50,7 @@ module.exports = {
       color5: "#FFF",
       color6: "#0F1425",
       color7: '#8F94A5',
+      colorContrast: '#fff832'
 
     },
     spacing: {
@@ -67,23 +68,22 @@ module.exports = {
       //   lineHeight: 1.214,
       //   letterSpacing: '0.05em',
       // }],
-      'menu' : [15, {
-        lineHeight: 1.60,
-        letterSpacing: '0.75px',
+      'menu' : ['0.9375rem', {
+        lineHeight: 1.60, // Unitless, relative to the font size
+        letterSpacing: '0.05rem', // Rounded from 0.046875rem
         fontWeight: 700,
-       
       }],
-      'base': [15, 1.73],
-      'desc': [18, {
-        lineHeight: 1.67,
+      'base': ['0.9375rem', 1.73], // Unitless, relative to the font size
+      'desc': ['1.125rem', {
+        lineHeight: 1.67, // Unitless, relative to the font size
       }],
-      'button': [12, {
-        lineHeight: '20px',
-        letterSpacing: '2.4px',
-        fontWeight: 700,
-
-      }],
-
+      'button': [
+        '0.75rem', { // Converted font size to rem
+          lineHeight: '1.25', // You could use 1.25rem or keep it unitless as 1.25
+          letterSpacing: '0.15rem', // Converted letter spacing to rem
+          fontWeight: 700,
+        }
+      ],
       // https://modern-fluid-typography.vercel.app/
       // where u can get fluid typography
       'h6': ['clamp(1.125rem, 1vw + 1rem, 1.125rem);', {

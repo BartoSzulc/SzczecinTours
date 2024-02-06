@@ -6,7 +6,7 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
 
 @endphp
 
-<div class="post bg-white h-full rounded-lg" data-aos="fade-up">
+<div class="post bg-white h-full rounded-lg transition-all duration-500 ease-in-out dark:bg-black dark:shadow-cien-1" data-aos="fade-up">
     <div class="post-image">
         @if ( has_post_thumbnail() ) 
         <a href="{{ get_permalink() }}">
@@ -16,16 +16,16 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
     </div>
     <div class="post-content grow">
         <div class="post-info  w-full">
-            <div class="post-date flex gap-2.5">
+            <div class="post-date flex gap-2.5 items-center">
                 @svg('images.kalendarz')
                 <p>{{ date('d.m.Y', strtotime(get_post_meta(get_the_ID(), 'tour_date', true))) }}</p>
                
             </div>
-            <div class="post-time flex gap-2.5">
+            <div class="post-time flex gap-2.5 items-center">
                 @svg('images.godzina')
                 <p>{{get_field('tour_time')}}</p>
             </div>
-            <div class="post-price flex gap-2.5">
+            <div class="post-price flex gap-2.5 items-center">
                 @svg('images.koszt')
                 <p>{{get_field('tour_price')}}</p>
             </div>
@@ -35,7 +35,7 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
             
         </div>
         <div class="post-desc flex flex-col grow">
-            <div class="post-title text-color6 ">
+            <div class="post-title text-color6  transition-all duration-500 ease-in-out dark:text-colorContrast">
                 <a href="{{ get_permalink() }}">
                     <h2>{!! get_the_title() !!}</h2>
                 </a>
@@ -51,8 +51,18 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                             $categoryImage = get_field('category_image', $term);
                         @endphp
                         @if($categoryImage)
-                            <img src="{{ $categoryImage['url'] }}" alt="{{ $term->name }}">
+                            @php
+                            $url = $categoryImage['url'];
+                            $ext = pathinfo($url, PATHINFO_EXTENSION);
+                            @endphp
+                            @if ($ext == 'svg')
+
+                            {!! file_get_contents($url) !!}
+                            @else
+                                <img src="{{ $url }}" alt="{{ $term->name }}">
+                            @endif
                         @endif
+               
                     @endforeach
                 @endif
                 <a href="{{ get_permalink() }}" class="btn btn--primary uppercase"><span>Zobacz więcej</span></a>

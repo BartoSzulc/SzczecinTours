@@ -1,4 +1,14 @@
 .posts {
+    .post-time, 
+    .post-date,
+    .post-price
+    {
+        svg {
+            path {
+              @apply transition-all duration-500 ease-in-out dark:fill-colorContrast;
+            }
+        }
+    }
     &.card-grid {
         @apply xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1;
         .post {
@@ -27,6 +37,12 @@
             }
             &-permalink {
                 @apply flex items-end justify-between mt-auto pt-12;
+                svg {
+                    path {
+                    @apply transition-all duration-500 ease-in-out dark:stroke-colorContrast;
+                    }
+                }
+
             }
             &-info {
                 @apply flex flex-wrap flex-row justify-between items-center;
@@ -64,6 +80,11 @@
             }
             &-permalink {
                 @apply flex items-center mt-auto pt-12 gap-10;
+                svg {
+                    path {
+                    @apply transition-all duration-500 ease-in-out dark:stroke-colorContrast;
+                    }
+                }
             }
 
         }

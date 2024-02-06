@@ -1,4 +1,18 @@
+.home {
+    &__hero {
+        .swiper-slide {
+            @apply dark:text-colorContrast #{!important};
+            span {
+                @apply dark:text-colorContrast;
+            
+            }
+        }
+    }
+}
+
 .home__travels {
+    
+
     .datepicker-show {
         &:after {
             @apply relative block;
@@ -15,6 +29,11 @@
                 @apply text-color1;
             }
         }
+        svg {
+            path {
+              @apply transition-all duration-500 ease-in-out dark:fill-colorContrast;
+            }
+          }
     }
     .border-custom {
         @apply relative;
@@ -72,7 +91,7 @@
     
 }
 .ss-main {
-    @apply h-60 px-5 py-[15px] rounded-lg border border-colorObramowanie #{!important};
+    @apply h-60 px-5 py-[15px] rounded-lg border border-colorObramowanie dark:border-colorContrast #{!important};
     &:focus {
         @apply shadow-none;
     }
@@ -81,16 +100,18 @@
         width: 20px;
         height: 15px;
        path {
-        @apply stroke-color3;
+        @apply stroke-color3 dark:stroke-colorContrast;
         stroke-width: 15px;
         stroke-linecap: round;
         stroke-linejoin: round;
+
+        
        }
     }
     
 }
 .select-custom {
-    @apply w-[250px];
+    @apply w-[250px] dark:bg-black dark:text-white #{!important};
     &__inside {
         @apply flex items-center justify-center gap-2.5;
         img {
@@ -98,6 +119,7 @@
             @apply border border-colorObramowanie;
         }
     }
+    
 }
 
 .ss-content {
@@ -106,6 +128,7 @@
         @apply rounded-lg border border-colorObramowanie;
         .ss-option {
             @apply px-5 py-2.5;
+            @apply dark:text-white;
             &:not(:last-child) {
                 @apply border-b border-colorObramowanie;
             }
@@ -120,20 +143,26 @@
     }
 
 }
+.ss-placeholder {
+    @apply dark:text-white #{!important};
+}
 
 .change-view {
     .view {
         @apply cursor-pointer;
         svg {
             path {
-                @apply transition-all duration-500 ease-in-out;
+                @apply transition-all duration-500 ease-in-out
+                dark:fill-colorContrast;
+
             }
         }
         &:hover {
             svg {
                 path {
                   
-                    @apply fill-color2;
+                    @apply fill-color2  dark:fill-colorContrast/50;
+                    
                 }
             }
         }
@@ -142,7 +171,7 @@
             svg {
                 path {
                   
-                    @apply fill-color2;
+                    @apply fill-color2  dark:fill-colorContrast/50;
                 }
             }
         }
@@ -163,7 +192,8 @@
    
     svg {
       
-        @apply bg-color6 rounded-full w-4 h-4 p-1 #{!important};
+        @apply bg-color6 rounded-full w-4 h-4 p-1 dark:bg-white  #{!important};
+        
         path {
             
             fill: none;
@@ -171,7 +201,60 @@
             stroke-width: 10 !important;
             stroke-linecap: round;
             stroke-linejoin: round;
+            @apply  dark:stroke-black #{!important};
+            
         }
     }
 }
 
+
+.select-custom--header {
+    @apply w-fit;
+    &.ss-main {
+        @apply p-0 h-fit border-none rounded-full   bg-transparent #{!important};
+        .ss-single {
+           @apply border-colorObramowanie border rounded-full m-0  #{!important};
+        }
+    }
+    img {
+        @apply w-30 h-30 object-cover object-center rounded-full;
+        @apply border-none;
+    }
+    .ss-arrow {
+        @apply hidden;
+    }
+    
+    &.ss-content {
+        @apply rounded-none border-none  bg-transparent #{!important};
+        .ss-list {
+            @apply border-none rounded-full bg-transparent flex flex-col gap-2.5 mt-2.5 #{!important};
+            .ss-option {
+                @apply p-0 rounded-full border border-colorObramowanie bg-transparent #{!important};
+                &:not(:last-child) {
+                    @apply border border-colorObramowanie #{!important};
+                }
+                
+                &:hover {
+                    @apply bg-color3/50;
+                }
+                &.ss-selected {
+                    @apply bg-color1/50 #{!important};
+                }
+                
+            }
+        }
+    
+    }
+}
+
+.font-size-normal {
+    /* No additional styles needed, uses default */
+  }
+  
+  .font-size-medium {
+    font-size: 1.125rem; /* Adjust sizes as needed */
+  }
+  
+  .font-size-big {
+    font-size: 1.25rem; /* Adjust sizes as needed */
+}
