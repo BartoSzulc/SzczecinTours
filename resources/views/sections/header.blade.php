@@ -4,7 +4,7 @@
 
 <header class="banner py-30">
   <div class="container">
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between relative @if (!is_front_page()) after:absolute after:content-[''] after:w-full after:h-px after:left-0 after:-bottom-30 after:bg-color2/30 @endif">
       <a class="max-sm:self-start brand flex w-20 sm:w-[120px] lg:w-auto" href="{{ home_url('/') }}">
         @svg('images.logo')
       </a>

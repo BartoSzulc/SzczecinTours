@@ -29,8 +29,8 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                 @svg('images.koszt')
                 <p>{{get_field('tour_price')}}</p>
             </div>
-            <div class="post-language">
-                <img src="{{ $post_language_url }}" title="{{ $post_language_slug }}" alt="{{ $post_language_slug }}">
+            <div class="post-language text-color1">
+                <img class="text-color3" src="{{ $post_language_url }}" title="{{ $post_language_slug }}" alt="{{ $post_language_slug }}">
             </div>
             
         </div>
@@ -44,13 +44,14 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                 {!! get_the_excerpt() !!}
             </div>
             <div class="post-permalink">
-                @if ($kategoria_terms)
+                
+                @if ($kategoria_terms && is_array($kategoria_terms))
                     @foreach($kategoria_terms as $term)
                         @php
                             $categoryImage = get_field('category_image', $term);
                         @endphp
                         @if($categoryImage)
-                        <img src="{{ $categoryImage['url'] }}" alt="{{ $term->name }}">
+                            <img src="{{ $categoryImage['url'] }}" alt="{{ $term->name }}">
                         @endif
                     @endforeach
                 @endif

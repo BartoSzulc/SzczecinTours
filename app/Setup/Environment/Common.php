@@ -4,6 +4,9 @@ namespace App\Setup\Environment;
 
 class Common
 {
+
+    private $required_plugins;
+    private $mode;
     public function __construct()
     {
         $this->required_plugins = array(
@@ -11,7 +14,6 @@ class Common
         );
         $this->mode = ENV;
     }
-
     public function init()
     {
         $this->runRequiredPlugins();

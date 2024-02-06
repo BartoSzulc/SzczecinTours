@@ -66,7 +66,6 @@ function cc_mime_types($mimes) {
 }
 add_filter('upload_mimes', 'cc_mime_types');
 
-
 require('helpers-partials/cpt-wycieczkownik.php');
 require('helpers-partials/filter_posts.php');
 require('helpers-partials/page_navi.php');
@@ -81,4 +80,3 @@ require('helpers-partials/page_navi.php');
 // pll_register_string('Brikol', 'Strona nie istnieje');
 // pll_register_string('Brikol', 'Powrót');
 // pll_register_string('Brikol', 'Zapytaj o produkt / złóż zamówienie:');
-

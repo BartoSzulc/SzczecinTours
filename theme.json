@@ -1284,6 +1284,11 @@
           "color": "#0f1425",
           "name": "Color6",
           "slug": "color6"
+        },
+        {
+          "color": "#8f94a5",
+          "name": "Color7",
+          "slug": "color7"
         }
       ]
     },

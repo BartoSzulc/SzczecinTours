@@ -49,7 +49,7 @@ module.exports = {
       color4: '#F7F7F7',
       color5: "#FFF",
       color6: "#0F1425",
-      // color7: '#F0F0F0',
+      color7: '#8F94A5',
 
     },
     spacing: {

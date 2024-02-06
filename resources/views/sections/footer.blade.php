@@ -1,4 +1,3 @@
-
 @php
     $class = 'bg-white';
     $class1 = 'bg-color7';

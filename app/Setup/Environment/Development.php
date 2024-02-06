@@ -4,10 +4,12 @@ namespace App\Setup\Environment;
 
 class Development
 {
+    private $class;
+
     public function init()
     {
         $this->noRobotsIndex();
-        // $this->customResponsiveBar();
+        $this->customResponsiveBar(); // Uncomment this line if needed
     }
 
     private function noRobotsIndex()
@@ -18,8 +20,8 @@ class Development
     private function customResponsiveBar()
     {
         add_filter('body_class', function ($classes) {
-            $class = 'debug-screens';
-            $classes[] = $class;
+            $this->class = 'debug-screens';
+            $classes[] = $this->class;
             return $classes;
         });
     }

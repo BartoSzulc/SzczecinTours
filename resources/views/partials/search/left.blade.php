@@ -13,9 +13,11 @@
 </div>
 <div class="pl-30 flex justify-center gap-30">
     @foreach($miejsce_wycieczki_terms as $term)
-        <div class="relative miejsce-radio">
-            <input type="radio" id="{{ $term->slug }}" name="miejsce_wycieczki" class="hidden-radio miejsce_wycieczki-radio" value="{{ $term->slug }}">
-            <label for="{{ $term->slug }}" class="cursor-pointer">{{ $term->name }}</label>
-        </div>
+        @if(is_object($term) && property_exists($term, 'slug'))
+            <div class="relative miejsce-radio">
+                <input type="radio" id="{{ $term->slug }}" name="miejsce_wycieczki" class="hidden-radio miejsce_wycieczki-radio" value="{{ $term->slug }}">
+                <label for="{{ $term->slug }}" class="cursor-pointer">{{ $term->name }}</label>
+            </div>
+        @endif
     @endforeach
 </div>

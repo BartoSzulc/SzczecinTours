@@ -12,6 +12,10 @@ use App\Setup\Environment\Development;
 
 class Setup
 {
+    private $env_setup;
+    private $env;
+    private $common;
+
     public function __construct()
     {
         $this->env_setup = ENV;

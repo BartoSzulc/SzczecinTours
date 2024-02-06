@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @php
     $kategoria_wycieczki_terms = get_terms('kategoria_wycieczki', array('hide_empty' => false));
     $miejsce_wycieczki_terms = get_terms('miejsce_wycieczki', array('hide_empty' => false));
@@ -83,6 +82,4 @@
 
         </div>
     </section>
-    
 @endsection
-            
