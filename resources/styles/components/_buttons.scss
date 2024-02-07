@@ -37,6 +37,7 @@
     }
     &--grey {
         @apply inline-flex w-fit text-button uppercase rounded-lg px-4 py-3 bg-color7 text-color4 transition-all duration-500 ease-in-out ;
+        @apply dark:text-black dark:bg-colorContrast;
         &:hover {
             @apply bg-color3;
         }

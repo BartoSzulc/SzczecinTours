@@ -58,3 +58,9 @@ body {
     }
   }
 }
+
+
+.hidden-radio.kategoria_wycieczki-radio, .kategoria-radio label {
+  position: relative;
+  z-index: 10;
+}

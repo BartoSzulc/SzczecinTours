@@ -11,6 +11,9 @@ export default class Search extends Component {
   }
 
   init() {
+    if (!$('body').hasClass('home')) {
+      return;
+    }
     const getCheckedValues = (selector) => {
       const values = $(selector).map((_, radio) => $(radio).val()).get();
       const result = values.includes('all') ? $(selector.replace(':checked', '')).map((_, radio) => $(radio).val()).get() : values;
@@ -42,6 +45,7 @@ export default class Search extends Component {
         sorting,
         view: viewType,
         paged: paged,
+        
       };
     
       if (language && language !== 'all') {
@@ -83,16 +87,33 @@ export default class Search extends Component {
       filterPosts(paged.toString()); // Convert paged to string before passing to filterPosts
     });
     const switchView = (activeView, inactiveView, activeCols, inactiveCols) => {
-      
-      document.querySelector(activeView).addEventListener('click', function () {
-       
-        document.querySelector(inactiveView).classList.remove('active');
-        document.querySelector(activeView).classList.add('active');
-
-        // Call filterPosts without any arguments
-        filterPosts();
-      });
+      // Attempt to find the elements in the DOM
+      const activeElement = document.querySelector(activeView);
+      const inactiveElement = document.querySelector(inactiveView);
+    
+      // Check if both elements exist
+      if (activeElement && inactiveElement) {
+        // Add click event listener to the active element
+        activeElement.addEventListener('click', function () {
+          // Remove 'active' class from the inactive element
+          inactiveElement.classList.remove('active');
+          // Add 'active' class to the active element
+          activeElement.classList.add('active');
+    
+          // Call filterPosts without any arguments
+          filterPosts();
+        });
+      } else {
+        // Log an error if one of the elements does not exist
+        if (!activeElement) {
+          console.error('Element not found:', activeView);
+        }
+        if (!inactiveElement) {
+          console.error('Element not found:', inactiveView);
+        }
+      }
     };
+    
 
 
     // Call switchView when the page loads
@@ -153,31 +174,31 @@ export default class Search extends Component {
     });
     let lastChecked = null;
 
-    // Event handler for 'kategoria_wycieczki'
     $('.kategoria-radio').click(function (event) {
       // Prevent triggering the div's click event when the radio button is clicked
       if (event.target.type !== 'radio') {
           $(this).find('.hidden-radio.kategoria_wycieczki-radio').click();
       }
-    });
-    $('.hidden-radio.kategoria_wycieczki-radio').click(function (event) {
-      // Stop the click event from bubbling up to the div
-      event.stopPropagation();
+  });
   
-      // Your existing code...
-      if ($(this).is(lastChecked)) {
-          $(this).prop('checked', false);
-          $('#all').prop('checked', true); // Check the 'all' radio button
-          lastChecked = null;
-      } else {
-          lastChecked = $(this);
-          if ($(this).val() === 'all') {
-              $('.hidden-radio.kategoria_wycieczki-radio').not(this).prop('checked', false);
-          } else {
-              $('#all').prop('checked', false);
-          }
-      }
-      filterPosts();
+    $('.hidden-radio.kategoria_wycieczki-radio').click(function (event) {
+        // Stop the click event from bubbling up to the div
+        event.stopPropagation();
+    
+        // Your existing code...
+        if ($(this).is(lastChecked)) {
+            $(this).prop('checked', false);
+            $('#all').prop('checked', true); // Check the 'all' radio button
+            lastChecked = null;
+        } else {
+            lastChecked = $(this);
+            if ($(this).val() === 'all') {
+                $('.hidden-radio.kategoria_wycieczki-radio').not(this).prop('checked', false);
+            } else {
+                $('#all').prop('checked', false);
+            }
+        }
+        filterPosts();
     });
     // Event handler for 'miejsce_wycieczki'
     $('.hidden-radio.miejsce_wycieczki-radio').click(function () {

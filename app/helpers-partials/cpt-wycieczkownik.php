@@ -11,7 +11,8 @@ function register_custom_post_type_wycieczki() {
         'view_item' => 'Zobacz wycieczkę',
         'search_items' => 'Szukaj wycieczek',
         'not_found' => 'Nie znaleziono wycieczek',
-        'not_found_in_trash' => 'Nie znaleziono wycieczek w koszu'
+        'not_found_in_trash' => 'Nie znaleziono wycieczek w koszu',
+       
     );
 
     $args = array(
@@ -20,6 +21,7 @@ function register_custom_post_type_wycieczki() {
         'has_archive' => true,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
         'menu_icon' => 'dashicons-location-alt',
+        'show_in_rest' => true,
     );
 
     register_post_type('wycieczki', $args);

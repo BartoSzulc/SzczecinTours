@@ -24,9 +24,9 @@ add_action('wp_enqueue_scripts', function () {
  *
  * @return void
  */
-// add_action('enqueue_block_editor_assets', function () {
-//     bundle('editor')->enqueue();
-// }, 100);
+add_action('enqueue_block_editor_assets', function () {
+    bundle('editor')->enqueue();
+}, 100);
 
 /**
  * Register the initial theme setup.
@@ -34,6 +34,37 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('after_setup_theme', function () {
+
+    add_filter('mce_external_plugins', function ($plugins) {
+        // Define the path to your entrypoints.json file
+        $entrypointsPath = get_template_directory() . '/public/entrypoints.json';
+        
+        // Attempt to read and decode the entrypoints.json file
+        if (file_exists($entrypointsPath)) {
+            $entrypoints = json_decode(file_get_contents($entrypointsPath), true);
+            
+            // Check if the 'editor' entry exists and has JS files
+            if (isset($entrypoints['editor']['js']) && !empty($entrypoints['editor']['js'])) {
+                // Assuming you want the first JS file for the editor
+                $editorScript = array_shift($entrypoints['editor']['js']);
+                
+                // Construct the full URL to the script
+                $editorScriptUrl = get_template_directory_uri() . '/public/' . $editorScript;
+                
+                // Add the script to TinyMCE plugins
+                $plugins['my_custom_buttons'] = $editorScriptUrl;
+            }
+        }
+        
+        return $plugins;
+    });
+
+    // Register Custom Buttons
+    add_filter('mce_buttons', function($buttons) {
+        // Add the new button IDs to the TinyMCE toolbar
+        array_push($buttons, 'wrapInDescColor6', 'wrapInBaseColor7'); // Adjust these IDs based on your JavaScript
+        return $buttons;
+    });
     /**
      * Enable features from the Soil plugin if activated.
      *
@@ -45,7 +76,7 @@ add_action('after_setup_theme', function () {
         'nice-search',
         'relative-urls',
     ]);
-
+   
     /**
      * Disable full-site editing support.
      *

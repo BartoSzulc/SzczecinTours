@@ -1,0 +1,10 @@
+.block-editor-writing-flow {
+    @apply font-primary;
+    @apply max-w-[1200px] px-5 mx-auto relative self-center;
+
+}
+.edit-post-layout__metaboxes {
+    @apply font-primary;
+    @apply px-5 my-10 #{!important};
+
+}

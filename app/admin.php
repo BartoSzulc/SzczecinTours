@@ -83,6 +83,8 @@ if (ENV === 'production' || ENV === 'init') {
     add_action('admin_menu', __NAMESPACE__ .  '\\remove_admin_menu_items_prod');
 }
 
-if (ADMINBAR === false) {
+if (ENV === 'development') {
     add_filter('show_admin_bar', '__return_false');
+  } else {
+    add_filter('show_admin_bar', '__return_true');
 }

@@ -70,7 +70,12 @@ require('helpers-partials/cpt-wycieczkownik.php');
 require('helpers-partials/filter_posts.php');
 require('helpers-partials/page_navi.php');
 
-// pll_register_string('Brikol', 'Sprawdź cenę i zamów');
+pll_register_string('motyw', 'Wycieczka w polskiej wersji językowej');
+pll_register_string('motyw', 'Wejście:');
+pll_register_string('motyw', 'Czas trwania:');
+pll_register_string('motyw', 'Szczegółowe informacje');
+pll_register_string('motyw', 'Więcej informacji');
+pll_register_string('motyw', 'Wróć do listy');
 // pll_register_string('Brikol', 'zł');
 // pll_register_string('Brikol', 'Cena:');
 // pll_register_string('Brikol', 'Zapytaj o produkt');

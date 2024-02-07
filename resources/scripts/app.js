@@ -13,6 +13,10 @@ import SlimSelect from 'slim-select';
 
 const main = async (err) => {
 
+
+
+  
+
   AOS.init({
       offset: 0,
       duration: 400,

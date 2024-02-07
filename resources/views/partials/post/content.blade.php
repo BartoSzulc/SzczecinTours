@@ -68,8 +68,6 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                 <a href="{{ get_permalink() }}" class="btn btn--primary uppercase"><span>Zobacz więcej</span></a>
             </div>
         </div>
-        
-        
     </div>
 </div>  
 

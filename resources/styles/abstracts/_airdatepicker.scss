@@ -183,7 +183,9 @@
     border-bottom: 1px solid var(--adp-border-color-inner);
     min-height: var(--adp-nav-height);
     padding: var(--adp-padding);
-    box-sizing: content-box
+    box-sizing: content-box;
+   
+    @apply dark:text-colorContrast;
 }
 
 .-only-timepicker- .air-datepicker-nav {
@@ -582,7 +584,9 @@
     width: var(--adp-width);
     position: absolute;
     transition: opacity var(--adp-transition-duration) var(--adp-transition-ease), transform var(--adp-transition-duration) var(--adp-transition-ease);
-    z-index: var(--adp-z-index)
+    z-index: var(--adp-z-index);
+    @apply dark:bg-black;
+    @apply dark:text-colorContrast;
 }
 
 .air-datepicker:not(.-custom-position-) {
