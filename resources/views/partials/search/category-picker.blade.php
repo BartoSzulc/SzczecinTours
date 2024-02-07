@@ -15,19 +15,18 @@
         $term_ids = array_values($term_translations);
     @endphp
 
-    @if($categoryImage )
+    @if($categoryImage['url'])
             @php
             $url = $categoryImage['url'];
             $ext = pathinfo($url, PATHINFO_EXTENSION);
             @endphp
             @if ($ext == 'svg')
-            <div class="icon pointer-events-none">
-                {!! file_get_contents($url) !!}
-            </div>
+
+            {!! file_get_contents($url) !!}
             @else
                 <img src="{{ $url }}" alt="{{ $term->name }}">
             @endif
-    @endif
+        @endif
     <input type="radio" id="{{ $term->slug }}" name="kategoria_wycieczki" class="hidden-radio kategoria_wycieczki-radio" value="{{ implode(',', $term_ids) }}">
     <label for="{{ $term->slug }}" class="text-button cursor-pointer">{{ $term->name }}</label>
 </div>
