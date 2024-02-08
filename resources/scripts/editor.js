@@ -18,7 +18,7 @@ window.onload = function() {
                 onclick: function() {
                     var selectedText = editor.selection.getContent({format: 'html'});
                     if (selectedText.length > 0) {
-                        var wrappedText = '<div class="text-desc text-color6" data-aos="fade-up">' + selectedText + '</div>';
+                        var wrappedText = '<div class="tinymce-text text-desc text-color6 dark:text-colorContrast" data-aos="fade-up">' + selectedText + '</div>';
                         editor.selection.setContent(wrappedText);
                     } else {
                         alert('Najpierw zaznacz tekst');
@@ -34,7 +34,7 @@ window.onload = function() {
                 onclick: function() {
                     var selectedText = editor.selection.getContent({format: 'html'});
                     if (selectedText.length > 0) {
-                        var wrappedText = '<div class="text-base text-color7" data-aos="fade-up">' + selectedText + '</div>';
+                        var wrappedText = '<div class="tinymce-text text-base text-color7 dark:text-colorContrast" data-aos="fade-up">' + selectedText + '</div>';
                         editor.selection.setContent(wrappedText);
                     } else {
                         alert('Najpierw zaznacz tekst');
