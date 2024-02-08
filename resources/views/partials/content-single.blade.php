@@ -15,6 +15,8 @@ $tour_paid = get_field('tour_paid');
 $tour_free = get_field('tour_free');
 $tour_tip = get_field('tour_tip');
 
+
+
 @endphp
 
 <article class="single__content">
@@ -32,10 +34,10 @@ $tour_tip = get_field('tour_tip');
         <div class="col-span-8">
           <div class="swiper singleSwiper h-full">
             <div class="swiper-wrapper">
-              @if ($gallery)
+              @if (!empty($gallery))
                 @foreach ($gallery as $image)
                 <div class="swiper-slide">
-                  @if ($image)
+                  @if (!empty($image['url']))
                   <a href="{{ $image['url'] }}" class="glightbox">
                     <img src="{{ $image['url'] }}" alt="{{ $image['alt'] }}" class="w-full h-full object-cover object-center rounded-lg" loading="lazy">
                   </a>
@@ -143,14 +145,13 @@ $tour_tip = get_field('tour_tip');
                   @endif
                  </a>
                 @break
-
                 @default
               @endswitch
             </div>
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-5" >
+      <div class="flex flex-col gap-5 after:relative relative after:content-[''] after:w-full after:h-px  after:mt-10 after:bottom-0 after:bg-color2/30 " >
         <div class="text-h5 lg:text-h4 font-bold mb-5" data-aos="fade-up">
           <h2>{{ pll__('Więcej informacji') }}</h2>
         </div>
@@ -158,7 +159,11 @@ $tour_tip = get_field('tour_tip');
         {!! $content !!}
         @endif
       </div>
+      @include('partials.post.diff-date-post')
+      @include('partials.post.diff-language-post')
+      
     </div>
   </div>
+ 
   @include('partials.recent-products')
 </article>

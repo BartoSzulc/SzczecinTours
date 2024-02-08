@@ -76,6 +76,7 @@ pll_register_string('motyw', 'Czas trwania:');
 pll_register_string('motyw', 'Szczegółowe informacje');
 pll_register_string('motyw', 'Więcej informacji');
 pll_register_string('motyw', 'Wróć do listy');
+pll_register_string('motyw', 'Ta sama wycieczka w innym terminie');
 // pll_register_string('Brikol', 'zł');
 // pll_register_string('Brikol', 'Cena:');
 // pll_register_string('Brikol', 'Zapytaj o produkt');

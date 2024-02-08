@@ -43,9 +43,12 @@ class Product extends Field
                 ->addUrl('tour_link', ['label' => 'Link'])
             ->endGroup()
             ->addWysiwyg('tour_description', ['label' => 'Opis wycieczki'])
-            
+
             ->addTab('gallery_tab', ['placement' => 'left', 'label' => 'Galeria zdjęć'])
             ->addGallery('tour_gallery', ['label' => 'Galeria zdjęć',  'library' => 'all', 'instructions' => 'Dodaj zdjęcia z wycieczki (możemy powtórzyć zdjęcie z miniaturki)'])
+
+            ->addTab('other_tours_tab', ['placement' => 'left', 'label' => 'Ta sama wycieczka w innym terminie'])
+            ->addRelationship('other_tours', ['label' => 'Ta sama wycieczka w innym terminie', 'post_type' => ['wycieczki'], 'filters' => ['search', 'taxonomy']])
 
 
 
