@@ -60,7 +60,14 @@ body {
 }
 
 
-.hidden-radio.kategoria_wycieczki-radio, .kategoria-radio label {
+.kategoria-radio {
   position: relative;
   z-index: 10;
+
+  label{
+    @apply relative z-10 gap-2.5;
+    svg {
+      @apply order-first;
+    }
+  }
 }

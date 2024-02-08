@@ -16,17 +16,18 @@ $subtitle = $data['subtitle'] ?? null;
 
 <section class="relative single__recent py-30 lg:py-60">
     <div class="container">
-        <div class="w-full mb-30 lg:mb-60">
-            @if (!empty($title))
+        <div class="w-full mb-30 lg:mb-60 text-center">
+            @if ($title)
             <div class="text-h3 lg:text-h2 font-bold  mb-half-mobile lg:mb-half">
                {!! $title !!}
             </div>
             @endif
+          
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:gap-20 gap-5">
+        <div class="grid gap-5 posts card-grid" >
             @while ($query->have_posts())
                 @php $query->the_post() @endphp
-                @include('partials.post-card-' . get_post_type(), ['class' => 'bg-white'])
+                @include('partials.post.content')
             @endwhile
         </div>
    

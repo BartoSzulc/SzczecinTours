@@ -9,12 +9,17 @@
 @if ($kategoria_wycieczki_terms && is_array($kategoria_wycieczki_terms))
 @foreach($kategoria_wycieczki_terms as $term)
 <div class="relative kategoria-radio text-button uppercase flex items-center gap-2.5">
+    
     @php
-        $categoryImage = get_field('category_image', $term);
-        $term_translations = pll_get_term_translations($term->term_id);
-        $term_ids = array_values($term_translations);
-    @endphp
-    @if($categoryImage['url'])
+    $categoryImage = get_field('category_image', $term);
+    $term_translations = pll_get_term_translations($term->term_id);
+    $term_ids = array_values($term_translations);
+@endphp
+    <input type="radio" id="{{ $term->slug }}" name="kategoria_wycieczki" class="hidden-radio kategoria_wycieczki-radio" value="{{ implode(',', $term_ids) }}">
+   
+   
+    <label for="{{ $term->slug }}" class="text-button cursor-pointer">
+        @if($categoryImage['url'])
         @php
         $url = $categoryImage['url'];
         $ext = pathinfo($url, PATHINFO_EXTENSION);
@@ -26,9 +31,8 @@
             <img src="{{ $url }}" alt="{{ $term->name }}">
         @endif
     @endif
-
-    <input type="radio" id="{{ $term->slug }}" name="kategoria_wycieczki" class="hidden-radio kategoria_wycieczki-radio" value="{{ implode(',', $term_ids) }}">
-    <label for="{{ $term->slug }}" class="text-button cursor-pointer">{{ $term->name }}</label>
+        {{ $term->name }}
+    </label>
 </div>
 @endforeach
 @endif

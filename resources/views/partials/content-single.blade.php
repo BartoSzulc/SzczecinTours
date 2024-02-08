@@ -160,4 +160,5 @@ $tour_tip = get_field('tour_tip');
       </div>
     </div>
   </div>
+  @include('partials.recent-products')
 </article>

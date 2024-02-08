@@ -31,7 +31,7 @@
     <div class="container">
         <div class="grid grid-cols-12 gap-5  border-t border-colorObramowanie py-30">
             <div class="3xl:col-span-5 3xl:col-start-3 lg:col-span-6 flex items-center">
-                <div class="text-desc text-color6 text-right font-normal">
+                <div class="text-desc text-color6 dark:text-colorContrast text-right font-normal">
                     <p>Strona internetowa powstała w ramach projektu Szczecin Tours Planner dofinansowanego ze środków UE.</p>
                 </div>
             </div>
