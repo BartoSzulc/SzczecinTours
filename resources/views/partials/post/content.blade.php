@@ -6,7 +6,7 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
 
 @endphp
 
-<div class="post bg-white h-full rounded-lg transition-all duration-500 ease-in-out dark:bg-black dark:shadow-cien-1" data-aos="fade-up">
+<div class="post bg-white h-full rounded-lg transition-all duration-500 ease-in-out dark:bg-black dark:border dark:border-colorContrast " data-aos="fade-up">
     <div class="post-image">
         @if ( has_post_thumbnail() ) 
         <a href="{{ get_permalink() }}">

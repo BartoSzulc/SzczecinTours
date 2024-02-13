@@ -111,7 +111,26 @@ module.exports = {
         lineHeight: 1.14,
         fontWeight: 700,
       }],
-  },
+    },
+    keyframes: {
+      scaleUp: {
+        '0%': { transform: 'scale(0.95)', opacity: '0' },
+        '100%': { transform: 'scale(1)', opacity: '1' },
+      },
+      scaleDown: {
+        '0%': { transform: 'scale(1)', opacity: '1' },
+        '100%': { transform: 'scale(0.95)', opacity: '0' },
+      },
+      fadeIn: {
+        '0%': { opacity: '0' },
+        '100%': { opacity: '1' },
+      },
+    },
+    animation: {
+      scaleUp: 'scaleUp 0.3s ease-out forwards',
+      scaleDown: 'scaleDown 0.2s ease-out forwards',
+      'fade-in': 'fadeIn 0.5s ease-out forwards',
+    },
     },
   },
   plugins: [

@@ -10,11 +10,8 @@ $content = get_field('tour_description');
 $gallery = get_field('tour_gallery');
 
 
-$tour_button_version = get_field('tour_button_version');
-$tour_paid = get_field('tour_paid');
-$tour_free = get_field('tour_free');
-$tour_tip = get_field('tour_tip');
 
+$buttons = get_field('add_button_tour');
 
 
 @endphp
@@ -30,8 +27,8 @@ $tour_tip = get_field('tour_tip');
           <h1>{{ the_title()}}</h1>
         </div>
       </div>
-      <div class="grid grid-cols-12 gap-5 lg:gap-10 mb-10">
-        <div class="col-span-8">
+      <div class="grid grid-cols-12 gap-5 2xl:gap-10 mb-10">
+        <div class="3xl:col-span-8 lg:col-span-7 col-span-full">
           <div class="swiper singleSwiper h-full">
             <div class="swiper-wrapper">
               @if (!empty($gallery))
@@ -50,10 +47,10 @@ $tour_tip = get_field('tour_tip');
           </div>
          
         </div>
-        <div class="col-span-4">
-          <div class="bg-color4 flex flex-col gap-10 p-10 rounded-lg h-full">
+        <div class="3xl:col-span-4 lg:col-span-5 col-span-full">
+          <div class="bg-color4 dark:bg-black flex flex-col gap-10 p-10 rounded-lg h-full dark:border dark:border-colorContrast">
             <div class="post-info w-full flex flex-col gap-10 ">
-              <div class="post-title text-h5 lg:text-h4 text-color6">
+              <div class="post-title text-h5 lg:text-h4 text-color6 dark:text-colorContrast">
                 <h2>{{ pll__('Szczegółowe informacje') }}</h2>
               </div>
               <div class="post-language flex gap-5 items-center">
@@ -62,44 +59,48 @@ $tour_tip = get_field('tour_tip');
               </div>
               @if(get_field('tour_date'))
               <div class="post-date flex gap-5 items-center">
-                  @svg('images.kalendarz', 'w-30 h-30')
+                  <div class="icon">
+                    @svg('images.kalendarz', 'w-30 h-30')
+                  </div>
                   <p>{{ date('d.m.Y', strtotime(get_post_meta(get_the_ID(), 'tour_date', true))) }}</p>
               </div>
               @endif
               @if(get_field('tour_time'))
               <div class="post-time flex gap-5 items-center">
-                  @svg('images.godzina', 'w-30 h-30')
+                  <div class="icon">
+                    @svg('images.godzina', 'w-30 h-30')
+                  </div>
                   <p>{{ pll__('Wejście:') }} {{ get_field('tour_time') }}</p>
               </div>
               @endif
               @if(get_field('tour_duration'))
               <div class="post-time flex gap-5 items-center">
-                @svg('images.godzina', 'w-30 h-30')
+                <div class="icon">
+                  @svg('images.godzina', 'w-30 h-30')
+                </div>
                 <p>{{ pll__('Czas trwania:') }} {{ get_field('tour_duration') }}</p>
               </div>
               @endif
               @if(get_field('tour_location'))
               <div class="post-location flex gap-5 items-center">
-                @svg('images.enter', 'w-30 h-30')
+                <div class="icon">
+                  @svg('images.enter', 'w-30 h-30  basis-30 min-w-30 min-h-30 grow-0')
+                </div>
                 <p>{{ get_field('tour_location') }}</p>
               </div>
               @endif
-              @if(get_field('tour_persons'))
-              <div class="post-persons flex gap-5 items-center">
-                @svg('images.osob', 'w-30 h-30')
-                <p>{{ get_field('tour_persons') }}</p>
-              </div>
-              @endif
-              {{-- @if(get_field('tour_price'))
+              @if(get_field('tour_price'))
               <div class="post-price flex gap-5 items-center">
-                  @svg('images.koszt')
+                  <div class="icon">
+                    @svg('images.koszt', 'w-30 h-30')
+                  </div>
                   <p>{{get_field('tour_price')}}</p>
               </div>
-              @endif --}}
+              @endif
               
               
             </div>
-            <div class="post-permalink flex items-center mt-auto gap-5">
+            <div class="post-permalink flex items-center mt-auto gap-5 max-xl:flex-wrap justify-between">
                 
               @if ($kategoria_terms && is_array($kategoria_terms))
                   @foreach($kategoria_terms as $term)
@@ -113,7 +114,9 @@ $tour_tip = get_field('tour_tip');
                           @endphp
                           @if ($ext == 'svg')
 
-                          {!! file_get_contents($url) !!}
+                          <div class="icon">
+                            {!! file_get_contents($url) !!}
+                          </div>
                           @else
                               <img src="{{ $url }}" alt="{{ $term->name }}">
                           @endif
@@ -121,7 +124,16 @@ $tour_tip = get_field('tour_tip');
              
                   @endforeach
               @endif
-              @switch($tour_button_version)
+              @if ($buttons)
+              <div class="buttons flex flex-col gap-2.5 grow">
+                @foreach ($buttons as $button)
+                  @php
+                    $tour_button_version = $button['tour_button_version'];
+                    $tour_paid = $button['tour_paid'];
+                    $tour_free = $button['tour_free'];
+                    $tour_tip = $button['tour_tip'];
+                  @endphp
+                @switch($tour_button_version)
                 @case('v1')
                  <a @if($tour_paid['tour_link']) href="{{ $tour_paid['tour_link'] }}" @else disabled @endif class="btn btn--primary grow">
                   @if(isset($tour_paid['tour_text']))
@@ -147,6 +159,10 @@ $tour_tip = get_field('tour_tip');
                 @break
                 @default
               @endswitch
+                @endforeach
+                
+              </div>
+              @endif
             </div>
           </div>
         </div>
@@ -155,8 +171,11 @@ $tour_tip = get_field('tour_tip');
         <div class="text-h5 lg:text-h4 font-bold mb-5" data-aos="fade-up">
           <h2>{{ pll__('Więcej informacji') }}</h2>
         </div>
-        @if ($content)
-        {!! $content !!}
+        @php ($builder = get_field('flexeditor'))
+        @if(!empty($builder))
+            @foreach ($builder as $section)
+                @dump($section)
+            @endforeach
         @endif
       </div>
       @include('partials.post.diff-date-post')

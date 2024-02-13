@@ -4,7 +4,7 @@ $current_post_id = get_the_ID(); // Inside The Loop
 $translations = pll_get_post_translations($current_post_id);
 
 @endphp
-@if (!empty($translations)) 
+@if (!$translations) 
 <div class="w-full text-h4 my-10">
     <h2>{{ pll__('Ta sama wycieczka w innym języku') }}</h2>
 </div>

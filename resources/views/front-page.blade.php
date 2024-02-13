@@ -20,7 +20,8 @@
                     @include('partials.search.right')
                 </div>
             </div>
-            <div class="flex items-center justify-between py-10 category-picker">
+            <div class="flex items-center justify-stretch py-10 category-picker gap-y-5 2xl:gap-x-10 gap-x-5 flex-wrap max-2xl:grid max-2xl:grid-cols-4">
+                
                 @include('partials.search.category-picker')
             </div>
      
@@ -84,5 +85,5 @@
     </section>
 
 
-    
+@include('sections.home.modal')
 @endsection

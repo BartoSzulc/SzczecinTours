@@ -14,7 +14,7 @@ window.onload = function() {
             editor.addButton('wrapInDescColor6', {
                 text: 'Średni tekst, kolor ciemny',
                 icon: false,
-                class: 'text-desc text-color6',
+                class: 'text-desc text-color6 dark:text-colorContrast',
                 onclick: function() {
                     var selectedText = editor.selection.getContent({format: 'html'});
                     if (selectedText.length > 0) {

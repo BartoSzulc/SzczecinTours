@@ -1,4 +1,4 @@
-<div class="bg-color4 rounded-lg pl-10 py-5 pr-5 relative dark:text-colorContrast text-color2 flex items-center justify-between">
+<div class="bg-color4 dark:bg-black dark:border dark:border-colorContrast rounded-lg pl-10 py-5 pr-5 relative dark:text-colorContrast text-color2 flex items-center justify-between">
     <div class="post-title text-h5">
         <h2>{{ $post_title }}</h2>
     </div>

@@ -22,7 +22,7 @@
         }
     }
     &--secondary {
-        @apply bg-color1;
+        @apply bg-color1 dark:bg-black;
         &:after {
             content: "";
             background: linear-gradient(265deg, #1F294C 0%, #95C11F 100%);

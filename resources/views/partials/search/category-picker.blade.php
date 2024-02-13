@@ -1,14 +1,14 @@
-<div class="text-h4 font-semibold text-color2 dark:text-colorContrast h-fit">
-    <p>Wybór kategorii</p>
+<div class="flex-item text-h4 font-semibold text-color2 dark:text-colorContrast h-fit max-2xl:w-full max-2xl:col-span-full text-center">
+    <p>{{ pll__('Wybór kategorii') }}</p>
 </div>
-<div class="relative kategoria-radio text-button uppercase flex items-center gap-2.5">
+<div class="flex-item relative kategoria-radio text-button uppercase flex items-center gap-2.5 ">
     @svg('images/wszystkie.svg')
     <input type="radio" id="all" name="kategoria_wycieczki" class="hidden-radio kategoria_wycieczki-radio" value="all" checked>
-    <label for="all" class="text-button cursor-pointer">Wszystkie</label>
+    <label for="all" class="text-button cursor-pointer">{{ pll__('Wszystkie') }}</label>
 </div>
 @if ($kategoria_wycieczki_terms && is_array($kategoria_wycieczki_terms))
 @foreach($kategoria_wycieczki_terms as $term)
-<div class="relative kategoria-radio text-button uppercase flex items-center gap-2.5">
+<div class="flex-item relative kategoria-radio text-button uppercase flex items-center gap-2.5">
     
     @php
     $categoryImage = get_field('category_image', $term);

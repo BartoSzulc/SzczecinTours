@@ -7,19 +7,66 @@
 
     <div class="container relative z-10 py-60">
         <div class="grid grid-cols-4">
-            <div class="col-span-1">
+            <div class="col-span-1 text-base leading-[48px] text-color7 dark:text-colorContrast font-medium">
                 <div class="flex flex-col">
-                    <a class="brand flex" href="{{ home_url('/') }}">
+                    <a class="brand flex mb-8" href="{{ home_url('/') }}">
                         @svg('images.logo', 'h-10 flex w-auto')
                     </a>
-                    <div class="text-base leading-[3.2]">
-                        <a href="/polityka-prywatnosci">Polityka Prywatności</a>
-                        <p>Copyright © 2023 UM Szczecin</p>
-                    </div>
-                    <div class="text-base leading-[3.2]">
-                        <p>{{ pll__('Realizacja:') }}<a class="text-color6 transition-colors duration-500 hover:text-color4 dark:text-colorContrast dark:hover:text-colorContrast" target="_blank" href="http://gregormedia.com.pl/"> gregormedia.com.pl</a></p>
-                    </div>
+                    <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="/polityka-prywatnosci">Polityka Prywatności</a>
+                    <p>Copyright © 2023 UM Szczecin</p>
+                    <p class="max-lg:hidden">&nbsp;</p>
+                    <p>{{ pll__('Realizacja:') }}<a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" target="_blank" href="http://gregormedia.com.pl/"> gregormedia.com.pl</a></p>
                 </div>
+            </div>
+            <div class="col-span-1 max-lg:hidden">
+
+            </div>
+            <div class="col-span-1">
+                <div class="text-desc title text-color2 dark:text-colorContrast mb-10 font-bold">
+                    <p>Miejskie serwisy</p>
+                </div>
+                <div class="text-base leading-[48px] text-color7 dark:text-colorContrast font-medium">
+                    <ul>
+                        <li>
+                            <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="">Oficjalny Portal Miasta Szczecin</a>
+                        </li>
+                        <li>
+                            <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="">Kalendarz wydarzeń Miasta Szczecin</a>
+                        </li>
+                        <li>
+                            <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="">Deklaracja dostępności</a>
+                        </li>
+                        <li>
+                            <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="">Visit Szczecin</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col-span-1">
+                <div class="text-desc title text-color2 dark:text-colorContrast mb-10 font-bold">
+                    <p>Kontakt</p>
+                </div>
+                <div class="text-base leading-[48px] text-color7 dark:text-colorContrast font-medium">
+                    <ul>
+                        <li>
+                            <p>Żegluga Szczecińska</p>
+                        </li>
+                        <li>
+                            <p>Turystyka Wydarzenia Sp. z o.o.</p>
+                        </li>
+                        <li>
+                            <p>ul. Tadeusza Wendy 8</p>
+                        </li>
+                        <li>
+                            <p>70-655 Szczecin, Polska</p>
+                        </li>
+                        <li>
+                            <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="www.zstw.szczecin.pl">www.zstw.szczecin.pl</a>
+                        </li>
+                    </ul>
+                </div>
+                
             </div>
         </div>
         @if (has_nav_menu('footer_navigation'))
