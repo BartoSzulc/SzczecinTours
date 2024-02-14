@@ -19,7 +19,7 @@ function register_custom_post_type_wycieczki() {
         'labels' => $labels,
         'public' => true,
         'has_archive' => true,
-        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'supports' => array('title', 'thumbnail', 'excerpt'),
         'menu_icon' => 'dashicons-location-alt',
         'show_in_rest' => true,
     );

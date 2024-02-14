@@ -12,7 +12,7 @@
             <div class="w-full text-center py-30 lg:py-60 text-color6 text-h2 dark:text-colorContrast transition-all duration-500 ease-in-out">
                 <h2>Lista wycieczek</h2>
             </div>
-            <div class="flex items-center justify-between bg-white dark:bg-black py-5 px-30 rounded-md transition-all duration-500 ease-in-out">
+            <div id="search-tours" class="4xl:flex items-center justify-between bg-white dark:bg-black py-5 px-30 rounded-md transition-all duration-500 ease-in-out hidden">
                 <div class="left flex items-center">
                     @include('partials.search.left')
                 </div>
@@ -85,5 +85,5 @@
     </section>
 
 
-@include('sections.home.modal')
+
 @endsection

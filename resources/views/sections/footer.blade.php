@@ -6,10 +6,10 @@
 <footer class="footer relative overflow-hidden bg-color5 border-t border-colorObramowanie transition-all duration-500 ease-in-out dark:bg-black">
 
     <div class="container relative z-10 py-60">
-        <div class="grid grid-cols-4">
-            <div class="col-span-1 text-base leading-[48px] text-color7 dark:text-colorContrast font-medium">
+        <div class="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 gap-5">
+            <div class="col-span-1 text-base leading-30 lg:leading-[48px] text-color7 dark:text-colorContrast font-medium">
                 <div class="flex flex-col">
-                    <a class="brand flex mb-8" href="{{ home_url('/') }}">
+                    <a class="brand flex mb-5 lg:mb-8" href="{{ home_url('/') }}">
                         @svg('images.logo', 'h-10 flex w-auto')
                     </a>
                     <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="/polityka-prywatnosci">Polityka Prywatności</a>
@@ -18,14 +18,14 @@
                     <p>{{ pll__('Realizacja:') }}<a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" target="_blank" href="http://gregormedia.com.pl/"> gregormedia.com.pl</a></p>
                 </div>
             </div>
-            <div class="col-span-1 max-lg:hidden">
+            <div class="col-span-1 hidden xl:block">
 
             </div>
             <div class="col-span-1">
-                <div class="text-desc title text-color2 dark:text-colorContrast mb-10 font-bold">
+                <div class="text-desc title text-color2 dark:text-colorContrast mb-5 lg:mb-10 font-bold">
                     <p>Miejskie serwisy</p>
                 </div>
-                <div class="text-base leading-[48px] text-color7 dark:text-colorContrast font-medium">
+                <div class="text-base leading-30 lg:leading-[48px] text-color7 dark:text-colorContrast font-medium">
                     <ul>
                         <li>
                             <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="">Oficjalny Portal Miasta Szczecin</a>
@@ -44,10 +44,10 @@
                 
             </div>
             <div class="col-span-1">
-                <div class="text-desc title text-color2 dark:text-colorContrast mb-10 font-bold">
+                <div class="text-desc title text-color2 dark:text-colorContrast mb-5 lg:mb-10 font-bold">
                     <p>Kontakt</p>
                 </div>
-                <div class="text-base leading-[48px] text-color7 dark:text-colorContrast font-medium">
+                <div class="text-base leading-30 lg:leading-[48px] text-color7 dark:text-colorContrast font-medium">
                     <ul>
                         <li>
                             <p>Żegluga Szczecińska</p>
@@ -77,28 +77,16 @@
     </div>
     <div class="container">
         <div class="grid grid-cols-12 gap-5  border-t border-colorObramowanie py-30">
-            <div class="3xl:col-span-5 3xl:col-start-3 lg:col-span-6 flex items-center">
-                <div class="text-desc text-color6 dark:text-colorContrast text-right font-normal">
+            <div class="3xl:col-span-5 3xl:col-start-3 lg:col-span-6 flex items-center col-span-full">
+                <div class="text-desc text-color6 dark:text-colorContrast lg:text-right font-normal text-center">
                     <p>Strona internetowa powstała w ramach projektu Szczecin Tours Planner dofinansowanego ze środków UE.</p>
                 </div>
             </div>
-            <div class="3xl:col-span-3 lg:col-span-6 flex items-center">
+            <div class="3xl:col-span-3 lg:col-span-6 flex items-center col-span-full max-lg:justify-center">
                 <img src="{{ asset('images/int6a.png')}}" alt="">
             </div>
         </div>
     </div>
 </footer>
 
-<aside class="absolute -translate-y-full mobile-menu flex flex-col p-5  after:content-[''] after:absolute after:bg-color2 after:w-full after:h-1 after:top-0 after:left-0">
-    <div class="js-button flex items-center justify-end mb-5">
-        <svg class="sm:w-12" width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M28.378 0.590241L0.09375 28.8745L3.62928 32.41L31.9136 4.12577L28.378 0.590241Z" fill="#080808"/>
-            <path d="M31.8233 29.2843L3.53906 1L0.00352865 4.53553L28.2878 32.8198L31.8233 29.2843Z" fill="#080808"/>
-        </svg>
-      </div>
-    @if (has_nav_menu('primary_navigation'))
-    <nav class="nav-primary grow" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-      {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'container_class' => 'flex h-full w-full', 'menu_class' => 'w-full h-1/2 nav uppercase text-menu flex justify-between flex-col items-center space-y-5', 'echo' => false]) !!}
-    </nav>
-    @endif
-</aside>
+@include('sections.home.modal')

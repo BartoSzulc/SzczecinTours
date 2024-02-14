@@ -215,15 +215,15 @@
 
 
 .select-custom--header {
-    @apply w-fit;
+    @apply  grow lg:min-w-[32px] min-w-[20px]  h-fit #{!important};
     &.ss-main {
-        @apply p-0 h-fit border-none rounded-full   bg-transparent #{!important};
+        @apply p-0 min-h-fit border-none rounded-full  bg-transparent #{!important};
         .ss-single {
-           @apply border-colorObramowanie border rounded-full m-0  #{!important};
+           @apply border-colorObramowanie border rounded-full m-0 min-h-fit #{!important};
         }
     }
     img {
-        @apply w-30 h-30 object-cover object-center rounded-full;
+        @apply w-5 h-5 lg:w-30 lg:h-30 object-cover object-center rounded-full;
         @apply border-none;
     }
     .ss-arrow {

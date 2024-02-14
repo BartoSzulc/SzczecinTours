@@ -9,46 +9,54 @@ export default class Menu extends Component {
     
       init() {
         const isMobile = window.innerWidth < 1024;
-
-        document.querySelectorAll('.menu-item-has-children').forEach(item => {
-          let timeoutId;
-          let clickCount = 0;
       
-          if (isMobile) {
-            item.addEventListener('click', function(event) {
-              event.preventDefault();
-              clickCount++;
-              if (clickCount === 1) {
-                this.classList.add('toggle-menu');
-              } else if (clickCount === 2) {
-                const anchor = this.querySelector('a');
-                if (anchor) {
-                  window.location.href = anchor.href;
-                }
-              }
-            });
-          } else {
-            item.addEventListener('mouseover', function() {
-              clearTimeout(timeoutId);
-              this.classList.add('toggle-menu');
-            });
+       
       
-            item.addEventListener('mouseout', function() {
-              const element = this;
-              timeoutId = setTimeout(function() {
-                element.classList.remove('toggle-menu');
-              }, 500);
-            });
-          }
-        });
-        
+        let isOpen = false; // Track if the menu is open
+      
         document.querySelectorAll('.js-button').forEach(button => {
           button.addEventListener('click', () => {
-            const menu = document.querySelector('.mobile-menu');
-            menu.classList.toggle('active');
-            document.body.classList.toggle('overflow-hidden');
+            isOpen = !isOpen; // Toggle the state
+      
+            // Apply or remove classes based on whether the menu is open
+            document.querySelectorAll('.js-button .menu-line:first-child').forEach(firstLine => {
+              if (isOpen) {
+                firstLine.classList.add('rotate-45');
+                firstLine.classList.remove('-translate-y-1.5');
+              } else {
+                firstLine.classList.remove('rotate-45');
+                firstLine.classList.add('-translate-y-1.5');
+              }
+            });
+      
+            document.querySelectorAll('.js-button .menu-line:nth-child(2)').forEach(middleLine => {
+              if (isOpen) {
+                middleLine.classList.add('opacity-0');
+              } else {
+                middleLine.classList.remove('opacity-0');
+              }
+            });
+      
+            document.querySelectorAll('.js-button .menu-line:last-child').forEach(lastLine => {
+              if (isOpen) {
+                lastLine.classList.add('-rotate-45');
+                lastLine.classList.remove('translate-y-1.5');
+              } else {
+                lastLine.classList.remove('-rotate-45');
+                lastLine.classList.add('translate-y-1.5');
+              }
+            });
+      
+            // Toggle the mobile menu and prevent body scrolling when open
+            const menus = document.querySelectorAll('.mobile-menu');
+            menus.forEach(menu => {
+              menu.classList.toggle('active');
+              
+            });
+            
           });
         });
       }
+      
     
 }

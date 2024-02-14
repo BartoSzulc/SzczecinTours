@@ -1,5 +1,7 @@
 @php
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+$current_language = pll_current_language();
     $today = date('Ymd');
     $args = array(
         'lang' => 'all',
@@ -19,7 +21,8 @@ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
         )
     );
     $query = new WP_Query($args);
-   
+
+
 @endphp
 <div id="posts" class="posts grid gap-5 mb-60 card-grid" data-aos="fade-up">
     @if($query->have_posts())

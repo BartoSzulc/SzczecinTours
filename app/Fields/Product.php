@@ -45,7 +45,6 @@ class Product extends Field
             ->endRepeater()
             ->addFlexibleContent('flexeditor', ['button_label' => 'Dodaj sekcję', 'label' => 'Więcej informacji'])
                 ->addLayout('wysiwyg', ['label' => 'WYSIWYG'])
-                    ->addText('title', ['label' => 'Tytuł'])
                     ->addWysiwyg('content', ['label' => 'WYSIWYG'])
                 ->addLayout('small-text', ['label' => 'Mały tekst, jasno szary'])
                     ->addWysiwyg('content', ['label' => 'WYSIWYG'])

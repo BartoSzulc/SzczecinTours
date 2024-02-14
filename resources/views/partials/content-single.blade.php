@@ -4,12 +4,10 @@
 $kategoria_terms = get_the_terms(get_the_ID(), 'kategoria_wycieczki');
 $post_language_slug = pll_get_post_language(get_the_ID(), 'slug');
 $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // Get the slug of the post's language
-
+$thumbnail_id = get_post_thumbnail_id();
 
 $content = get_field('tour_description');
 $gallery = get_field('tour_gallery');
-
-
 
 $buttons = get_field('add_button_tour');
 
@@ -20,7 +18,7 @@ $buttons = get_field('add_button_tour');
   <div class="container">
     <div class="transition-all duration-500 ease-in-out  bg-white dark:bg-black dark:shadow-cien-1 dark:text-colorContrast dark:border dark:border-colorContrast p-5 lg:p-10 max-lg:w-[calc(100%+40px)] max-lg:-left-5 relative rounded-lg mt-60"  data-aos="fade-up">
       <div class="w-full mb-5 lg:mb-10 flex flex-col">
-        <a href="" class="btn--grey self-center lg:self-end lg:-mt-10 relative -mt-5 -translate-y-1/2">
+        <a href="{{ pll_home_url() }}" class="btn--grey self-center lg:self-end lg:-mt-10 relative -mt-5 -translate-y-1/2">
           {{ pll__('Wróć do listy') }}
         </a>
         <div class="text-h4 lg:text-h3 font-bold"  data-aos="fade-up">
@@ -31,6 +29,15 @@ $buttons = get_field('add_button_tour');
         <div class="3xl:col-span-8 lg:col-span-7 col-span-full">
           <div class="swiper singleSwiper h-full">
             <div class="swiper-wrapper">
+              @if ( has_post_thumbnail() ) 
+              <div class="swiper-slide">
+              
+                <a class="glightbox" href="{{ wp_get_attachment_image_url($thumbnail_id, 'full') }}">
+                    {!! wp_get_attachment_image($thumbnail_id, 'full', false, array('class' => 'w-full h-full object-cover object-center rounded-lg', 'loading' => 'lazy')); !!}
+                </a>
+                
+              </div>
+              @endif
               @if (!empty($gallery))
                 @foreach ($gallery as $image)
                 <div class="swiper-slide">
@@ -167,17 +174,44 @@ $buttons = get_field('add_button_tour');
           </div>
         </div>
       </div>
+      @php ($builder = get_field('flexeditor')) @endphp
+      @if(!empty($builder))
       <div class="flex flex-col gap-5 after:relative relative after:content-[''] after:w-full after:h-px  after:mt-10 after:bottom-0 after:bg-color2/30 " >
         <div class="text-h5 lg:text-h4 font-bold mb-5" data-aos="fade-up">
           <h2>{{ pll__('Więcej informacji') }}</h2>
         </div>
-        @php ($builder = get_field('flexeditor'))
-        @if(!empty($builder))
-            @foreach ($builder as $section)
-                @dump($section)
-            @endforeach
-        @endif
+        <div class="builder flex flex-col gap-5 lg:gap-10">
+          @foreach ($builder as $section)
+          @php
+            $data = $section['acf_fc_layout'];
+            $wysiwyg = $section['content'];
+          @endphp
+
+          @if($data == 'wysiwyg')
+          <div class="wysiwyg">
+              {!! $wysiwyg !!}
+          </div>
+          @endif
+
+          @if($data == 'big-text')
+          <div class="lg:text-desc text-base text-color2 dark:text-colorContrast">
+              {!! $wysiwyg !!}
+          </div>
+          @endif
+
+          @if($data == 'small-text')
+          <div class="text-base text-color7 dark:text-colorContrast">
+              {!! $wysiwyg !!}
+          </div>
+          @endif
+
+         {{-- @dump($section) --}}
+        @endforeach
+        </div>
+       
+        
       </div>
+      @endif
       @include('partials.post.diff-date-post')
       @include('partials.post.diff-language-post')
       

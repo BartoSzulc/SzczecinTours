@@ -1,12 +1,12 @@
 
-<div id="contactModal" class="hidden animate-fade-in fixed inset-0 z-50 overflow-auto bg-black bg-opacity-40 text-color2 dark:text-colorContrast">
+<div id="contactModal" class="hidden animate-fade-in fixed inset-0 z-[99] overflow-auto bg-black bg-opacity-40 text-color2 dark:text-colorContrast">
     <div class="flex items-center justify-center min-h-screen modal-inside">
-      <div class="bg-white border border-color4 rounded-lg p-5 lg:p-10 relative animate-scaleUp modal-content dark:bg-black dark:border-colorContrast ">
+      <div class="bg-white border border-color4 rounded-lg p-5 lg:p-10 animate-scaleUp modal-content dark:bg-black dark:border-colorContrast ">
         <button id="closeModal" class="absolute -top-3 -right-3 z-10 bg-white rounded-full p-2 border border-color4 hover:scale-110 transition-all duration-500 ease-in-out group/main">
           <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="a"><path fill="#fff" fill-opacity="0" d="M0 0h24v24H0z"/></clipPath></defs><g clip-path="url(#a)"><path class="transition-all duration-500 ease-in-out group-hover/main:stroke-color3" d="m6 6 12 12m0-12L6 18" stroke="#1F294C" stroke-width="2" stroke-linejoin="round"/></g></svg>
           
         </button>
-        <div class="text-h4 text-medium">
+        <div class="text-h5 lg:text-h4 font-bold">
          <p>Informacje kontaktowe</p>
         </div>
         <div class="mt-4">

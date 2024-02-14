@@ -41,7 +41,18 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                 </a>
             </div>
             <div class="post-excerpt text-base mt-5">
-                {!! get_the_excerpt() !!}
+                @if (has_excerpt())
+                    {!! get_the_excerpt() !!}
+                @else
+                    @if(get_field('tour_location'))
+                    <div class="post-location flex gap-2.5 items-center">
+                        <div class="icon flex">
+                        @svg('images.enter', '')
+                        </div>
+                        <p>{{ get_field('tour_location') }}</p>
+                    </div>
+                    @endif
+                @endif
             </div>
             <div class="post-permalink">
                 
