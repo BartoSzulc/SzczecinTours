@@ -1,8 +1,8 @@
-<div class="bg-color4 dark:bg-black dark:border dark:border-colorContrast rounded-lg pl-10 py-5 pr-5 relative dark:text-colorContrast text-color2 flex items-center justify-between">
-    <div class="post-title text-h5">
+<div class="max-lg:flex-wrap max-lg:gap-y-2.5 bg-color4 dark:bg-black dark:border dark:border-colorContrast rounded-lg pl-10 py-5 pr-5 relative dark:text-colorContrast text-color2 flex items-center justify-between">
+    <div class="post-title text-h5 max-lg:w-full max-lg:text-center">
         <h2>{{ $post_title }}</h2>
     </div>
-    <div class="post-info flex gap-10 items-center">
+    <div class="post-info flex max-lg:w-full max-lg:flex-wrap gap-2.5 lg:gap-10 items-center max-md:justify-center max-lg:justify-between">
         <div class="post-date flex gap-2.5 items-center">
             @svg('images.kalendarz')
             <p>{{ date('d.m.Y', strtotime(get_post_meta($id, 'tour_date', true))) }}</p>

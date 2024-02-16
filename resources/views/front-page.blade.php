@@ -9,7 +9,7 @@
     
     <section class="home__travels ">
         <div class="container">
-            <div class="w-full text-center py-30 lg:py-60 text-color6 text-h2 dark:text-colorContrast transition-all duration-500 ease-in-out">
+            <div class="w-full text-center py-30 lg:py-60 text-color6 text-h3 lg:text-h2 dark:text-colorContrast transition-all duration-500 ease-in-out">
                 <h2>Lista wycieczek</h2>
             </div>
             <div id="search-tours" class="max-lg:mb-10 flex max-xl:flex-wrap gap-5 items-center justify-between bg-white dark:bg-black py-5 px-5 3xl:px-30 rounded-md transition-all duration-500 ease-in-out">
@@ -38,7 +38,7 @@
     </section>
     <section class="home__seo">
         <div class="container">
-            <div class="w-full text-center my-30 lg:my-60 text-color6 dark:text-colorContrast text-h2 transition-all duration-500 ease-in-out">
+            <div class="w-full text-center my-30 lg:my-60 text-color6 dark:text-colorContrast text-h3 lg:text-h2 transition-all duration-500 ease-in-out">
                 <h2>Sekcja pod SEO / Nagłówek / Dlaczego warto??</h2>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -66,21 +66,21 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 my-30 lg:my-60">
-                <div class="col-span-1 flex gap-10 items-center justify-start">
+                <div class="col-span-1 flex gap-5 lg:gap-10 items-center lg:justify-start justify-center text-center lg:text-left">
                     @svg('images.check')
                     <div class="text-h5 text-color2 transition-all duration-500 ease-in-out dark:text-colorContrast">
                         <p>Z nami zwiedzisz więcej<br/>
                         i dowiesz się więcej</p>
                     </div>
                 </div>
-                <div class="col-span-1 flex gap-10 items-center justify-start">
+                <div class="col-span-1 flex gap-5 lg:gap-10 items-center lg:justify-start justify-center text-center lg:text-left ">
                     @svg('images.check')
                     <div class="text-h5 text-color2 transition-all duration-500 ease-in-out dark:text-colorContrast">
                         <p>Z nami zwiedzisz więcej</br>
                         i dowiesz się więcej</p>
                     </div>
                 </div>
-                <div class="col-span-1 flex gap-10 items-center justify-start">
+                <div class="col-span-1 flex gap-5 lg:gap-10 items-center lg:justify-start justify-center text-center lg:text-left">
                     @svg('images.check')
                     <div class="text-h5 text-color2 transition-all duration-500 ease-in-out dark:text-colorContrast">
                         <p>Z nami zwiedzisz więcej</br>
