@@ -38,11 +38,10 @@ function page_navi($query, $posts_per_page = 8, $before = '', $after = '') {
         if ($prev_page > 0) {
             echo '<li class="page-item prev"><a data-page="' . $prev_page . '" class="page-link">';
             ?>
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <rect y="-0.00488281" width="60" height="60" rx="8" fill="#F7F7F7"/>
-            <rect x="0.5" y="0.495117" width="59" height="59" rx="7.5" stroke="#0F1425" stroke-opacity="0.2"/>
-            <path d="M33 23.9951L27 29.9951L33 35.9951" stroke="#0296D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 0.995117L1 6.99512L7 12.9951" stroke="#0296D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+
             <?php
             echo '<span class="sr-only">Previous</span></a></li>';
         }
@@ -61,11 +60,10 @@ function page_navi($query, $posts_per_page = 8, $before = '', $after = '') {
         $next_page = $paged + 1;
         echo '<li class="page-item next"><a data-page="' . $next_page . '" class="page-link">';
         ?>
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <rect x="60" y="60" width="60" height="60" rx="8" transform="rotate(-180 60 60)" fill="#F7F7F7"/>
-        <rect x="59.5" y="59.5" width="59" height="59" rx="7.5" transform="rotate(-180 59.5 59.5)" stroke="#0F1425" stroke-opacity="0.2"/>
-        <path d="M27 36L33 30L27 24" stroke="#0296D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 13L7 7L1 1" stroke="#0296D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
+
         <?php
         echo '<span class="sr-only">Next</span></a></li>';
     }

@@ -62,7 +62,9 @@ $buttons = get_field('add_button_tour');
               </div>
               <div class="post-language flex gap-5 items-center">
                 <img src="{{ $post_language_url }}" title="{{ $post_language_slug }}" alt="{{ $post_language_slug }}">
-                <p>{{ pll__('Wycieczka w polskiej wersji językowej') }}</p>
+                @if (get_field('tour_language'))
+                <p>{{ get_field('tour_language') }}</p>
+                @endif
               </div>
               @if(get_field('tour_date'))
               <div class="post-date flex gap-5 items-center">
@@ -93,7 +95,11 @@ $buttons = get_field('add_button_tour');
                 <div class="icon">
                   @svg('images.enter', 'w-30 h-30  basis-30 min-w-30 min-h-30 grow-0')
                 </div>
+                @if (get_field('tour_location_link'))
+                <a href="{{ get_field('tour_location_link') }}" target="_blank" class="underline transition-all duration-500 ease-in-out hover:text-color3" rel="noopener noreferrer">{{ get_field('tour_location') }}</a>
+                @else
                 <p>{{ get_field('tour_location') }}</p>
+                @endif
               </div>
               @endif
               @if(get_field('tour_price'))

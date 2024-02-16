@@ -16,16 +16,16 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
     </div>
     <div class="post-content grow">
         <div class="post-info  w-full">
-            <div class="post-date flex gap-2.5 items-center">
+            <div class="post-date flex md:gap-2.5 gap-1 items-center">
                 @svg('images.kalendarz')
                 <p>{{ date('d.m.Y', strtotime(get_post_meta(get_the_ID(), 'tour_date', true))) }}</p>
                
             </div>
-            <div class="post-time flex gap-2.5 items-center">
+            <div class="post-time flex md:gap-2.5 gap-1 items-center">
                 @svg('images.godzina')
                 <p>{{get_field('tour_time')}}</p>
             </div>
-            <div class="post-price flex gap-2.5 items-center">
+            <div class="post-price flex md:gap-2.5 gap-1 items-center">
                 @svg('images.koszt')
                 <p>{{get_field('tour_price')}}</p>
             </div>
@@ -45,7 +45,7 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                     {!! get_the_excerpt() !!}
                 @else
                     @if(get_field('tour_location'))
-                    <div class="post-location flex gap-2.5 items-center">
+                    <div class="post-location flex md:gap-2.5 gap-1 items-center">
                         <div class="icon flex">
                         @svg('images.enter', '')
                         </div>
@@ -76,7 +76,7 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                
                     @endforeach
                 @endif
-                <a href="{{ get_permalink() }}" class="btn btn--primary uppercase"><span>Zobacz więcej</span></a>
+                <a href="{{ get_permalink() }}" class="btn btn--primary uppercase"><span>{{ pll__('Zobacz więcej') }}</span></a>
             </div>
         </div>
     </div>

@@ -135,15 +135,29 @@ function custom_columns_content_for_wycieczki($column_name, $post_id) {
 
 
 
-pll_register_string('motyw', 'Wycieczka w polskiej wersji językowej');
+// pll_register_string('motyw', 'Wycieczka w polskiej wersji językowej');
 pll_register_string('motyw', 'Wejście:');
 pll_register_string('motyw', 'Czas trwania:');
 pll_register_string('motyw', 'Szczegółowe informacje');
 pll_register_string('motyw', 'Więcej informacji');
 pll_register_string('motyw', 'Wróć do listy');
 pll_register_string('motyw', 'Ta sama wycieczka w innym terminie');
+pll_register_string('motyw', 'Ta sama wycieczka w innym języku');
 pll_register_string('motyw', 'Wybór kategorii');
 pll_register_string('motyw', 'Wszystkie');
+pll_register_string('motyw', 'Zobacz szczegóły');
+pll_register_string('motyw', 'Zobacz więcej');
+pll_register_string('motyw', 'Nie znaleziono wycieczek');
+pll_register_string('motyw', 'Dzisiaj');
+pll_register_string('motyw', 'Jutro');
+pll_register_string('motyw', 'Wybierz datę');
+pll_register_string('motyw', '- język wycieczki -');
+pll_register_string('motyw', '- sortuj wg -');
+pll_register_string('motyw', 'Data wydarzenia');
+pll_register_string('motyw', 'Alfabetycznie');
+pll_register_string('motyw', 'Strona nie istnieje');
+pll_register_string('motyw', 'Powrót');
+pll_register_string('motyw', 'Strona internetowa powstała w ramach projektu Szczecin Tours Planner dofinansowanego ze środków UE.');
 
 
 // pll_register_string('Brikol', 'zł');
@@ -152,6 +166,4 @@ pll_register_string('motyw', 'Wszystkie');
 // pll_register_string('Brikol', 'Zobacz więcej');
 // pll_register_string('Brikol', 'Wszelkie prawa zastrzeżone © 2024');
 // pll_register_string('Brikol', 'Realizacja:');
-// pll_register_string('Brikol', 'Strona nie istnieje');
-// pll_register_string('Brikol', 'Powrót');
 // pll_register_string('Brikol', 'Zapytaj o produkt / złóż zamówienie:');

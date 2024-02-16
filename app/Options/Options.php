@@ -35,8 +35,25 @@ class Options extends Field
         $options = new FieldsBuilder('options');
 
         $options
-            ->addTab('header', ['label' => 'Nagłówek'])
-                ->addFields($this->get(Header::class))
+           
+            ->addTab('footer_tab', ['label' => 'Stopka'])
+                ->addGroup('footer', ['label' => 'Stopka'])
+                    ->addUrl('policy_link', ['label' => 'Link do polityki prywatności'])
+                    ->addText('policy_text', ['label' => 'Tekst polityki prywatności'])
+                    ->addRepeater('footer_menu', ['label' => 'Menu stopki', 'button_label' => 'Dodaj pozycję', 'max' => 2])
+                        ->addText('title', ['label' => 'Tytuł'])
+                        ->addRepeater('links', ['label' => 'Linki', 'button_label' => 'Dodaj link lub zwykły tekst', 'instructions' => 'Jeśli chcesz dodać zwykły tekst, pozostaw pole "Link" puste'])
+                            ->addText('title', ['label' => 'Tekst'])
+                            ->addUrl('link', ['label' => 'Link'])
+                        ->endRepeater()
+                    ->endRepeater()
+                ->endGroup()
+            ->addTab('modal_tab', ['label' => 'Modal (Kontakt)'])
+            ->addGroup('modal', ['label' => 'Modal (Kontakt)'])
+                ->addText('modal_title', ['label' => 'Tytuł'])
+                ->addText('modal_phone', ['label' => 'Telefon'])
+                ->addText('modal_email', ['label' => 'Email'])
+            ->endGroup()
             ->addTab('recent', ['label' => 'Produkty powiązane'])
                 ->addFields($this->get(Recent::class)) 
             ->addTab('dodatkowe_skrypty_tab', ['label' => 'Dodatkowe skrypty'])

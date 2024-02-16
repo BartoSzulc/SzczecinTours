@@ -28,6 +28,8 @@ class Product extends Field
             ->addText('tour_price', ['label' => 'Cena wycieczki'])
             ->addText('tour_duration', ['label' => 'Czas trwania wycieczki'])
             ->addText('tour_location', ['label' => 'Miejsce wycieczki'])
+            ->addText('tour_location_link', ['label' => 'Link do miejsca wycieczki'])
+            ->addText('tour_language', ['label' => 'Tekst wyświetlany przy fladze', 'instructions' => 'Wycieczka w polskiej wersji językowej'])
             ->addRepeater('add_button_tour', ['label' => 'Dodaj przycisk', 'button_label' => 'Dodaj przycisk', 'max' => 3])
                 ->addSelect('tour_button_version', ['label' => 'Wersja przycisku', 'choices' => ['v1' => 'Kup bilet online', 'v2' => 'Wejście za darmo', 'v3' => 'Napiwek'], 'wrapper' => ['width' => '100%'], 'default_value' => 'v1'])
                 ->addGroup('tour_paid', ['label' => 'Kup bilet online', 'conditional_logic' => [['field' => 'tour_button_version', 'operator' => '==', 'value' => 'v1']]])

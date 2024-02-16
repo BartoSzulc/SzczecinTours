@@ -21,10 +21,22 @@ class Home extends Field
 
         $home
             ->setLocation('page_type', '==', 'front_page');
-
         $home
+
         ->addTab('hero', ['label' => 'Hero', 'placement' => 'left'])
-            ->addFields($this->get(Hero::class)) 
+            ->addFields($this->get(Hero::class))
+        ->addTab('seo_tab', ['label' => 'SEO', 'placement' => 'left'])
+            ->addGroup('seo', ['label' => 'SEO'])
+                ->addText('seo_title', ['label' => 'Tytuł SEO', 'instructions' => 'Tytuł SEO'])
+                ->addRepeater('seo_desc', ['label' => 'Opis', 'button_label' => 'Dodaj opis'])
+                    ->addText('title', ['label' => 'Tytuł'])
+                    ->addWysiwyg('desc', ['label' => 'Opis'])
+                ->endRepeater()
+                ->addRepeater('seo_icons', ['label' => 'Ikony'])
+                    ->addImage('icon', ['label' => 'Ikona'])
+                    ->addTextarea('desc', ['label' => 'Opis'])
+                ->endRepeater()
+            ->endGroup()
         ;
 
         return $home->build();

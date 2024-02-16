@@ -19,7 +19,6 @@ class Recent extends Partial
         $recent
             ->addGroup('recent', ['label' => 'Produkty powiązane'])
                 ->addWysiwyg('title', ['label' => 'Tytuł'])
-                ->addWysiwyg('subtitle', ['label' => 'Podtytuł'])
             ->endGroup()
         ;
 

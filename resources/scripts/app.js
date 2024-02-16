@@ -38,11 +38,11 @@ const main = async (err) => {
 
   window.addEventListener('scroll', handleStickyHeaderVisibility);
   
-  
+
   const menuItems = document.querySelectorAll('.yourMenuItemId'); // Select all menu items
   const modal = document.querySelector('#contactModal');
-  const modalContent = modal.querySelector('.modal-content');
-  const modalInside = modal.querySelector('.modal-inside');
+  const modalContent = modal?.querySelector('.modal-content');
+  const modalInside = modal?.querySelector('.modal-inside');
   
   const showModal = () => {
     modal.classList.remove('hidden');
@@ -61,15 +61,15 @@ const main = async (err) => {
     });
   });
 
-  [modal, modalInside].forEach(element => element.addEventListener('click', hideModal));
-  modalContent.addEventListener('click', (e) => e.stopPropagation());
+  if (modal) {
+    [modal, modalInside].forEach(element => element.addEventListener('click', hideModal));
+    modalContent?.addEventListener('click', (e) => e.stopPropagation());
+  }
 
-  const closeButton = modal.querySelector('#closeModal');
-  closeButton?.addEventListener('click', hideModal);
-  
-  
-
-  
+  if (modal) {
+    const closeButton = modal.querySelector('#closeModal');
+    closeButton?.addEventListener('click', hideModal);
+  } 
 
   AOS.init({
     offset: 0,

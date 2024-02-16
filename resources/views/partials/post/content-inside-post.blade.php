@@ -21,7 +21,7 @@
         <div class="post-permalink flex">
                 
             
-            <a href="{{ get_permalink($id) }}" class="btn btn--primary uppercase !w-[calc(325px)]"><span>Zobacz szczegóły</span></a>
+            <a href="{{ get_permalink($id) }}" class="btn btn--primary uppercase !w-[calc(325px)]"><span>{{ pll__('Zobacz szczegóły') }}</span></a>
         </div>
     </div>
 </div>

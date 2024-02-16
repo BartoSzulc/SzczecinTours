@@ -1,30 +1,32 @@
 .posts-navigation {
     @apply flex justify-center items-center;
     .pagination {
-        @apply flex items-center justify-center gap-5;
+        @apply flex items-center justify-center gap-2.5 lg:gap-5;
         .page-item {
-            &:not(.next):not(.prev)
-            {
-                a {
-                    @apply w-60 h-60 flex items-center justify-center;
-                    @apply transition-all duration-500 ease-in-out;
-                    @apply border border-colorObramowanie rounded-lg dark:text-black dark:bg-colorContrast;
-                    @apply text-sm leading-[30px] font-medium cursor-pointer;
-                    &:hover {
-                        @apply text-white bg-color3 dark:bg-colorContrast
-                    }
-                }
-                &.active {
-                    a {
-                        @apply text-white bg-color3 pointer-events-none dark:text-colorContrast dark:bg-black dark:border-colorContrast;
+            a {
+                @apply h-10 w-10 lg:w-60 lg:h-60 flex items-center justify-center;
+                @apply transition-all duration-500 ease-in-out;
+                @apply border border-colorObramowanie rounded-lg dark:text-black dark:bg-colorContrast;
+                @apply text-sm leading-[30px] font-medium cursor-pointer;
+                &:hover {
+                    @apply text-white bg-color3 dark:bg-colorContrast;
+                    svg {
+                        path {
+                            @apply stroke-white;
+                        }
+                    
                     }
                 }
             }
-            svg {
-                rect {
-                    @apply dark:fill-colorContrast;
+            &.active {
+                a {
+                    @apply text-white bg-color3 pointer-events-none dark:text-colorContrast dark:bg-black dark:border-colorContrast;
                 }
+            }
+            svg {
+                @apply max-lg:h-[7px] max-lg:w-[4px];
                 path {
+                    @apply transition-all duration-500 ease-in-out;
                     @apply dark:stroke-black ;
                 }
             }
