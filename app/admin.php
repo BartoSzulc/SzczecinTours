@@ -79,9 +79,6 @@ function remove_admin_menu_items_prod()
     remove_menu_page('edit.php?post_type=acf-field-group');
 }
 
-if (ENV === 'production' || ENV === 'init') {
-    add_action('admin_menu', __NAMESPACE__ .  '\\remove_admin_menu_items_prod');
-}
 
 if (ENV === 'development') {
     add_filter('show_admin_bar', '__return_false');
