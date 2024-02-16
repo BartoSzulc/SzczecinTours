@@ -1,11 +1,7 @@
 @php
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-// Simple mobile detection
-$is_mobile = preg_match('/Mobile|Android|Silk\/|Kindle|BlackBerry|Opera Mini|Opera Mobi/', $_SERVER['HTTP_USER_AGENT']);
 
-$posts_per_page = $is_mobile ? 5 : 10;
 
-$current_language = pll_current_language();
     $today = date('Ymd');
     $args = array(
         'lang' => 'all',
@@ -13,7 +9,7 @@ $current_language = pll_current_language();
         'meta_key' => 'tour_date',
         'orderby' => 'meta_value_num',
         'order' => 'ASC',
-        'paged' => $posts_per_page,
+        'paged' => $paged,
         'posts_per_page' => 10,
         'meta_query' => array(
             array(
@@ -33,7 +29,7 @@ $current_language = pll_current_language();
         @while($query->have_posts()) @php $query->the_post() @endphp
             @include('partials.post.content')
         @endwhile
-        @php page_navi($query, $posts_per_page); @endphp
+        @php page_navi($query, 10); @endphp
         
         @php wp_reset_postdata() @endphp
     @endif

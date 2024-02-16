@@ -22,7 +22,7 @@
                         <p>{{ pll__('Wybór kategorii') }}</p>
                     </div>
                     <div class="flex flex-wrap lg:hidden items-center max-sm:w-full">
-                        @include('partials.search.category-picker')
+                        @include('partials.search.category-picker--mobile')
                     </div>
                     
                     @include('partials.search.right')

@@ -1,15 +1,13 @@
 <?php 
 function filter_posts() {
-    $is_mobile = preg_match('/Mobile|Android|Silk\/|Kindle|BlackBerry|Opera Mini|Opera Mobi/', $_SERVER['HTTP_USER_AGENT']);
-
-    $posts_per_page = $is_mobile ? 5 : 10;
+ 
     $today = date('Ymd'); // Get today's date
     $paged = isset($_POST['paged']) && is_numeric($_POST['paged']) ? $_POST['paged'] : 1;
-
+    
     $args = array(
         'post_type' => 'wycieczki',
         'paged' => $paged,
-        'posts_per_page' => $posts_per_page,
+        'posts_per_page' => 10,
         'lang' => array('pl', 'en', 'de'),
         'meta_key' => 'tour_date',
         'orderby' => 'meta_value_num',
@@ -87,7 +85,7 @@ function filter_posts() {
             echo view('partials/post/content')->render();
         }
         if ($query->max_num_pages > 1):
-            page_navi($query, $posts_per_page);
+            page_navi($query, 10);
         endif;
     } else {
         echo view('partials/post/not-found')->render();

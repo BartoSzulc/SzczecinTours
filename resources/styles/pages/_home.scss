@@ -80,6 +80,7 @@
         }
         
         input:checked {
+            @apply hidden;
           + label {
             &::before {
                 @apply animate-scaleUp;
