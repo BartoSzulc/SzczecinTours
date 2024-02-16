@@ -44,7 +44,6 @@ export default class Carousels extends Component {
                         crossFade: true
                     },
                     simulateTouch: false,
-                    allowTouchMove: false,
                     slidesPerView: 1,
                     pagination: {
                         el: ".swiper-pagination",

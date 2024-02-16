@@ -68,11 +68,15 @@ export default class Search extends Component {
         AOS.init();
         AOS.refresh();
 
+
         const posts = document.getElementById('posts');
         posts.classList.remove(viewType === 'grid' ? 'list-grid' : 'card-grid');
         posts.classList.add(viewType === 'grid' ? 'card-grid' : 'list-grid');
         document.querySelector(viewType === 'grid' ? '.grid-view' : '.list-view').classList.add('active');
         document.querySelector(viewType === 'grid' ? '.list-view' : '.grid-view').classList.remove('active');
+        $('html, body').animate({
+          scrollTop: $('#posts').offset().top - 100
+        }, 1000);
       }).fail((jqXHR, textStatus, errorThrown) => {
         $('.spinner-main').remove();
         alert('An error occurred while filtering posts. Please try again.'); // Added user-friendly error message
