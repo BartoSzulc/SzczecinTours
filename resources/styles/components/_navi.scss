@@ -8,7 +8,7 @@
                 a {
                     @apply w-60 h-60 flex items-center justify-center;
                     @apply transition-all duration-500 ease-in-out;
-                    @apply border border-colorObramowanie rounded-lg dark:border-colorContrast;
+                    @apply border border-colorObramowanie rounded-lg dark:text-black dark:bg-colorContrast;
                     @apply text-sm leading-[30px] font-medium cursor-pointer;
                     &:hover {
                         @apply text-white bg-color3 dark:bg-colorContrast
@@ -16,13 +16,16 @@
                 }
                 &.active {
                     a {
-                        @apply text-white bg-color3 pointer-events-none dark:bg-colorContrast;
+                        @apply text-white bg-color3 pointer-events-none dark:text-colorContrast dark:bg-black dark:border-colorContrast;
                     }
                 }
             }
             svg {
+                rect {
+                    @apply dark:fill-colorContrast;
+                }
                 path {
-                    @apply dark:stroke-colorContrast;
+                    @apply dark:stroke-black ;
                 }
             }
         }

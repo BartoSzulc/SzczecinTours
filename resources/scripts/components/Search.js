@@ -20,7 +20,7 @@ export default class Search extends Component {
       return result.length > 0 ? result : null;
     };
 
-    const filterPosts = (paged = 1) => {
+    const filterPosts = (paged = 1, selectedCategory = null) => {
       const viewType = document.querySelector('.grid-view').classList.contains('active') ? 'grid' : 'list';
     
       let formattedDate = $('#selectedDate').text();
@@ -28,8 +28,7 @@ export default class Search extends Component {
         // Convert date format to 'd.m.Y'
         formattedDate = formattedDate.split('-').reverse().join('.');
       }
-    
-      let kategoria_wycieczki = getCheckedValues('.kategoria_wycieczki-radio:checked');
+      let kategoria_wycieczki = selectedCategory ? [selectedCategory] : getCheckedValues('.kategoria_wycieczki-radio:checked');
       const miejsce_wycieczki = getCheckedValues('.miejsce_wycieczki-radio:checked');
       const language = $('#language-select').val();
       const sorting = $('#sorting-select').val();
@@ -132,7 +131,7 @@ export default class Search extends Component {
     let initialDateText = $('#selectedDate').text(); // Store the initial text
     let dp = new AirDatepicker('#minMaxExample', {
       minDate: new Date().setHours(0, 0, 0, 0), // prevent selection of dates before today
-      // isMobile: true,
+      isMobile: window.innerWidth < 768 ? true : false,
       autoClose: true,
       locale: {
         days: ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
@@ -203,6 +202,15 @@ export default class Search extends Component {
       }
       filterPosts();
     });
+
+    $('.category-picker--mobile').change(function() {
+      // This retrieves the selected category from the dropdown.
+      let selectedCategory = $(this).val();
+  
+      // Call filterPosts with the first page and the selected category.
+      // Assuming filterPosts can accept a second parameter for the category.
+      filterPosts(1, selectedCategory);
+  });
 
   }
 

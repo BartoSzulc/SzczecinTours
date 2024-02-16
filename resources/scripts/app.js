@@ -166,7 +166,14 @@ document.querySelectorAll('#toggleDarkMode').forEach(toggleButton => {
     }
     });
   });
-
+  new SlimSelect({
+    select: '#single',
+    settings: {
+      allowDeselect: true,
+      showSearch: false,
+      closeOnSelect: true,
+    }
+  })
   new SlimSelect({
     select: '#language-select',
     settings: {

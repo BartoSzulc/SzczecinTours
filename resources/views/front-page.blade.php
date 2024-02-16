@@ -7,20 +7,28 @@
 
     @include('sections.home.hero')
     
-    <section class="home__travels">
+    <section class="home__travels ">
         <div class="container">
             <div class="w-full text-center py-30 lg:py-60 text-color6 text-h2 dark:text-colorContrast transition-all duration-500 ease-in-out">
                 <h2>Lista wycieczek</h2>
             </div>
-            <div id="search-tours" class="4xl:flex items-center justify-between bg-white dark:bg-black py-5 px-30 rounded-md transition-all duration-500 ease-in-out hidden">
-                <div class="left flex items-center">
+            <div id="search-tours" class="max-lg:mb-10 flex max-xl:flex-wrap gap-5 items-center justify-between bg-white dark:bg-black py-5 px-5 3xl:px-30 rounded-md transition-all duration-500 ease-in-out">
+                
+                <div class="max-md:gap-y-5 left flex max-md:flex-wrap items-center justify-center max-xl:w-full">
                     @include('partials.search.left')
                 </div>
-                <div class="right flex items-center">
+                <div class="right flex flex-wrap max-lg:gap-5 items-center justify-center max-xl:w-full">
+                    <div class="lg:hidden flex-item text-h5 font-semibold text-color2 dark:text-colorContrast h-fit max-sm:w-full max-sm:text-center">
+                        <p>{{ pll__('Wybór kategorii') }}</p>
+                    </div>
+                    <div class="flex flex-wrap lg:hidden items-center max-sm:w-full">
+                        @include('partials.search.category-picker')
+                    </div>
+                    
                     @include('partials.search.right')
                 </div>
             </div>
-            <div class="flex items-center justify-stretch py-10 category-picker gap-y-5 2xl:gap-x-10 gap-x-5 flex-wrap max-2xl:grid max-2xl:grid-cols-4">
+            <div class="max-lg:hidden 2xl:flex items-center justify-stretch py-10 category-picker gap-y-5 2xl:gap-x-10 gap-x-5 flex-wrap max-2xl:grid max-2xl:grid-cols-4">
                 
                 @include('partials.search.category-picker')
             </div>
@@ -33,7 +41,7 @@
             <div class="w-full text-center my-30 lg:my-60 text-color6 dark:text-colorContrast text-h2 transition-all duration-500 ease-in-out">
                 <h2>Sekcja pod SEO / Nagłówek / Dlaczego warto??</h2>
             </div>
-            <div class="grid grid-cols-2 gap-5">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 <div class="col-span-1 border border-colorObramowanie p-5 lg:p-10 rounded-lg transition-all duration-500 ease-in-out dark:border-colorContrast">
                     <div class="flex flex-col gap-5">
                         <div class="text-h5 font-semibold text-color6 transition-all duration-500 ease-in-out dark:text-colorContrast">
@@ -57,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-3 gap-5 my-30 lg:my-60">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 my-30 lg:my-60">
                 <div class="col-span-1 flex gap-10 items-center justify-start">
                     @svg('images.check')
                     <div class="text-h5 text-color2 transition-all duration-500 ease-in-out dark:text-colorContrast">

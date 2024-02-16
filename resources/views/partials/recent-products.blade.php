@@ -1,10 +1,21 @@
 @php
 $post_type = 'wycieczki'; 
+$today = date('Ymd');
 $args = [
     'post_type' => $post_type,
     'posts_per_page' => 4,
-    'orderby' => 'rand',
-    'order' => 'DESC',
+    'meta_key' => 'tour_date',
+    'orderby' => 'meta_value_num',
+    'order' => 'ASC',
+
+    'meta_query' => array(
+        array(
+            'key' => 'tour_date',
+            'compare' => '>=',
+            'value' => $today,
+            'type' => 'DATE',
+        )
+    )
 ];
 $query = new WP_Query($args);
 

@@ -79,3 +79,9 @@ body {
     }
   }
 }
+
+.category-picker--mobile {
+  svg {
+    @apply max-w-[20px] h-auto;
+  }
+}

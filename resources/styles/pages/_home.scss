@@ -97,17 +97,16 @@
     
 }
 .ss-main {
-    @apply h-60 px-5 py-[15px] rounded-lg border border-colorObramowanie dark:border-colorContrast #{!important};
+    @apply h-60 3xl:px-5 px-2.5 3xl:py-[15px] py-2.5 rounded-lg border border-colorObramowanie dark:border-colorContrast #{!important};
     &:focus {
         @apply shadow-none;
     }
    
     .ss-arrow {
-        width: 20px;
-        height: 15px;
+        @apply 3xl:w-5 3xl:h-[15px] w-2.5 h-2.5;
        path {
         @apply stroke-color3 dark:stroke-colorContrast;
-        stroke-width: 15px;
+        @apply 3xl:stroke-[15px] stroke-[10px];
         stroke-linecap: round;
         stroke-linejoin: round;
 
@@ -117,7 +116,7 @@
     
 }
 .select-custom {
-    @apply w-[250px] dark:bg-black  dark:text-colorContrast #{!important};
+    @apply 3xl:w-[250px] lg:min-w-[200px] dark:bg-black  dark:text-colorContrast #{!important};
     &__inside {
         @apply flex items-center justify-center gap-2.5;
         img {
@@ -217,7 +216,7 @@
 .select-custom--header {
     @apply  grow lg:min-w-[32px] min-w-[20px]  h-fit #{!important};
     &.ss-main {
-        @apply p-0 min-h-fit border-none rounded-full  bg-transparent #{!important};
+        @apply p-0 min-h-fit border-none rounded-full bg-transparent #{!important};
         .ss-single {
            @apply border-colorObramowanie border rounded-full m-0 min-h-fit #{!important};
         }
