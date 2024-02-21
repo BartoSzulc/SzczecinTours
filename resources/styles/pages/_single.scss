@@ -1,0 +1,18 @@
+.builder {
+    .wysiwyg {
+        @apply text-color2 dark:text-colorContrast;
+        > * + * {
+            @apply mt-5;
+        }
+        h1 {
+            @apply text-h3 lg:text-h2;
+        }
+        h2 {
+            @apply text-h4 lg:text-h3;
+        }
+        h3 { 
+            @apply text-h5 lg:text-h4;
+        }
+    }
+
+}

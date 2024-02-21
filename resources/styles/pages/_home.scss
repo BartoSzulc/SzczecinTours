@@ -1,0 +1,266 @@
+.home {
+    &__hero {
+        .swiper-slide {
+            @apply dark:text-colorContrast #{!important};
+            span {
+                @apply dark:text-colorContrast;
+            
+            }
+        }
+    }
+}
+
+.home__travels {
+    
+
+    .datepicker-show {
+        &:after {
+            @apply relative block;
+            content: "";
+            background-image: url("data:image/svg+xml,%3Csvg width='1' height='60' viewBox='0 0 1 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline opacity='0.5' x1='0.5' y1='0.5' x2='0.500003' y2='59.5' stroke='%231F294C' stroke-linecap='round' stroke-dasharray='4 4'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            @apply w-px h-60 bg-center bg-contain;
+        }
+        span {
+            @apply transition-colors ease-in-out duration-500;
+        }
+        &:hover {
+            span {
+                @apply text-color1;
+            }
+        }
+        svg {
+            path {
+              @apply transition-all duration-500 ease-in-out dark:fill-colorContrast;
+            }
+          }
+    }
+    .border-custom {
+        @apply relative;
+        &:before {
+            @apply relative block;
+            content: "";
+            background-image: url("data:image/svg+xml,%3Csvg width='1' height='60' viewBox='0 0 1 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline opacity='0.5' x1='0.5' y1='0.5' x2='0.500003' y2='59.5' stroke='%231F294C' stroke-linecap='round' stroke-dasharray='4 4'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            @apply w-px h-60 bg-center bg-contain;
+        }
+    }
+    .filter-button {
+        @apply cursor-pointer;
+        @apply transition-colors ease-in-out duration-500;
+        &:hover {
+            @apply text-color1;
+        }
+    }
+    
+    .miejsce-radio,
+    .kategoria-radio {
+        @apply cursor-pointer;
+        @apply transition-colors ease-in-out duration-500;
+        &:hover {
+            @apply text-color1;
+        }
+        .hidden-radio {
+            @apply hidden;
+        }
+        
+        label {
+            @apply flex items-center;
+            &::before {
+                
+                @apply flex items-center justify-center transition;
+                @apply h-[30px] w-[30px];
+                @apply shrink-0;
+                @apply relative;
+                content: "";
+                background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' rx='15' transform='matrix(-1 0 0 1 30 0)' fill='white'/%3E%3Crect x='-0.5' y='0.5' width='29' height='29' rx='14.5' transform='matrix(-1 0 0 1 29 0)' stroke='%230F1425' stroke-opacity='0.2'/%3E%3C/svg%3E%0A");
+                @apply bg-no-repeat bg-center block;
+            }
+            
+        }
+        
+        input:checked {
+            @apply hidden;
+          + label {
+            &::before {
+                @apply animate-scaleUp;
+                background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' rx='15' transform='matrix(-1 0 0 1 30 0)' fill='white'/%3E%3Crect x='-0.5' y='0.5' width='29' height='29' rx='14.5' transform='matrix(-1 0 0 1 29 0)' stroke='%230F1425' stroke-opacity='0.2'/%3E%3Crect width='16' height='16' rx='8' transform='matrix(-1 0 0 1 23 7)' fill='%230296D8'/%3E%3C/svg%3E%0A");
+               
+            }
+          }
+        }
+    }
+    .miejsce-radio {
+        label {
+            @apply flex gap-2.5;
+        }
+    }
+    
+}
+.ss-main {
+    @apply h-60 3xl:px-5 px-2.5 3xl:py-[15px] py-2.5 rounded-lg border border-colorObramowanie dark:border-colorContrast #{!important};
+    &:focus {
+        @apply shadow-none;
+    }
+   
+    .ss-arrow {
+        @apply 3xl:w-5 3xl:h-[15px] w-2.5 h-2.5;
+       path {
+        @apply stroke-color3 dark:stroke-colorContrast;
+        @apply 3xl:stroke-[15px] stroke-[10px];
+        stroke-linecap: round;
+        stroke-linejoin: round;
+
+        
+       }
+    }
+    
+}
+.select-custom {
+    @apply 3xl:w-[250px] lg:min-w-[200px] dark:bg-black  dark:text-colorContrast #{!important};
+    &__inside {
+        @apply flex items-center justify-center gap-2.5;
+        img {
+            @apply w-30 h-30 object-cover object-center rounded-full;
+            @apply border border-colorObramowanie;
+        }
+    }
+    
+}
+
+.ss-content {
+    @apply rounded-lg border-none;
+    .ss-list {
+        @apply rounded-lg border border-colorObramowanie;
+        .ss-option {
+            @apply px-5 py-2.5;
+            @apply dark:text-colorContrast;
+            &:not(:last-child) {
+                @apply border-b border-colorObramowanie;
+            }
+            &:hover {
+                @apply bg-color3/50;
+            }
+            &.ss-selected {
+                @apply bg-color1/50 #{!important};
+            }
+            
+        }
+    }
+
+}
+.ss-placeholder {
+    @apply dark:text-colorContrast #{!important};
+}
+
+.change-view {
+    .view {
+        @apply cursor-pointer;
+        svg {
+            path {
+                @apply transition-all duration-500 ease-in-out
+                dark:fill-colorContrast;
+
+            }
+        }
+        &:hover {
+            svg {
+                path {
+                  
+                    @apply fill-color2  dark:fill-colorContrast/50;
+                    
+                }
+            }
+        }
+        &.active {
+            @apply pointer-events-none;
+            svg {
+                path {
+                  
+                    @apply fill-color2  dark:fill-colorContrast/50;
+                }
+            }
+        }
+        
+    }
+
+}
+
+.ss-deselect {
+    flex: 0 9 auto;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    position: relative;
+    pointer-events: all;
+   
+    svg {
+      
+        @apply bg-color6 rounded-full w-4 h-4 p-1 dark:bg-white  #{!important};
+        
+        path {
+            
+            fill: none;
+            stroke: #fff !important;
+            stroke-width: 10 !important;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            @apply  dark:stroke-black #{!important};
+            
+        }
+    }
+}
+
+
+.select-custom--header {
+    @apply  grow lg:min-w-[32px] min-w-[20px]  h-fit #{!important};
+    &.ss-main {
+        @apply p-0 min-h-fit border-none rounded-full bg-transparent #{!important};
+        .ss-single {
+           @apply border-colorObramowanie border rounded-full m-0 min-h-fit #{!important};
+        }
+    }
+    img {
+        @apply w-5 h-5 lg:w-30 lg:h-30 object-cover object-center rounded-full;
+        @apply border-none;
+    }
+    .ss-arrow {
+        @apply hidden;
+    }
+    
+    &.ss-content {
+        @apply rounded-none border-none  bg-transparent #{!important};
+        .ss-list {
+            @apply border-none rounded-full bg-transparent flex flex-col gap-2.5 mt-2.5 #{!important};
+            .ss-option {
+                @apply p-0 rounded-full border border-colorObramowanie bg-transparent #{!important};
+                &:not(:last-child) {
+                    @apply border border-colorObramowanie #{!important};
+                }
+                
+                &:hover {
+                    @apply bg-color3/50;
+                }
+                &.ss-selected {
+                    @apply bg-color1/50 #{!important};
+                }
+                
+            }
+        }
+    
+    }
+}
+
+.font-size-normal {
+    /* No additional styles needed, uses default */
+  }
+  
+  .font-size-medium {
+    font-size: 1.125rem; /* Adjust sizes as needed */
+  }
+  
+  .font-size-big {
+    font-size: 1.25rem; /* Adjust sizes as needed */
+}

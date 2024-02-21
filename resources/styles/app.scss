@@ -1,0 +1,87 @@
+@import "../../node_modules/swiper/swiper-bundle.css";
+@import "../../node_modules/glightbox/dist/css/glightbox.css";
+@import '../../node_modules/slim-select/src/slim-select/slimselect.scss';
+
+// - Vendor
+@import 'vendor/frameworks';
+
+
+// // - Abstracts 
+@import 'abstracts/aos';
+@import 'abstracts/airdatepicker';
+// @import 'abstracts/animations';
+@import 'abstracts/fonts';
+
+
+// // - Components
+@import 'components/buttons';
+@import 'components/menu';
+@import 'components/spinner';
+@import 'components/post-card';
+@import 'components/posts';
+@import 'components/navi';
+// @import 'components/form';
+@import 'components/swiper';
+
+// // - Pages 
+@import 'pages/home';
+@import 'pages/single';
+// @import 'pages/single-produkty';
+// @import 'pages/contact';
+
+body {
+    @apply transition-all duration-500 ease-in-out font-primary text-color2 text-base bg-color4 dark:bg-black dark:text-colorContrast;
+ 
+}
+.contrast-switcher {
+  @apply w-[24px] h-[24px] rounded-full border-color2 dark:border-colorContrast border-[1.5px] box-border relative;
+  &:after {
+    @apply absolute top-1/2 -translate-y-1/2 bg-color2 dark:bg-colorContrast w-[9px] h-[18px] rounded-r-full;
+    content: "";
+    @apply transition-all duration-500 ease-in-out;
+    @apply dark:rounded-l-full dark:rounded-r-none dark:-translate-x-full
+  }
+}
+
+.font-size-switcher {
+  .size-button {
+    &.active {
+      @apply underline;
+    }
+  }
+}
+.category-picker {
+  .kategoria-radio {
+    svg {
+      path {
+        @apply transition-all duration-500 ease-in-out dark:stroke-colorContrast;
+      }
+    }
+  }
+}
+.post-permalink {
+  svg {
+    path {
+      @apply transition-all duration-500 ease-in-out dark:stroke-colorContrast;
+    }
+  }
+}
+
+
+.kategoria-radio {
+  position: relative;
+  z-index: 10;
+
+  label{
+    @apply relative z-10 gap-2.5;
+    svg {
+      @apply order-first;
+    }
+  }
+}
+
+.category-picker--mobile {
+  svg {
+    @apply max-w-[20px] h-auto;
+  }
+}

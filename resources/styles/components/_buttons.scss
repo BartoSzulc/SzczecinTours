@@ -1,0 +1,45 @@
+.btn {
+    
+    @apply text-button uppercase max-sm:tracking-[0.5px] rounded-lg box-border border-colorObramowanie border dark:border-colorContrast;
+    @apply min-w-[200px] inline-flex items-center justify-center h-half lg:h-60 ;
+    @apply transition-all duration-500 ease-in-out relative px-5;
+    @apply text-color5 overflow-hidden;
+    span {
+        @apply relative z-10;
+    }
+    &--primary {
+        @apply bg-color3 dark:bg-black;
+        &:after {
+            content: "";
+            background: linear-gradient(265deg, #1F294C 0%, #0296D8 100%);
+            @apply absolute inset-0 min-w-[200px] h-full opacity-0 rounded-lg;
+            @apply transition-all duration-500 ease-in-out;
+        }
+        &:hover {
+            &:after {
+                @apply opacity-100;
+            }
+        }
+    }
+    &--secondary {
+        @apply bg-color1 dark:bg-black;
+        &:after {
+            content: "";
+            background: linear-gradient(265deg, #1F294C 0%, #95C11F 100%);
+            @apply absolute inset-0 min-w-[200px] h-full opacity-0 rounded-lg;
+            @apply transition-all duration-500 ease-in-out;
+        }
+        &:hover {
+            &:after {
+                @apply opacity-100;
+            }
+        }
+    }
+    &--grey {
+        @apply inline-flex w-fit text-button uppercase rounded-lg px-4 py-3 bg-color7 text-color4 transition-all duration-500 ease-in-out ;
+        @apply dark:text-black dark:bg-colorContrast;
+        &:hover {
+            @apply bg-color3;
+        }
+    }
+}
