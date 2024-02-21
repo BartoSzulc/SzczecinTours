@@ -68,46 +68,46 @@ module.exports = {
       //   lineHeight: 1.214,
       //   letterSpacing: '0.05em',
       // }],
-      'menu' : ['0.9375rem', {
-        lineHeight: 1.60, // Unitless, relative to the font size
-        letterSpacing: '0.05rem', // Rounded from 0.046875rem
-        fontWeight: 700,
+      'menu' : ['1rem', {
+        lineHeight: 1.625, // Unitless, relative to the font size
+        letterSpacing: '3.2px', // Rounded from 0.046875rem
+        fontWeight: 600,
       }],
-      'base': ['0.9375rem', 1.73], // Unitless, relative to the font size
+      'base': ['0.9375rem', 1.6], // Unitless, relative to the font size
       'desc': ['1.125rem', {
         lineHeight: 1.67, // Unitless, relative to the font size
       }],
       'button': [
         '0.75rem', { // Converted font size to rem
-          lineHeight: '1.25', // You could use 1.25rem or keep it unitless as 1.25
-          letterSpacing: '0.15rem', // Converted letter spacing to rem
+          lineHeight: '1.67', // You could use 1.25rem or keep it unitless as 1.25
+          letterSpacing: '3.2px', // Converted letter spacing to rem
           fontWeight: 700,
         }
       ],
       // https://modern-fluid-typography.vercel.app/
       // where u can get fluid typography
-      'h6': ['clamp(1.125rem, 1vw + 1rem, 1.125rem);', {
+      'h6': ['clamp(1rem, 3vw - 1rem, 1.125rem);', {
         lineHeight: 1.44,
         fontWeight: 700,
       }],
-      'h5': ['clamp(1.125rem, 1vw + 0.5rem, 1.375rem);', {
+      'h5': ['clamp(1.125rem, 3vw - 1rem, 1.25rem);', {
         lineHeight: 1.36,
         fontWeight: 600,
       }],
-      'h4': ['clamp(1.375rem, 1vw + 1rem, 1.5rem);', {
+      'h4': ['clamp(1.25rem, 1vw + 1rem, 1.5rem);', {
         lineHeight: 1.42,
         fontWeight: 600,
       }],
-      'h3': ['clamp(1.5rem, 2vw + 0.75rem, 2.125rem);', {
+      'h3': ['clamp(1.5rem, 1vw + 1rem, 2.125rem);', {
         lineHeight: 1.29,
         fontWeight: 600,
       }],
 
-      'h2': ['clamp(2.125rem, 2vw + 1rem, 2.5rem);', {
+      'h2': ['clamp(2.125rem, 2vw + 1rem, 3rem);', {
         lineHeight: 1.20,
         fontWeight: 600,
       }],
-      'h1': ['clamp(2.5rem, 3vw + 1rem, 3.5rem);', {
+      'h1': ['clamp(3rem, 2vw + 2.25rem, 4.5rem);', {
         lineHeight: 1.14,
         fontWeight: 700,
       }],
