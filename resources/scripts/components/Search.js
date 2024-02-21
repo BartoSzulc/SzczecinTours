@@ -59,7 +59,7 @@ export default class Search extends Component {
       }
       console.log(data);
       $.ajax({
-        url: '/wp-admin/admin-ajax.php', // Consider using wp_localize_script to pass the admin URL
+        url: '/wp-admin/admin-ajax.php',
         type: 'POST',
         data
       }).done((response) => {
@@ -86,27 +86,19 @@ export default class Search extends Component {
       e.preventDefault();
       let paged = $(this).data('page');
       paged = isNaN(paged) ? 1 : paged;
-      filterPosts(paged.toString()); // Convert paged to string before passing to filterPosts
+      filterPosts(paged.toString());
     });
     const switchView = (activeView, inactiveView, activeCols, inactiveCols) => {
-      // Attempt to find the elements in the DOM
       const activeElement = document.querySelector(activeView);
       const inactiveElement = document.querySelector(inactiveView);
-    
-      // Check if both elements exist
+
       if (activeElement && inactiveElement) {
-        // Add click event listener to the active element
         activeElement.addEventListener('click', function () {
-          // Remove 'active' class from the inactive element
           inactiveElement.classList.remove('active');
-          // Add 'active' class to the active element
           activeElement.classList.add('active');
-    
-          // Call filterPosts without any arguments
           filterPosts();
         });
       } else {
-        // Log an error if one of the elements does not exist
         if (!activeElement) {
           console.error('Element not found:', activeView);
         }
@@ -116,9 +108,6 @@ export default class Search extends Component {
       }
     };
     
-
-
-    // Call switchView when the page loads
     switchView('.grid-view', '.list-view', 'card-grid', 'list-grid');
     switchView('.list-view', '.grid-view', 'list-grid', 'card-grid');
     $('#language-select').change(function() {
@@ -152,11 +141,11 @@ export default class Search extends Component {
       onSelect: ({formattedDate}) => {
         if (formattedDate) {
           $('#selectedDate').text(formattedDate);
-          if (!$('.datepicker-deselect').length) { // Check if the element already exists
+          if (!$('.datepicker-deselect').length) {
             $('.input-wrapper').append('<div class="ss-deselect datepicker-deselect"><svg viewBox="0 0 100 100"><path d="M10,10 L90,90 M10,90 L90,10"></path></svg></div>');
           }
         } else {
-          $('#selectedDate').text(initialDateText); // Revert to the initial text when a date is deselected
+          $('#selectedDate').text(initialDateText);
           $('.datepicker-deselect').remove(); // Remove the SVG element when a date is deselected
         }
         filterPosts();
@@ -178,10 +167,8 @@ export default class Search extends Component {
 
     
     $('.hidden-radio.kategoria_wycieczki-radio').click(function (event) {
-      // Stop the click event from bubbling up to the div
+     
       event.stopPropagation();
-  
-      // Your existing code...
       if ($(this).is(lastChecked)) {
           $(this).prop('checked', false);
           $('#all').prop('checked', true); // Check the 'all' radio button
@@ -196,7 +183,6 @@ export default class Search extends Component {
       }
       filterPosts();
     });
-    // Event handler for 'miejsce_wycieczki'
     $('.hidden-radio.miejsce_wycieczki-radio').click(function () {
       if ($(this).is(lastChecked)) {
         $(this).prop('checked', false);
@@ -208,11 +194,8 @@ export default class Search extends Component {
     });
 
     $('.category-picker--mobile').change(function() {
-      // This retrieves the selected category from the dropdown.
-      let selectedCategory = $(this).val();
   
-      // Call filterPosts with the first page and the selected category.
-      // Assuming filterPosts can accept a second parameter for the category.
+      let selectedCategory = $(this).val();
       filterPosts(1, selectedCategory);
   });
 

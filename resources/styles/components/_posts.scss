@@ -17,7 +17,7 @@
 
 .posts {
     &.card-grid {
-        @apply xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1;
+        @apply 3xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1;
         .post {
             &-desc {
                 @apply mt-5 lg:mt-30;
@@ -39,7 +39,7 @@
                 }
                }
                img {
-                @apply h-[120px] aspect-[385/120]  md:h-[260px] md:aspect-[385/260] rounded-t-lg transition-all duration-500 ease-in-out;
+                @apply h-[160px] aspect-[385/160]  md:h-[200px] md:aspect-[385/200] lg:h-[240px] md:aspect-[385/240] xl:h-[260px] md:aspect-[385/260] rounded-t-lg transition-all duration-500 ease-in-out;
                }
             }
             &-permalink {
@@ -52,7 +52,7 @@
 
             }
             &-info {
-                @apply flex flex-wrap flex-row justify-between items-center max-md:gap-1;
+                @apply flex flex-wrap flex-row justify-between items-center lg:gap-y-3 lg:gap-2 max-md:gap-1;
             }
            
         }
