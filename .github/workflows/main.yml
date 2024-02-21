@@ -32,7 +32,7 @@ jobs:
           server-dir: ${{ secrets.PROD_PATH }}
           protocol: ftps
           port: 21
-          exclude: |
+          exclude: | 
             **/.git*
             **/.git*/**
             **/node_modules/**

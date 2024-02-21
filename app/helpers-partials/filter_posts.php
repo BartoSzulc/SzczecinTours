@@ -23,17 +23,22 @@ function filter_posts() {
     );
 
     if (!empty($_POST['selected_date'])) {
-        $selected_date = DateTime::createFromFormat('d.m.Y', $_POST['selected_date'])->format('Y-m-d');
-        $args['meta_query'][] = array(
-            'relation' => 'AND',
-            array(
-                'key' => 'tour_date',
-                'value' => $selected_date,
-                'compare' => '=',
-                'type' => 'DATE'
-            )
-        );
-    }
+    
+        $dateObject = DateTime::createFromFormat('d.m.Y', $_POST['selected_date']);
+        if ($dateObject !== false) {
+            $selected_date = $dateObject->format('Y-m-d');
+            $args['meta_query'][] = array(
+                'relation' => 'AND',
+                array(
+                    'key' => 'tour_date',
+                    'value' => $selected_date,
+                    'compare' => '=',
+                    'type' => 'DATE'
+                )
+            );
+        }
+    } 
+    
     
     if (!empty($_POST['kategoria_wycieczki'])) {
   

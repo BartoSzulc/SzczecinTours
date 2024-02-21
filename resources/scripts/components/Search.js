@@ -24,10 +24,7 @@ export default class Search extends Component {
       const viewType = document.querySelector('.grid-view').classList.contains('active') ? 'grid' : 'list';
     
       let formattedDate = $('#selectedDate').text();
-      if (formattedDate && formattedDate !== "Wybierz datę") {
-        // Convert date format to 'd.m.Y'
-        formattedDate = formattedDate.split('-').reverse().join('.');
-      }
+      
       let kategoria_wycieczki = selectedCategory ? [selectedCategory] : getCheckedValues('.kategoria_wycieczki-radio:checked');
       const miejsce_wycieczki = getCheckedValues('.miejsce_wycieczki-radio:checked');
       const language = $('#language-select').val();
@@ -50,9 +47,12 @@ export default class Search extends Component {
         data.language = language;
       }
     
-      if (formattedDate && formattedDate !== "Wybierz datę") {
-        data.selected_date = formattedDate;
+      if (!formattedDate || formattedDate === "Wybierz datę") {
+        data.selected_date = "NO_DATE_SELECTED"; // Use a clear placeholder
+      } else {
+          data.selected_date = formattedDate; // Ensure this is in the correct format
       }
+      console.log('Sending AJAX request with data:', data);
 
       if (!$('.spinner-main').length) {
         $('body').append('<div class="spinner-main"><div class="spinner"></div></div>');
@@ -79,6 +79,8 @@ export default class Search extends Component {
         }, 1000);
       }).fail((jqXHR, textStatus, errorThrown) => {
         $('.spinner-main').remove();
+        console.error('AJAX request failed:', textStatus, errorThrown);
+
         alert('An error occurred while filtering posts. Please try again.'); // Added user-friendly error message
       });
     };
