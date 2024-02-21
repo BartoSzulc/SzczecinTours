@@ -8,7 +8,7 @@
     <input autocomplete="false" name="hidden" type="text" class="absolute opacity-0 w-full h-full flex cursor-pointer" id="minMaxExample" >
     <div class="input-wrapper flex items-center gap-2.5 px-5 3xl:px-30">
         @svg('images.kalendarz-big', 'max-3xl:max-w-[25px] max-3xl:h-6') 
-        <span id="selectedDate" class="flex items-center gap-2.5">{{pll__('Wybierz datę')}}</span>
+        <span id="selectedDate" class="flex items-center gap-2.5">{{ pll__('Wybierz datę') }}</span>
     </div>
 </div>
 <div class="md:pl-5 3xl:pl-30 flex justify-center gap-5 3xl:gap-30 max-md:w-full max-sm:flex-wrap">

@@ -60,8 +60,6 @@ class Product extends Field
             ->addTab('other_tours_tab', ['placement' => 'left', 'label' => 'Ta sama wycieczka w innym terminie'])
             ->addRelationship('other_tours', ['label' => 'Ta sama wycieczka w innym terminie', 'elements' => 'featured_image', 'post_type' => ['wycieczki'], 'filters' => ['search', 'taxonomy']])
 
-
-
             ;
         return $product->build();
     }
