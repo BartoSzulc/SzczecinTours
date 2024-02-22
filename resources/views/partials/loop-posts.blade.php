@@ -24,6 +24,7 @@ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 
 @endphp
+{{-- @dump ($query) --}}
 <div id="posts" class="posts grid gap-5 mb-60 card-grid" data-aos="fade-up">
     @if($query->have_posts())
         @while($query->have_posts()) @php $query->the_post() @endphp
