@@ -11,7 +11,7 @@
 </div>
 @if ($kategoria_wycieczki_terms && is_array($kategoria_wycieczki_terms))
 @foreach($kategoria_wycieczki_terms as $term)
-<div class="flex-item relative kategoria-radio text-button uppercase lg:flex items-center gap-2.5 hidden">
+<div class="flex-item relative kategoria-radio text-button lg:flex items-center gap-2.5 hidden">
     
     @php
     $categoryImage = get_field('category_image', $term);

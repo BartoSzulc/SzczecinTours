@@ -83,6 +83,8 @@ function filter_posts() {
     $query = new WP_Query($args);
 
     // echo '<pre>' . var_export($query, true) . '</pre>';
+    // echo '<pre>' . var_export($args, true) . '</pre>';
+     //echo '<pre>' . var_export($kategoria_wycieczki_array, true) . '</pre>';
 
     if ($query->have_posts()) {
         while ($query->have_posts()) {

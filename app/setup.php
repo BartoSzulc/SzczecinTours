@@ -169,3 +169,14 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+function enqueue_admin_scripts($hook) {
+    // Only add to the edit.php admin page.
+    // Replace 'post' with your custom post type
+    if ('edit.php' !== $hook) {
+        return;
+    }
+    wp_enqueue_script('my-custom-quick-edit', get_template_directory_uri() . '/resources/scripts/admin-quick-edit.js', array('jquery'), '', true);
+}
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_admin_scripts');
+
