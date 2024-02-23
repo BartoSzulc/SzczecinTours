@@ -169,12 +169,22 @@ function save_acf_fields_quick_edit($post_id, $post) {
                 $field_object = get_field_object($field_name, $post_id);
                 $field_key = $field_object['key'];
 
-                // Update the field using its key and the submitted value
-                update_field($field_key, sanitize_text_field($_REQUEST['acf'][$field_name]), $post_id);
+                // Ensure the date is formatted correctly for ACF
+                if ('tour_date' === $field_name) {
+                    $date_value = sanitize_text_field($_REQUEST['acf'][$field_name]);
+                    // Convert the date to the correct format
+                    $formatted_date = date('Ymd', strtotime($date_value));
+                    // Update the field using its key and the formatted date value
+                    update_field($field_key, $formatted_date, $post_id);
+                } else {
+                    // For other fields, just sanitize and save
+                    update_field($field_key, sanitize_text_field($_REQUEST['acf'][$field_name]), $post_id);
+                }
             }
         }
     }
 }
+
 
 
 
