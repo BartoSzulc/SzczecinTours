@@ -1,12 +1,12 @@
 <div class="flex  items-center filter-button">
-    <a id="selectToday" class="pr-5 3xl:pr-30">{{pll__('Dzisiaj')}}</a>
+    <a id="selectToday" class="pr-2.5 xs:pr-5 3xl:pr-30">{{pll__('Dzisiaj')}}</a>
 </div>
 <div class="flex border-custom items-center filter-button">
-    <a id="selectTomorrow" class="px-5 3xl:px-30">{{pll__('Jutro') }} </a>
+    <a id="selectTomorrow" class="px-2.5 xs:px-5 3xl:px-30">{{pll__('Jutro') }} </a>
 </div>
 <div class="wrap border-custom datepicker-show flex w-fit relative cursor-pointer">
     <input autocomplete="false" name="hidden" type="text" class="absolute opacity-0 w-full h-full flex cursor-pointer" id="minMaxExample" >
-    <div class="input-wrapper flex items-center gap-2.5 px-5 3xl:px-30">
+    <div class="input-wrapper flex items-center gap-2.5 px-2.5 xs:px-5 3xl:px-30">
         @svg('images.kalendarz-big', 'max-3xl:max-w-[25px] max-3xl:h-6') 
         <span id="selectedDate" class="flex items-center gap-2.5">{{ pll__('Wybierz datę') }}</span>
     </div>
