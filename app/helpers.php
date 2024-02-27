@@ -155,38 +155,64 @@ function add_quick_edit_fields($column_name, $post_type) {
     <?php
 }
 
-//save values from quick edit
-add_action('save_post', 'save_acf_fields_quick_edit', 10, 2);
-function save_acf_fields_quick_edit($post_id, $post) {
-    if ('wycieczki' === $post->post_type && isset($_REQUEST['acf'])) {
-        // Define the ACF field names you're expecting
-        $expected_fields = array('tour_date', 'tour_time');
-        
-        foreach ($expected_fields as $field_name) {
-            // Check if this expected field was submitted
-            if (isset($_REQUEST['acf'][$field_name])) {
-                // Optionally, get the field object to access the field key
-                $field_object = get_field_object($field_name, $post_id);
-                $field_key = $field_object['key'];
 
-                // Ensure the date is formatted correctly for ACF
-                if ('tour_date' === $field_name) {
-                    $date_value = sanitize_text_field($_REQUEST['acf'][$field_name]);
-                    // Convert the date to the correct format
-                    $formatted_date = date('Ymd', strtotime($date_value));
-                    // Update the field using its key and the formatted date value
-                    update_field($field_key, $formatted_date, $post_id);
-                } else {
-                    // For other fields, just sanitize and save
-                    update_field($field_key, sanitize_text_field($_REQUEST['acf'][$field_name]), $post_id);
-                }
-            }
-        }
+
+
+
+// Hook into the admin notices action to display custom messages
+add_action('admin_notices', 'display_custom_admin_notices');
+function display_custom_admin_notices() {
+    $message = get_transient('custom_admin_notice');
+    if ($message) {
+        echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($message) . '</p></div>';
+        delete_transient('custom_admin_notice');
     }
 }
 
+// Hook into the save_post action to process and save ACF fields
+add_action('save_post', 'save_acf_fields_quick_edit', 10, 2);
+function save_acf_fields_quick_edit($post_id, $post) {
+    if ('wycieczki' === $post->post_type && isset($_REQUEST['acf'])) {
+        
+        $date_value = '';
+        $time_value = '';
 
+        // Loop through each expected field to capture its value
+        foreach ($_REQUEST['acf'] as $field_key => $value) {
+            $field_object = get_field_object($field_key, $post_id);
+            if ($field_object) {
+                if ('tour_date' === $field_object['name']) {
+                    $date_value = sanitize_text_field($value);
+                    $formatted_date = date('Ymd', strtotime($date_value));
+                    update_field($field_key, $formatted_date, $post_id);
+                }
+                elseif ('tour_time' === $field_object['name']) {
+                    $time_value = sanitize_text_field($value);
+                    update_field($field_key, $time_value, $post_id);
+                }
+            }
+        }
 
+        if (!empty($date_value) && !empty($time_value)) {
+            $combinedDateTime = $date_value . ' ' . $time_value;
+            $datetime = DateTime::createFromFormat('Y-m-d H:i', $combinedDateTime);
+            if ($datetime) {
+                $formatted_datetime = $datetime->format('Y-m-d H:i:s');
+                if (update_field('tour_datetime', $formatted_datetime, $post_id)) {
+                    $successMessage = 'Formatowana data i czas: ' . $formatted_datetime . ' została zapisana pomyślnie.';
+                } else {
+                    $successMessage = 'Błąd zapisu daty i czasu wycieczki.';
+                }
+                
+                //set_transient('custom_admin_notice', $successMessage, 45); // 45 seconds should be enough for the transient to persist until it's displayed
+            } else {
+                $errorMessage = 'Failed to create DateTime from: ' . $combinedDateTime;
+                //set_transient('custom_admin_notice', $errorMessage, 45);
+            }
+        }
+
+    }
+}
 
 // Hook into 'pre_get_posts' to modify the query for sorting.
 function sort_wycieczki_by_tour_date($query) {
@@ -230,6 +256,39 @@ function fetch_acf_values() {
 add_action('wp_ajax_fetch_acf_values', 'fetch_acf_values');
 
 
+function update_dateandtime_field($post_id) {
+   
+    if (get_post_type($post_id) !== 'wycieczki') {
+        return;
+    }
+  
+    $tour_date = get_field('tour_date', $post_id);
+    $tour_time = get_field('tour_time', $post_id);
+
+   
+    $datetime = $tour_date . ' ' . $tour_time;
+
+    
+    update_field('tour_datetime', $datetime, $post_id);
+}
+
+// Hook into ACF save post action.
+add_action('acf/save_post', 'update_dateandtime_field', 20);
+
+add_filter('acf/load_field/name=tour_datetime', 'hide_acf_field_for_non_admin_user');
+
+function hide_acf_field_for_non_admin_user($field) {
+    
+    $current_user = wp_get_current_user();
+    
+    if ($current_user->user_login !== 'gregoradmin' && $current_user->ID !== 1) {
+    
+        $field['disabled'] = true;
+
+    }
+
+    return $field;
+}
 
 // pll_register_string('motyw', 'Wycieczka w polskiej wersji językowej');
 pll_register_string('motyw', 'Wejście:');

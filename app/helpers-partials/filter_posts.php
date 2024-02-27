@@ -1,7 +1,7 @@
 <?php 
 function filter_posts() {
  
-    $today = date('Ymd'); // Get today's date
+    $today = date('Y-m-d H:i:s'); // Get today's datetime in MySQL format
     $paged = isset($_POST['paged']) && is_numeric($_POST['paged']) ? $_POST['paged'] : 1;
     
     $args = array(
@@ -9,35 +9,44 @@ function filter_posts() {
         'paged' => $paged,
         'posts_per_page' => 10,
         'lang' => array('pl', 'en', 'de'),
-        'meta_key' => 'tour_date',
-        'orderby' => 'meta_value_num',
+        'meta_key' => 'tour_datetime', // Changed to tour_datetime
+        'orderby' => 'meta_value', // Changed to meta_value for datetime sorting
         'order' => 'ASC',
         'meta_query' => array(
             array(
-                'key' => 'tour_date',
+                'key' => 'tour_datetime', // Changed to tour_datetime
                 'value' => $today,
                 'compare' => '>=',
-                'type' => 'DATE'
+                'type' => 'DATETIME' // Changed type to DATETIME
             )
         )
     );
 
+
     if (!empty($_POST['selected_date'])) {
-    
         $dateObject = DateTime::createFromFormat('d.m.Y', $_POST['selected_date']);
         if ($dateObject !== false) {
-            $selected_date = $dateObject->format('Y-m-d');
+            $startOfDay = $dateObject->format('Y-m-d 00:00:00');
+            $endOfDay = clone $dateObject;
+            $endOfDay->modify('+1 day');
+            $startOfNextDay = $endOfDay->format('Y-m-d 00:00:00');
             $args['meta_query'][] = array(
                 'relation' => 'AND',
                 array(
-                    'key' => 'tour_date',
-                    'value' => $selected_date,
-                    'compare' => '=',
-                    'type' => 'DATE'
+                    'key' => 'tour_datetime',
+                    'value' => $startOfDay,
+                    'compare' => '>=',
+                    'type' => 'DATETIME'
+                ),
+                array(
+                    'key' => 'tour_datetime',
+                    'value' => $startOfNextDay,
+                    'compare' => '<',
+                    'type' => 'DATETIME'
                 )
             );
         }
-    } 
+    }
     
     
     if (!empty($_POST['kategoria_wycieczki'])) {
@@ -69,7 +78,7 @@ function filter_posts() {
     
     if (!empty($_POST['sorting'])) {
         if ($_POST['sorting'] === 'DATE') {
-            $args['meta_key'] = 'tour_date';
+            $args['meta_key'] = 'tour_datetime';
             $args['orderby'] = 'meta_value';
             $args['order'] = 'DESC';
         } else if ($_POST['sorting'] === 'ASC') {
@@ -78,8 +87,6 @@ function filter_posts() {
         } 
     }
     
-   
-
     $query = new WP_Query($args);
 
     // echo '<pre>' . var_export($query, true) . '</pre>';
