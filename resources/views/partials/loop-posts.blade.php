@@ -9,7 +9,7 @@
         'orderby' => 'meta_value',
         'order' => 'ASC',
         'paged' => $paged,
-        'posts_per_page' => 10,
+        'posts_per_page' => 12,
         'meta_query' => array(
             'relation' => 'AND',
             array(
@@ -45,7 +45,7 @@ if ($current_user->user_login == 'gregoradmin' || $current_user->ID == '1') {
         
             @include('partials.post.content')
         @endwhile
-        @php page_navi($query, 10); @endphp
+        @php page_navi($query, 12); @endphp
         
         @php wp_reset_postdata() @endphp
     @endif
