@@ -31,7 +31,7 @@ if ($current_user->user_login == 'gregoradmin' || $current_user->ID == '1') {
     echo '<pre>Znaleziono postów: ' . $query->found_posts . '</pre>';
 }
 ?>
-<div id="posts" class="posts grid gap-5 mb-60 card-grid" data-aos="fade-up">
+<div id="posts" class="posts grid gap-5 mb-60 list-grid" data-aos="fade-up">
     
     @if($query->have_posts())
        
