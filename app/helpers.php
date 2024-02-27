@@ -156,9 +156,6 @@ function add_quick_edit_fields($column_name, $post_type) {
 }
 
 
-
-
-
 // Hook into the admin notices action to display custom messages
 add_action('admin_notices', 'display_custom_admin_notices');
 function display_custom_admin_notices() {
@@ -238,16 +235,12 @@ add_filter('manage_edit-wycieczki_sortable_columns', 'make_tour_details_column_s
 
 
 function fetch_acf_values() {
-    // Check for nonce for security here (if you wish to add one)
 
-    // Get the post ID from the AJAX request
     $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
 
-    // Fetch the ACF field values
     $tour_date = get_field('tour_date', $post_id);
     $tour_time = get_field('tour_time', $post_id);
 
-    // Return the values in the AJAX response
     wp_send_json_success(array(
         'tour_date' => $tour_date,
         'tour_time' => $tour_time
@@ -257,7 +250,6 @@ add_action('wp_ajax_fetch_acf_values', 'fetch_acf_values');
 
 
 function update_dateandtime_field($post_id) {
-   
     if (get_post_type($post_id) !== 'wycieczki') {
         return;
     }
@@ -271,12 +263,9 @@ function update_dateandtime_field($post_id) {
     
     update_field('tour_datetime', $datetime, $post_id);
 }
-
-// Hook into ACF save post action.
 add_action('acf/save_post', 'update_dateandtime_field', 20);
 
 add_filter('acf/load_field/name=tour_datetime', 'hide_acf_field_for_non_admin_user');
-
 function hide_acf_field_for_non_admin_user($field) {
     
     $current_user = wp_get_current_user();
@@ -289,6 +278,36 @@ function hide_acf_field_for_non_admin_user($field) {
 
     return $field;
 }
+
+function add_custom_post_class( $classes, $class, $post_id ) {
+    if (is_admin() && get_post_type($post_id) === 'wycieczki') {
+        $tour_datetime = get_post_meta($post_id, 'tour_datetime', true);
+        $today = current_time('Y-m-d H:i:s');
+        if (!empty($tour_datetime) && $tour_datetime < $today) {
+            $classes[] = 'past-tour-date'; // Add your custom class
+        }
+    }
+
+    return $classes;
+}
+add_filter( 'post_class', 'add_custom_post_class', 10, 3 );
+function enqueue_custom_admin_style() {
+    $css = '.post-type-wycieczki .past-tour-date { background-color: #ffdddd !important; }'; // Custom CSS
+    wp_add_inline_style( 'wp-admin', $css );
+}
+add_action( 'admin_enqueue_scripts', 'enqueue_custom_admin_style' );
+function wycieczki_admin_notice_for_outdated_posts() {
+    $screen = get_current_screen();
+    
+    // Check if we're on the 'wycieczki' post type list page
+    if ($screen->id === 'edit-wycieczki') {
+        echo '<div class="notice is-dismissible">
+            <p>Posty, które mają <span style="background-color: #ffdddd !important; padding: 3px;">czerwone</span> tło są przedawnione.</p>
+        </div>';
+    }
+}
+add_action('admin_notices', 'wycieczki_admin_notice_for_outdated_posts');
+
 
 // pll_register_string('motyw', 'Wycieczka w polskiej wersji językowej');
 pll_register_string('motyw', 'Wejście:');

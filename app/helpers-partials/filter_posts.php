@@ -1,7 +1,7 @@
 <?php 
 function filter_posts() {
  
-    $today = date('Y-m-d H:i:s'); // Get today's datetime in MySQL format
+    $today = current_time('Y-m-d H:i:s'); // Get today's datetime in MySQL format
     $paged = isset($_POST['paged']) && is_numeric($_POST['paged']) ? $_POST['paged'] : 1;
     
     $args = array(
@@ -91,7 +91,7 @@ function filter_posts() {
 
     // echo '<pre>' . var_export($query, true) . '</pre>';
     // echo '<pre>' . var_export($args, true) . '</pre>';
-     //echo '<pre>' . var_export($kategoria_wycieczki_array, true) . '</pre>';
+    // echo '<pre>' . var_export($kategoria_wycieczki_array, true) . '</pre>';
 
     if ($query->have_posts()) {
         while ($query->have_posts()) {

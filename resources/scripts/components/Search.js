@@ -52,12 +52,12 @@ export default class Search extends Component {
       } else {
           data.selected_date = formattedDate; // Ensure this is in the correct format
       }
-      console.log('Sending AJAX request with data:', data);
+      //console.log('Sending AJAX request with data:', data);
 
       if (!$('.spinner-main').length) {
         $('body').append('<div class="spinner-main"><div class="spinner"></div></div>');
       }
-      console.log(data);
+     // console.log(data);
       $.ajax({
         url: '/wp-admin/admin-ajax.php',
         type: 'POST',
