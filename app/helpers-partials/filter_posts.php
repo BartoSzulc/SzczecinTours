@@ -7,7 +7,7 @@ function filter_posts() {
     $args = array(
         'post_type' => 'wycieczki',
         'paged' => $paged,
-        'posts_per_page' => 10,
+        'posts_per_page' => 12,
         'lang' => array('pl', 'en', 'de'),
         'meta_key' => 'tour_datetime', // Changed to tour_datetime
         'orderby' => 'meta_value', // Changed to meta_value for datetime sorting
@@ -99,7 +99,7 @@ function filter_posts() {
             echo view('partials/post/content')->render();
         }
         if ($query->max_num_pages > 1):
-            page_navi($query, 10);
+            page_navi($query, 12);
         endif;
     } else {
         echo view('partials/post/not-found')->render();
