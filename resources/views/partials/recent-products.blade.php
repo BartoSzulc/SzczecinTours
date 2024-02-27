@@ -1,24 +1,24 @@
 @php
+
 $post_type = 'wycieczki'; 
-$today = date('Ymd');
+$current_datetime = current_time('Y-m-d H:i:s');
 $args = [
     'post_type' => $post_type,
     'posts_per_page' => 4,
-    'meta_key' => 'tour_date',
+    'meta_key' => 'tour_datetime',
     'orderby' => 'meta_value_num',
     'order' => 'ASC',
-
     'meta_query' => array(
+        'relation' => 'AND',
         array(
-            'key' => 'tour_date',
+            'key' => 'tour_datetime',
             'compare' => '>=',
-            'value' => $today,
-            'type' => 'DATE',
+            'value' => $current_datetime,
+            'type' => 'DATETIME',
         )
     )
 ];
 $query = new WP_Query($args);
-
 $data = get_field('recent', 'option');
 $title = $data['title'] ?? null;
 $subtitle = $data['subtitle'] ?? null;

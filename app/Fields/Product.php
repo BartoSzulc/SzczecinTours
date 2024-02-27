@@ -25,6 +25,8 @@ class Product extends Field
             'return_format' => 'd.m.Y',])
             ->addTimePicker('tour_time', ['label' => 'Godzina wycieczki', 'display_format' => 'G:i',
             'return_format' => 'G:i',])
+            ->addDateTimePicker('tour_datetime', ['label' => 'Pełna data wycieczki automatycznie zaciągana z powyższych pól.', 'display_format' => 'd.m.Y G:i', // Display format in the UI
+            'return_format' => 'Y-m-d H:i:s'])
             ->addText('tour_price', ['label' => 'Cena wycieczki'])
             ->addText('tour_duration', ['label' => 'Czas trwania wycieczki'])
             ->addText('tour_location', ['label' => 'Miejsce wycieczki'])
