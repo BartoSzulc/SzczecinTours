@@ -24,7 +24,7 @@ foreach ($languages as $language) {
         <option value="DATE">{{ pll__('Data wydarzenia') }}</option>
         <option value="ASC">{{ pll__('Alfabetycznie') }}</option>
     </select>
-    <div class="change-view md:flex items-center gap-[15px] hidden">
+    <div class="change-view lg:flex items-center gap-[15px] hidden">
         <div class="view grid-view">
             @svg('images/kafelki.svg', 'max-3xl:max-w-[25px] max-3xl:h-6')
         </div>

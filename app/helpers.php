@@ -125,7 +125,8 @@ function custom_columns_content_for_wycieczki($column_name, $post_id) {
 
         // Format the time if not empty and to exclude seconds
         if (!empty($tour_time)) {
-            $tour_time_formatted = $tour_time; // Already in 'G:i' format
+            // Reformat the time to exclude seconds
+            $tour_time_formatted = date('G:i', strtotime($tour_time));
         } else {
             $tour_time_formatted = 'Nie dodano godziny';
         }
@@ -254,16 +255,21 @@ function update_dateandtime_field($post_id) {
         return;
     }
   
-    $tour_date = get_field('tour_date', $post_id);
-    $tour_time = get_field('tour_time', $post_id);
+    $tour_date = get_field('tour_date', $post_id); 
+    $tour_time = get_field('tour_time', $post_id); 
 
-   
-    $datetime = $tour_date . ' ' . $tour_time;
-
+    $datetimeObject = DateTime::createFromFormat('d.m.Y G:i', $tour_date . ' ' . $tour_time);
     
-    update_field('tour_datetime', $datetime, $post_id);
+   
+    if ($datetimeObject !== false) {
+        $formatted_datetime = $datetimeObject->format('Y-m-d H:i:s');
+        update_field('tour_datetime', $formatted_datetime, $post_id);
+    } else {
+
+    }
 }
 add_action('acf/save_post', 'update_dateandtime_field', 20);
+
 
 add_filter('acf/load_field/name=tour_datetime', 'hide_acf_field_for_non_admin_user');
 function hide_acf_field_for_non_admin_user($field) {
