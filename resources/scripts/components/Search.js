@@ -74,6 +74,7 @@ export default class Search extends Component {
         posts.classList.add(viewType === 'grid' ? 'card-grid' : 'list-grid');
         document.querySelector(viewType === 'grid' ? '.grid-view' : '.list-view').classList.add('active');
         document.querySelector(viewType === 'grid' ? '.list-view' : '.grid-view').classList.remove('active');
+
         $('html, body').animate({
           scrollTop: $('#posts').offset().top - 100
         }, 1000);
@@ -112,6 +113,13 @@ export default class Search extends Component {
     
     switchView('.grid-view', '.list-view', 'card-grid', 'list-grid');
     switchView('.list-view', '.grid-view', 'list-grid', 'card-grid');
+
+    
+    if (window.innerWidth < 991) {
+      posts.classList.add('card-grid');
+      posts.classList.remove('list-grid');
+    }
+    
     $('#language-select').change(function() {
       let paged = $('.pagination a.page-link.active').data('page');
       paged = isNaN(paged) ? 1 : paged;

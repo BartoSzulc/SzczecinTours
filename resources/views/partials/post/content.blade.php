@@ -44,13 +44,26 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                 @if (has_excerpt())
                     {!! get_the_excerpt() !!}
                 @else
-                    @if(get_field('tour_location'))
-                    <div class="post-location flex md:gap-2.5 gap-1 items-center">
-                        <div class="icon flex">
-                        @svg('images.enter', '')
+                    @if (get_field('tour_location_link'))
+                    <a href="{{ get_field('tour_location_link') }}" target="_blank" class="underline transition-all duration-500 ease-in-out hover:text-color3" rel="noopene r noreferrer">
+                        @if(get_field('tour_location'))
+                        <div class="post-location flex md:gap-2.5 gap-1 items-center">
+                            <div class="icon flex">
+                            @svg('images.enter', '')
+                            </div>
+                            <p>{{ get_field('tour_location') }}</p>
                         </div>
-                        <p>{{ get_field('tour_location') }}</p>
-                    </div>
+                        @endif
+                    </a>
+                    @else
+                        @if(get_field('tour_location'))
+                        <div class="post-location flex md:gap-2.5 gap-1 items-center">
+                            <div class="icon flex">
+                            @svg('images.enter', '')
+                            </div>
+                            <p>{{ get_field('tour_location') }}</p>
+                        </div>
+                        @endif
                     @endif
                 @endif
             </div>
