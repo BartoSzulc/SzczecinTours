@@ -14,6 +14,7 @@ export default class Search extends Component {
     if (!$('body').hasClass('home')) {
       return;
     }
+
     const getCheckedValues = (selector) => {
       const values = $(selector).map((_, radio) => $(radio).val()).get();
       const result = values.includes('all') ? $(selector.replace(':checked', '')).map((_, radio) => $(radio).val()).get() : values;
@@ -68,12 +69,25 @@ export default class Search extends Component {
         AOS.init();
         AOS.refresh();
 
-
+        console.log('additionalScript called');
+  
+      
+        
         const posts = document.getElementById('posts');
         posts.classList.remove(viewType === 'grid' ? 'list-grid' : 'card-grid');
         posts.classList.add(viewType === 'grid' ? 'card-grid' : 'list-grid');
         document.querySelector(viewType === 'grid' ? '.grid-view' : '.list-view').classList.add('active');
         document.querySelector(viewType === 'grid' ? '.list-view' : '.grid-view').classList.remove('active');
+
+        const languageGridDiv = document.querySelector('.tour_language_grid');
+    
+        if (posts && languageGridDiv) {
+          if (posts.classList.contains('card-grid')) {
+            languageGridDiv.classList.add('hidden');
+          } else {
+            languageGridDiv.classList.remove('hidden');
+          }
+        }
 
         $('html, body').animate({
           scrollTop: $('#posts').offset().top - 100
@@ -84,7 +98,9 @@ export default class Search extends Component {
 
         alert('An error occurred while filtering posts. Please try again.'); // Added user-friendly error message
       });
+     
     };
+
     $('#posts').on('click', '.pagination a.page-link, .pagination .prev a, .pagination .next a', function(e) {
       e.preventDefault();
       let paged = $(this).data('page');
@@ -114,12 +130,6 @@ export default class Search extends Component {
     switchView('.grid-view', '.list-view', 'card-grid', 'list-grid');
     switchView('.list-view', '.grid-view', 'list-grid', 'card-grid');
 
-    
-    if (window.innerWidth < 991) {
-      posts.classList.add('card-grid');
-      posts.classList.remove('list-grid');
-    }
-    
     $('#language-select').change(function() {
       let paged = $('.pagination a.page-link.active').data('page');
       paged = isNaN(paged) ? 1 : paged;
