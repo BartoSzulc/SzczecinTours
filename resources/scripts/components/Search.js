@@ -79,15 +79,6 @@ export default class Search extends Component {
         document.querySelector(viewType === 'grid' ? '.grid-view' : '.list-view').classList.add('active');
         document.querySelector(viewType === 'grid' ? '.list-view' : '.grid-view').classList.remove('active');
 
-        const languageGridDiv = document.querySelector('.tour_language_grid');
-    
-        if (posts && languageGridDiv) {
-          if (posts.classList.contains('card-grid')) {
-            languageGridDiv.classList.add('hidden');
-          } else {
-            languageGridDiv.classList.remove('hidden');
-          }
-        }
 
         $('html, body').animate({
           scrollTop: $('#posts').offset().top - 100

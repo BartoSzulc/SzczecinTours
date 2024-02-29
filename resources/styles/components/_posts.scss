@@ -53,6 +53,9 @@
         @apply flex flex-wrap flex-row justify-between items-center lg:gap-y-3 lg:gap-2 max-md:gap-1;
       }
     }
+    .tour_language_grid {
+      @apply hidden;
+    }
   }
   &.list-grid {
     @media (min-width: 991px) {
@@ -130,6 +133,9 @@
           @apply flex flex-wrap flex-row justify-between items-center lg:gap-y-3 lg:gap-2 max-md:gap-1;
         }
       }
+    }
+    .tour_language_grid {
+      @apply block;
     }
   }
 }
