@@ -13,7 +13,7 @@ import SlimSelect from 'slim-select';
  */
 
 const main = async (err) => {
-
+      
   const stickyHeader = document.querySelector('.main-header--sticky');
   let lastScrollY = window.scrollY;
   let isScrollingDown = false;

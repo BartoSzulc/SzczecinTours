@@ -29,8 +29,13 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
                 @svg('images.koszt')
                 <p>{{get_field('tour_price')}}</p>
             </div>
-            <div class="post-language text-color1">
-                <img class="text-color3" src="{{ $post_language_url }}" title="{{ $post_language_slug }}" alt="{{ $post_language_slug }}">
+            <div class="post-language  flex md:gap-2.5 gap-1 items-center">
+                <img class=" text-color1" src="{{ $post_language_url }}" title="{{ $post_language_slug }}" alt="{{ $post_language_slug }}">
+                @if (get_field('tour_language'))
+                <div class="tour_language_grid">
+                    <p class="text-xs max-[992px]:hidden">{{ get_field('tour_language') }}</p>
+                </div>
+                @endif
             </div>
             
         </div>
