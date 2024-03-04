@@ -13,7 +13,7 @@
         <div class="text-h3 lg:text-h3"  data-aos="fade-up">
           <h2>{{ pll__('Strona nie istnieje') }}</h2>
         </div>
-        <a href="/" class="btn btn--primary"  data-aos="fade-up">{{ pll__('Powrót') }}</a>
+        <a href="/" class="btn btn--primary"  data-aos="fade-up"><span>{{ pll__('Powrót') }}</span></a>
        </div>
       </div>
      
