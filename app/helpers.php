@@ -217,15 +217,19 @@ function sort_wycieczki_by_tour_date($query) {
     if (is_admin() && $query->is_main_query()) {
         $post_type = $query->get('post_type');
         if ('wycieczki' === $post_type) {
+            // Check if 'orderby' is not already set by the user
             $orderby = $query->get('orderby');
-            if ('tour_date' === $orderby) {
+            if (empty($orderby)) {
+                // Set default sorting by 'tour_date' ACF field
                 $query->set('meta_key', 'tour_date');
                 $query->set('orderby', 'meta_value');
+                $query->set('order', 'ASC'); // or 'DESC' depending on your needs
             }
         }
     }
 }
 add_action('pre_get_posts', 'sort_wycieczki_by_tour_date');
+
 
 //sortable custom column
 function make_tour_details_column_sortable($columns) {
