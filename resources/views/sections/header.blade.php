@@ -22,6 +22,7 @@ $currentLanguageData = $languageData[$currentLanguageSlug] ?? null;
   <div class="container">
     <div class="flex items-center justify-between relative @if (!is_front_page()) after:absolute after:content-[''] after:w-full after:h-px after:left-0 after:-bottom-30 after:bg-color2/30 @endif">
       <a class="max-sm:self-start brand flex w-20 sm:w-[120px] lg:w-auto" href="{{ pll_home_url() }}">
+        <span class="sr-only">VisitSzczecin</span>
         @svg('images.logo')
       </a>
       @include('partials.header.menu')
@@ -34,6 +35,7 @@ $currentLanguageData = $languageData[$currentLanguageSlug] ?? null;
   <div class="container">
     <div class="flex items-center justify-between relative ">
       <a class="max-sm:self-start brand flex w-20 sm:w-[120px] lg:w-32" href="{{ pll_home_url() }}">
+        <span class="sr-only">VisitSzczecin</span>
         @svg('images.logo')
       </a>
       @include('partials.header.menu')

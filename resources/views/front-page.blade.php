@@ -13,7 +13,7 @@
                 <h2>{{ pll__('Lista wycieczek') }}</h2>
             </div>
             <div id="search-tours" class="relative max-lg:mb-10 flex max-xl:flex-wrap gap-5 items-center justify-between bg-white dark:bg-black py-5 px-0 md:px-5 3xl:px-30 rounded-md transition-all duration-500 ease-in-out">
-                <div class="absolute bg-white w-[calc(100%+40px)] h-full -left-5 md:hidden ">
+                <div class="dark:bg-black absolute bg-white w-[calc(100%+40px)] h-full -left-5 md:hidden ">
 
                 </div>
                 <div class="max-md:gap-y-5 left flex max-md:flex-wrap items-center justify-center max-xl:w-full relative z-10">
