@@ -5,14 +5,14 @@
       </nav>
     @endif
     <div class="switchers flex items-center sm:gap-5 gap-3">
-      <button id="toggleDarkMode" class="contrast-switcher"></button>
-      <div id="font-size-switcher" class="text-base md:text-desc text-color-2 flex font-size-switcher">
-        <button id="normal" class="mr-1.5 md:mr-2.5 size-button">A</button>
-        <button id="medium" class="mr-1 size-button">A+</button>
-        <button id="big" class="size-button">A++</button>
+      <button class="toggleDarkMode contrast-switcher" title="Toggle Dark Mode"></button>
+      <div class="text-base md:text-desc text-color-2 flex font-size-switcher">
+        <button class="normal mr-1.5 md:mr-2.5 size-button">A</button>
+        <button class="medium mr-1 size-button">A+</button>
+        <button class="big size-button">A++</button>
       </div>
     </div>
-    <select id="language-select--header" class="select-custom--header">
+    <select id="language-select--header" class="select-custom--header" aria-label="Language Selection">
       @foreach($languageData as $language)
       <option title="{{$language['name']}}" data-html="{{ $language['slug'] == $currentLanguageSlug ? "<img src='{$language['flag']}'/>" : "<a href='{$language['url']}'><img src='{$language['flag']}'/></a>" }}" value="{{ $language['slug'] }}" {{ $language['slug'] == $currentLanguageSlug ? 'selected' : '' }}>
       </option>

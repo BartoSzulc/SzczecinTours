@@ -83,77 +83,89 @@ const main = async (err) => {
     console.error(err);
   }
 
-  const sizeButtons = document.querySelectorAll('.size-button');
-  
-  sizeButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      changeFontSize(this.getAttribute('id'));
-      updateActiveButton(this);
-    });
+ // Adjusting the font size buttons event listeners
+document.querySelectorAll('.size-button').forEach(button => {
+  button.addEventListener('click', function () {
+    // Using the first class as the font size identifier
+    changeFontSize(this.classList[0]);
+    updateActiveButton(this);
   });
+});
 
+// Toggle Dark Mode functionality
+document.querySelectorAll('.toggleDarkMode').forEach(toggleButton => {
+  toggleButton.addEventListener('click', function () {
+    document.documentElement.classList.toggle('dark');
 
-document.querySelectorAll('#toggleDarkMode').forEach(toggleButton => {
-    toggleButton.addEventListener('click', function () {
-      document.documentElement.classList.toggle('dark');
-
-      if (document.documentElement.classList.contains('dark')) {
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        localStorage.setItem('darkMode', 'disabled');
-      }
-
-    });
-  });
-  document.querySelectorAll('.select-custom--header').forEach(select => {
-    select.addEventListener('change', function () {
-      var tempDiv = document.createElement('div');
-      tempDiv.innerHTML = this.options[this.selectedIndex].getAttribute('data-html');
-      var url = tempDiv.querySelector('a') ? tempDiv.querySelector('a').href : null;
-      if (url) {
-        window.location.href = url;
-      }
-    });
-  });
-
-  if (localStorage.getItem('darkMode') === 'enabled') {
-    document.documentElement.classList.add('dark');
-  }
-  const preferredFontSize = localStorage.getItem('preferredFontSize');
-  if (preferredFontSize) {
-    changeFontSize(preferredFontSize);
-    
-    document.querySelectorAll(`.size-button#${preferredFontSize}`).forEach(activeButton => {
-      updateActiveButton(activeButton);
-    });
-  }
-  function changeFontSize(size) {
-    let rootSize;
-    switch (size) {
-      case 'normal':
-        rootSize = '16px';
-        break;
-      case 'medium':
-        rootSize = '17px';
-        break;
-      case 'big':
-        rootSize = '18px';
-        break;
-      default:
-        rootSize = '16px';
+    if (document.documentElement.classList.contains('dark')) {
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      localStorage.setItem('darkMode', 'disabled');
     }
-    document.documentElement.style.fontSize = rootSize;
-    localStorage.setItem('preferredFontSize', size);
-  }
+  });
+});
+
+// Custom select change event listener
+document.querySelectorAll('.select-custom--header').forEach(select => {
+  select.addEventListener('change', function () {
+    var tempDiv = document.createElement('div');
+    tempDiv.innerHTML = this.options[this.selectedIndex].getAttribute('data-html');
+    var url = tempDiv.querySelector('a') ? tempDiv.querySelector('a').href : null;
+    if (url) {
+      window.location.href = url;
+    }
+  });
+});
+
+// Apply dark mode based on localStorage
+if (localStorage.getItem('darkMode') === 'enabled') {
+  document.documentElement.classList.add('dark');
+}
+
+// Apply preferred font size based on localStorage
+const preferredFontSize = localStorage.getItem('preferredFontSize');
+if (preferredFontSize) {
+  changeFontSize(preferredFontSize);
   
-  function updateActiveButton(activeButton) {
-    document.querySelectorAll('.size-button').forEach(button => {
-      button.classList.remove('active');
-    });
-    document.querySelectorAll(`.size-button#${activeButton.id}`).forEach(button => {
-      button.classList.add('active');
-    });
+  // Select the active button based on its class
+  document.querySelectorAll(`.size-button.${preferredFontSize}`).forEach(activeButton => {
+    updateActiveButton(activeButton);
+  });
+}
+
+// Function to change the font size
+function changeFontSize(size) {
+  let rootSize;
+  switch (size) {
+    case 'normal':
+      rootSize = '16px';
+      break;
+    case 'medium':
+      rootSize = '17px';
+      break;
+    case 'big':
+      rootSize = '18px';
+      break;
+    default:
+      rootSize = '16px';
   }
+  document.documentElement.style.fontSize = rootSize;
+  localStorage.setItem('preferredFontSize', size);
+}
+
+function updateActiveButton(clickedButton) {
+  // First, remove 'active' class from all buttons in both sets
+  document.querySelectorAll('.size-button').forEach(button => {
+    button.classList.remove('active');
+  });
+
+  // Then, add 'active' class to buttons with the same class as the clicked button in both sets
+  const sizeClass = clickedButton.classList[0]; // Assuming the first class is the size identifier
+  document.querySelectorAll(`.size-button.${sizeClass}`).forEach(button => {
+    button.classList.add('active');
+  });
+}
+
 
 
 

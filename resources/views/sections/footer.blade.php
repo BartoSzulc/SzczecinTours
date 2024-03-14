@@ -14,6 +14,7 @@
             <div class="col-span-1 text-base leading-30 lg:leading-[48px] text-color7 dark:text-colorContrast font-medium">
                 <div class="flex flex-col">
                     <a class="brand flex mb-5 lg:mb-8" href="{{ home_url('/') }}">
+                        <span class="sr-only">VisitSzczecin</span>
                         @svg('images.logo', 'h-10 flex w-auto')
                     </a>
                     @if ($policy_l && $policy_t)
