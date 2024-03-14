@@ -9,7 +9,7 @@ $post_language_url = pll_get_post_language(get_the_ID(), 'custom_flag_url'); // 
 <div class="post bg-white h-full rounded-lg transition-all duration-500 ease-in-out dark:bg-black dark:border dark:border-colorContrast " data-aos="fade-up">
     <div class="post-image">
         @if ( has_post_thumbnail() ) 
-        <a href="{{ get_permalink() }}" aria-hidden="true">
+        <a href="{{ get_permalink() }}" aria-hidden="true" tabindex="-1">
             {!! wp_get_attachment_image($thumbnail_id, 'full', false, array('class' => 'object-cover object-center mx-auto', 'loading' => 'lazy')); !!}
         </a>
         @endif
