@@ -15,7 +15,7 @@
                 <div class="flex flex-col">
                     <a class="brand flex mb-5 lg:mb-8" href="{{ home_url('/') }}">
                         <span class="sr-only">VisitSzczecin</span>
-                        @svg('images.logo', 'h-10 flex w-auto')
+                        <img src="{{asset('images/logo.svg')}}" alt="logo" class="h-10 flex w-auto">
                     </a>
                     @if ($policy_l && $policy_t)
                     <a class="transition-all duration-500 ease-in-out hover:text-color3 hover:underline dark:!text-colorContrast" href="{{$policy_l}}">{{ $policy_t }}</a>
