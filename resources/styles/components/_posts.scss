@@ -50,7 +50,7 @@
         }
       }
       &-info {
-        @apply flex flex-wrap flex-row justify-between items-center lg:gap-y-3 lg:gap-2 max-md:gap-1;
+        @apply flex flex-wrap flex-row justify-between items-center lg:gap-y-3 lg:gap-2 max-md:gap-1 text-[13px] leading-[16px];
       }
     }
     .tour_language_grid {

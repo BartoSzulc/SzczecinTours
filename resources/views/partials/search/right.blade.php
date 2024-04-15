@@ -25,10 +25,10 @@ foreach ($languages as $language) {
         <option value="ASC">{{ pll__('Alfabetycznie') }}</option>
     </select>
     <div class="change-view lg:flex items-center gap-[15px] hidden">
-        <div class="view grid-view">
+        <div class="view grid-view active">
             @svg('images/kafelki.svg', 'max-3xl:max-w-[25px] max-3xl:h-6')
         </div>
-        <div class="view list-view active">
+        <div class="view list-view">
             @svg('images/lista.svg', 'max-3xl:max-w-[25px] max-3xl:h-6')
         </div>
     </div>
