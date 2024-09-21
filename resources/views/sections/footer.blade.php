@@ -75,14 +75,12 @@
         @endif  
     </div>
     <div class="container">
-        <div class="grid grid-cols-12 gap-5  border-t border-colorObramowanie py-30">
-            <div class="3xl:col-span-5 3xl:col-start-3 lg:col-span-6 flex items-center col-span-full">
-                <div class="text-sm lg:text-desc text-color6 dark:text-colorContrast lg:text-right font-normal text-center">
-                    <p>{{ pll__('Strona internetowa powstała w ramach projektu Szczecin Tours Planner dofinansowanego ze środków UE.') }}</p>
+        <div class="grid grid-cols-12 gap-5  border-t border-colorObramowanie py-6">
+            <div class="3xl:col-span-12  flex items-center col-span-full">
+                <div class="text-sm lg:text-desc text-color6 dark:text-colorContrast  font-normal text-center">
+                    <p>{{ pll__('Strona internetowa powstała w ramach projektu "Szczecin Tours Planner" dofinansowanego ze środków Funduszu Małych Projektów Euroregionu Pomerania, w ramach Programu Współpracy Interreg VI A Meklemburgia - Pomorze Przednie / Brandenburgia / Polska w Euroregionie
+Pomerania UE, w zakresie celu szczegółowego 4.6: Kultura i zrównoważona turystyka. Kwota dofinansowania: 6 196 EUR.') }}</p>
                 </div>
-            </div>
-            <div class="3xl:col-span-3 lg:col-span-6 flex items-center col-span-full max-lg:justify-center">
-                <img src="{{ asset('images/int6a.png')}}" alt="">
             </div>
         </div>
     </div>
