@@ -79,7 +79,7 @@
             <div class="3xl:col-span-12  flex items-center col-span-full">
                 <div class="text-sm lg:text-desc text-color6 dark:text-colorContrast  font-normal text-center">
                     <p>{{ pll__('Strona internetowa powstała w ramach projektu "Szczecin Tours Planner" dofinansowanego ze środków Funduszu Małych Projektów Euroregionu Pomerania, w ramach Programu Współpracy Interreg VI A Meklemburgia - Pomorze Przednie / Brandenburgia / Polska w Euroregionie
-Pomerania UE, w zakresie celu szczegółowego 4.6: Kultura i zrównoważona turystyka. Kwota dofinansowania: 6 196 EUR.') }}</p>
+Pomerania UE, w zakresie celu szczegółowego 4.6: Kultura i zrównoważona turystyka. Wartość projektu : 7 746 EUR, wysokość wkładu z Funduszy Europejskich: 6 196 EUR.') }}</p>
                 </div>
             </div>
         </div>
